@@ -39,6 +39,7 @@ Endereço atual: https://cebeleletropostos-hub.github.io/cebel-site/
 - Google/Meta só carregam após "Aceitar" no aviso de cookies (`_includes/consent.html`); o aviso só aparece se houver tag configurada. Política em `privacidade/`.
 - Planilha de leads: Google Sheets na conta da CEBEL (carreagadoritaguai@gmail.com), montada por `tools/planilha-leads.gs` (funções `configurar`, `testarEnvio`, `doPost`). O formulário manda JSON (text/plain, no-cors) ao `leads_endpoint`; campo anti-spam `empresa_site`.
 - Planilha: https://docs.google.com/spreadsheets/d/1KiEBHN6HtOil9Qwr5QQhRSMh51qEU8SCkFo2if9Ih8w/edit (conta da CEBEL). App ativo; `?acao=configurar&token=…` remonta, `?acao=teste&token=…` cria linha de teste.
+- Google Search Console verificado pela conta da CEBEL com o arquivo `google3b894b6bffe2e85c.html` na raiz: não apagar. Sitemap: `sitemap.xml`. Ao trocar para o domínio próprio, criar nova propriedade no Search Console.
 - Guia para o João: doc "CEBEL · Guia de leads e medição" (https://claude.ai/artifact/1ADhEsAJj27NyrTWhuipz8).
 
 ## Domínio próprio (pendente)
