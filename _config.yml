@@ -23,6 +23,8 @@ google_tag: "G-FPE5Q5BCJH"
 meta_pixel: "1135209462228309"
 leads_endpoint: "https://script.google.com/macros/s/AKfycbyd-twHaXwk75WesZLhxmKf0ufZ-BrJarvFHJc9PjARoOyhXEsEDDV3rTbHI_TaDM2J/exec"
 leads_token: "cebel-leads"
+# Código de verificação do Google Search Console (só o valor de content="...")
+google_site_verification: ""
 
 # Modelo comercial (usado nas páginas e na calculadora)
 preco_kwh: "2,00"
