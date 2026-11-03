@@ -2,13 +2,12 @@
  * CEBEL · Planilha de leads
  *
  * Como usar (uma vez só, na conta Google da CEBEL):
- * 1. Crie uma planilha nova (sheets.new) e dê o nome "CEBEL · Leads".
+ * 1. Crie uma planilha nova (sheets.new).
  * 2. Menu Extensões → Apps Script. Apague o que estiver lá e cole este arquivo inteiro. Salve.
- * 3. No topo, escolha a função "configurar" e clique em Executar. Autorize quando o Google pedir.
- *    Isso monta as abas "Leads" e "Painel" com colunas, listas de status e cores.
- * 4. Clique em Implantar → Nova implantação → engrenagem → "App da Web".
- *    Executar como: Eu. Quem pode acessar: Qualquer pessoa. Clique em Implantar.
- * 5. Copie a URL que termina em /exec e mande para o Claude, que liga o site na planilha.
+ * 3. Implantar → Nova implantação → engrenagem → "App da Web".
+ *    Executar como: Eu. Quem pode acessar: Qualquer pessoa. Implantar e autorizar.
+ * 4. Mande a URL que termina em /exec para o Claude. Ele monta a planilha e faz o teste
+ *    abrindo essa URL com ?acao=configurar e ?acao=teste (não precisa rodar nada à mão).
  *
  * A partir daí, todo formulário enviado no site vira uma linha nova com status "Novo",
  * e um e-mail de aviso chega na conta dona da planilha.
@@ -37,7 +36,7 @@ var TIPOS = ['Academia', 'Shopping ou centro comercial', 'Supermercado ou atacar
   'Restaurante', 'Estacionamento ou posto', 'Motorista', 'Outro'];
 
 /** Monta (ou remonta) as abas da planilha. Pode rodar de novo sem perder linhas. */
-function configurar() {
+function configurar(semAviso) {
   var ss = SpreadsheetApp.getActiveSpreadsheet();
   ss.setSpreadsheetLocale('pt_BR');
   ss.setSpreadsheetTimeZone('America/Sao_Paulo');
@@ -94,7 +93,8 @@ function configurar() {
 
   montarPainel_(ss);
   ss.setActiveSheet(sh);
-  SpreadsheetApp.getUi().alert('Pronto! A planilha está montada. Agora faça a implantação como App da Web (passo 4 no topo do script).');
+  if (!ss.getName() || /^Planilha sem título|^Untitled/.test(ss.getName())) ss.rename('CEBEL · Leads');
+  if (!semAviso) { try { SpreadsheetApp.getUi().alert('Pronto! A planilha está montada.'); } catch (x) {} }
 }
 
 function montarPainel_(ss) {
@@ -159,6 +159,7 @@ function doPost(e) {
     linha['Notas'] = d.pagina ? 'Enviado em ' + d.pagina : '';
 
     var sh = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(ABA_LEADS);
+    if (!sh) { configurar(true); sh = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(ABA_LEADS); }
     var valores = COLUNAS.map(function (k) { return linha[k] !== undefined ? linha[k] : ''; });
     var proxima = primeiraLinhaVazia_(sh);
     sh.getRange(proxima, 1, 1, valores.length).setValues([valores]);
@@ -185,19 +186,27 @@ function doPost(e) {
   }
 }
 
-/** Abrir a URL do app no navegador mostra se está funcionando. */
-function doGet() {
-  return resposta_({ ok: true, servico: 'CEBEL leads' });
+/** Abrir a URL do app mostra se está funcionando. Com ?acao=configurar ou ?acao=teste (e o token), monta ou testa. */
+function doGet(e) {
+  var p = (e && e.parameter) || {};
+  try {
+    if (p.acao && p.token !== TOKEN) return resposta_({ ok: false, erro: 'token' });
+    if (p.acao === 'configurar') { configurar(true); return resposta_({ ok: true, feito: 'configurar', planilha: SpreadsheetApp.getActiveSpreadsheet().getUrl() }); }
+    if (p.acao === 'teste') { testarEnvio(true); return resposta_({ ok: true, feito: 'teste' }); }
+    return resposta_({ ok: true, servico: 'CEBEL leads', configurada: !!SpreadsheetApp.getActiveSpreadsheet().getSheetByName(ABA_PAINEL) });
+  } catch (err) {
+    return resposta_({ ok: false, erro: String(err) });
+  }
 }
 
 /** Simula um envio do site para testar a planilha (rode pelo editor). */
-function testarEnvio() {
+function testarEnvio(semAviso) {
   doPost({ postData: { contents: JSON.stringify({
     token: TOKEN, formulario: 'parceiro', pagina: '/parceiros/', origem: 'teste', meio: '', campanha: '',
     campos: { 'Nome': 'Teste CEBEL', 'WhatsApp': '(21) 99999-0000', 'Negócio': 'Lead de teste (pode apagar)',
       'Tipo': 'Academia', 'Local': 'Itaguaí, Centro', 'Vagas': '21 a 50', 'Obs.': 'Linha criada pelo testarEnvio' }
   }) } });
-  SpreadsheetApp.getUi().alert('Lead de teste adicionado na aba Leads. Pode apagar a linha depois.');
+  if (!semAviso) { try { SpreadsheetApp.getUi().alert('Lead de teste adicionado na aba Leads. Pode apagar a linha depois.'); } catch (x) {} }
 }
 
 function primeiraLinhaVazia_(sh) {
