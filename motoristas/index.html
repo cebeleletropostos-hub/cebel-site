@@ -15,21 +15,26 @@ descricao: Como carregar seu carro elétrico numa estação CEBEL. Preço, aplic
 </div>
 
 <section>
-  <div class="wrap">
-    <div class="sec-head">
-      <p class="eyebrow">Passo a passo</p>
-      <h2 class="h-lg">Da vaga à bateria cheia</h2>
-    </div>
-    <ol class="steps">
+  <div class="wrap how">
+    <div class="how-copy">
+      <div class="sec-head">
+        <p class="eyebrow">Passo a passo</p>
+        <h2 class="h-lg">Da vaga à bateria cheia</h2>
+      </div>
+      <ol class="steps two">
       <li><h3>Baixe o app</h3><p>Nossas estações funcionam pelo aplicativo EzVolt, para Android e iPhone. Crie sua conta e adicione créditos, a partir de R$ 20, por Pix ou cartão.</p></li>
       <li><h3>Estacione e conecte</h3><p>Pare na vaga sinalizada da CEBEL e encaixe o conector no seu carro.</p></li>
       <li><h3>Libere a recarga</h3><p>No app, escolha a estação ou leia o QR code do carregador e inicie a recarga.</p></li>
       <li><h3>Acompanhe e encerre</h3><p>Veja a energia entregue em tempo real. Ao terminar, encerre no app e o valor sai dos seus créditos.</p></li>
     </ol>
+    </div>
+    <figure class="how-video">
+      <video id="reel-video" src="{{ '/assets/video/itaguai.mp4' | relative_url }}" poster="{{ '/assets/video/itaguai-poster.jpg' | relative_url }}" autoplay muted loop playsinline preload="metadata" aria-label="Vídeo na estação da Smart Fit Itaguaí mostrando como carregar pelo app EzVolt"></video>
+      <button class="reel-sound" type="button" aria-pressed="false">Ativar som</button>
+      <figcaption>Na prática, na nossa estação de Itaguaí</figcaption>
+    </figure>
   </div>
 </section>
-
-{% include reel.html %}
 
 <section class="flush-top">
   <div class="wrap">

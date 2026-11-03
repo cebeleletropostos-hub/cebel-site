@@ -19,7 +19,7 @@ Endereço atual: https://cebeleletropostos-hub.github.io/cebel-site/
 - `_includes/station.html` (estação em operação: foto, endereço, botões Google Maps/Waze) e `station-mini.html` (a caminho).
   Fotos das estações vão em `assets/img/estacoes/` e o caminho entra no campo `foto` de `_data/estacoes.yml`.
 - `assets/js/site.js` — menu móvel, formulários de WhatsApp, calculadora e filtro de estações.
-- `assets/video/itaguai.mp4` — vídeo vertical da estação de Itaguaí (gravado por uma influenciadora; nome e cartão no app foram desfocados). Bloco em `_includes/reel.html`, usado na home e em /motoristas/.
+- `assets/video/itaguai.mp4` — vídeo vertical da estação de Itaguaí (gravado por uma influenciadora; nome e cartão no app foram desfocados). Vídeo completo fica ao lado do passo a passo em /motoristas/; `itaguai-hero.mp4` é um recorte de 13 s, sem som e sem as legendas, usado como mídia no topo da home.
 - `assets/img/og.png` — imagem de compartilhamento (gerada a partir de `tools/og.html`).
 
 ## Regras

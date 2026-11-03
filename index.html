@@ -19,19 +19,14 @@ layout: default
         <span><b>R$ {{ site.preco_kwh }}</b>/kWh, sem taxa de ociosidade</span>
       </div>
     </div>
-    <div class="charger" aria-hidden="true">
-      <div class="top"><span class="live">Recarga em andamento</span><span>DC · 40 kW</span></div>
-      <div class="ring">
-        <svg viewBox="0 0 200 200"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F7C600"/><stop offset="1" stop-color="#B6DC7A"/></linearGradient></defs><circle cx="100" cy="100" r="88" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="12"/><circle class="prog" cx="100" cy="100" r="88" fill="none" stroke="url(#g)" stroke-width="12" stroke-linecap="round" stroke-dasharray="552.9" stroke-dashoffset="210" style="transition:stroke-dashoffset .8s ease"/></svg>
-        <div class="val"><b id="ch-pct">62%</b><span>bateria</span></div>
-      </div>
-      <dl class="stats">
-        <div><dt>energia</dt><dd><span id="ch-kwh">24,6</span> kWh</dd></div>
-        <div><dt>valor</dt><dd id="ch-brl">R$ 49,20</dd></div>
-        <div><dt>tempo</dt><dd>38 min</dd></div>
-      </dl>
-      <div class="where">{% include icons.html i="pin" %}<span><b>Smart Fit Itaguaí</b> · Av. Dep. Octávio Cabral</span></div>
-    </div>
+    <figure class="hero-media">
+      <video src="{{ '/assets/video/itaguai-hero.mp4' | relative_url }}" poster="{{ '/assets/video/itaguai-hero.jpg' | relative_url }}" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
+      <figcaption>
+        <span class="pill operando">Em operação</span>
+        <span class="where"><b>Smart Fit Itaguaí</b><span>Av. Dep. Octávio Cabral, 840</span></span>
+        <a class="btn small sol" href="{{ '/estacoes/' | relative_url }}#itaguai">Como chegar {% include icons.html i="arrow" %}</a>
+      </figcaption>
+    </figure>
   </div>
 </div>
 
@@ -64,8 +59,6 @@ layout: default
     </div>
   </div>
 </section>
-
-{% include reel.html parceiro=true %}
 
 <section class="flush-top">
   <div class="wrap">
