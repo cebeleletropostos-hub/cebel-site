@@ -24,12 +24,12 @@ export async function conhecimento(env) {
 
 // ---------- Horário de atendimento humano ----------
 export function horario(env, agora = new Date()) {
-  const ini = +(env.HORA_INICIO || 8), fim = +(env.HORA_FIM || 20);
-  const dias = String(env.DIAS_ATENDIMENTO || "1,2,3,4,5,6").split(",").map(Number); // 0=domingo
+  const ini = +(env.HORA_INICIO || 8), fim = +(env.HORA_FIM || 22);
+  const dias = String(env.DIAS_ATENDIMENTO || "0,1,2,3,4,5,6").split(",").map(Number); // 0=domingo
   const br = new Date(agora.getTime() - 3 * 3600 * 1000); // Brasília, UTC-3
   const h = br.getUTCHours() + br.getUTCMinutes() / 60, d = br.getUTCDay();
   const aberto = dias.includes(d) && h >= ini && h < fim;
-  return { aberto, texto: env.HORARIO_TEXTO || "segunda a sábado, das 8h às 20h", agoraBR: br.toISOString().slice(0, 16).replace("T", " ") };
+  return { aberto, texto: env.HORARIO_TEXTO || "todos os dias, das 8h às 22h", en: env.HORARIO_TEXTO_EN || "every day, 8 am to 10 pm", es: env.HORARIO_TEXTO_ES || "todos los días, de 8 a 22 h", agoraBR: br.toISOString().slice(0, 16).replace("T", " ") };
 }
 
 // ---------- Instruções ----------

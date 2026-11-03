@@ -310,10 +310,10 @@ function mensagemHandoff(env, idi, nome) {
   const n = nome ? ", " + nome.split(" ")[0] : "";
   if (idi === "en") return h.aberto
     ? `Sure${n}! I've already called someone from the CEBEL team. They usually reply here within a few minutes, and you won't need to repeat anything: I've passed on our conversation.`
-    : `Sure${n}! I've already notified the CEBEL team. We're outside our hours right now (${h.texto}, Brazil time), so they'll reply here first thing when we open. I've passed on our conversation, so you won't need to repeat anything.`;
+    : `Sure${n}! I've already notified the CEBEL team. We're outside our hours right now (${h.en}, Brazil time), so they'll reply here first thing when we open. I've passed on our conversation, so you won't need to repeat anything.`;
   if (idi === "es") return h.aberto
     ? `¡Claro${n}! Ya llamé a alguien del equipo de CEBEL. Suelen responder aquí en pocos minutos, y no necesitará repetir nada: ya les pasé nuestra conversación.`
-    : `¡Claro${n}! Ya avisé al equipo de CEBEL. Ahora estamos fuera del horario (${h.texto}, hora de Brasil), así que le responderán aquí apenas abramos. Ya les pasé nuestra conversación, no necesitará repetir nada.`;
+    : `¡Claro${n}! Ya avisé al equipo de CEBEL. Ahora estamos fuera del horario (${h.es}, hora de Brasil), así que le responderán aquí apenas abramos. Ya les pasé nuestra conversación, no necesitará repetir nada.`;
   return h.aberto
     ? `Claro${n}! Já chamei uma pessoa da equipe da CEBEL. Normalmente respondem aqui em poucos minutos, e você não vai precisar repetir nada: já passei nossa conversa.`
     : `Claro${n}! Já avisei a equipe da CEBEL. Agora estamos fora do horário de atendimento (${h.texto}), então respondem aqui logo no início do próximo horário. Já passei nossa conversa, você não vai precisar repetir nada.`;
