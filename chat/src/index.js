@@ -17,7 +17,7 @@ export default {
     const url = new URL(req.url);
     const p = url.pathname.replace(/\/+$/, "") || "/";
     try {
-      if (p === "/") return json({ ok: true, servico: "CEBEL atendimento", whatsapp: !!env.WHATSAPP_TOKEN, instagram: !!env.INSTAGRAM_TOKEN, claude: !!env.ANTHROPIC_API_KEY, senha_teste: !!senhaAdmin(env), nomes: Object.keys(env).filter((k) => /senha|admin/i.test(k)), versao: 5 });
+      if (p === "/") return json({ ok: true, servico: "CEBEL atendimento", whatsapp: !!env.WHATSAPP_TOKEN, instagram: !!env.INSTAGRAM_TOKEN, claude: !!env.ANTHROPIC_API_KEY, senha_teste: !!senhaAdmin(env), versao: 6 });
       if (p === "/webhook/whatsapp" || p === "/webhook/instagram") {
         if (req.method === "GET") return verificar(url, env);
         const corpo = await req.text();
@@ -53,7 +53,7 @@ const json = (o, status = 200) => new Response(JSON.stringify(o), { status, head
 // Senha tolerante a espaço sobrando e maiúscula/minúscula (o teclado do celular costuma mudar isso).
 const normSenha = (x) => String(x || "").trim().toLowerCase();
 // Aceita o segredo mesmo se o nome foi digitado com espaço, minúsculas ou hífen (ex.: "admin senha").
-const senhaAdmin = (env) => env.ADMIN_SENHA || Object.entries(env).find(([k, v]) => typeof v === "string" && k.replace(/[^a-z]/gi, "").toLowerCase() === "adminsenha")?.[1];
+const senhaAdmin = (env) => env.ADMIN_SENHA || env.ADMIN_TEST_PASSWORD || Object.entries(env).find(([k, v]) => typeof v === "string" && k.replace(/[^a-z]/gi, "").toLowerCase() === "adminsenha")?.[1];
 const senhaOk = (url, env) => !!senhaAdmin(env) && normSenha(url.searchParams.get("senha")) === normSenha(senhaAdmin(env));
 const conversa = (env, chave) => env.CONVERSA.get(env.CONVERSA.idFromName(chave));
 const GRAPH = (env) => env.GRAPH_VERSION || "v23.0";
