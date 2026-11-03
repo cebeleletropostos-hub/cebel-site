@@ -23,6 +23,7 @@
           <li><a href="{{ '/parceiros/' | relative_url }}">Seja parceiro</a></li>
           <li><a href="{{ '/parceiros/' | relative_url }}#calculadora">Simule seu retorno</a></li>
           <li><a href="{{ '/sobre/' | relative_url }}">Sobre a CEBEL</a></li>
+          <li><a href="{{ '/novidades/' | relative_url }}">Novidades</a></li>
         </ul>
       </div>
       <div>
@@ -30,6 +31,9 @@
         <ul>
           <li><a href="https://wa.me/{{ site.whatsapp }}" target="_blank" rel="noopener">{{ site.whatsapp_display }}</a></li>
           <li><a href="{{ '/contato/' | relative_url }}">Fale conosco</a></li>
+          {% if site.instagram != "" %}<li><a href="{{ site.instagram }}" target="_blank" rel="noopener">Instagram</a></li>{% endif %}
+          {% if site.linkedin != "" %}<li><a href="{{ site.linkedin }}" target="_blank" rel="noopener">LinkedIn</a></li>{% endif %}
+          {% if site.youtube != "" %}<li><a href="{{ site.youtube }}" target="_blank" rel="noopener">YouTube</a></li>{% endif %}
         </ul>
       </div>
     </div>

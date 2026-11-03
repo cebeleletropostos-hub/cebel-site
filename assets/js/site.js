@@ -199,6 +199,11 @@
     });
   }
 
+  // Link do app: abre a loja certa para cada celular
+  $$(".app-link").forEach(function (a) {
+    if (/iPhone|iPad|iPod|Macintosh/.test(navigator.userAgent) && !/Android/.test(navigator.userAgent)) a.href = a.getAttribute("data-ios");
+  });
+
   // Filtro de estações
   var filters = $(".filters");
   if (filters) {

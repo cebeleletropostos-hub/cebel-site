@@ -22,6 +22,10 @@ Endereço atual: https://cebeleletropostos-hub.github.io/cebel-site/
 - `assets/video/itaguai.mp4` — vídeo vertical da estação de Itaguaí (gravado por uma influenciadora; nome e cartão no app foram desfocados). Vídeo completo fica ao lado do passo a passo em /motoristas/; `itaguai-hero.mp4` é um recorte de 13 s, sem som e sem as legendas, usado como mídia no topo da home.
 - `assets/img/og.png` — imagem de compartilhamento (gerada a partir de `tools/og.html`).
 
+- `links/` — página de links para a bio do Instagram (`bare: true` no front matter esconde menu, rodapé e barras).
+- `novidades/` + `_posts/` — notícias (layout `post`; campos `resumo`, `imagem`, `cta`, `cta_link`). Datas em pt-BR via `_includes/data-br.html`.
+- `_includes/schema.html` — dados estruturados para o Google (Organization com `sameAs` dos perfis em `_config.yml`, estações como LocalBusiness, posts como NewsArticle).
+
 ## Regras
 
 - Links internos sempre com `{{ '/caminho/' | relative_url }}`, por causa do `baseurl`.

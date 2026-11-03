@@ -26,9 +26,20 @@ leads_token: "cebel-leads"
 # Código de verificação do Google Search Console (só o valor de content="...")
 google_site_verification: ""
 
+# Perfis oficiais (deixe vazio o que ainda não existe; entram no rodapé, na página de links e no Google)
+instagram: ""
+linkedin: ""
+youtube: ""
+# App de recarga
+app_nome: "EzVolt"
+app_ios: "https://apps.apple.com/br/app/easy-volt-eletroposto/id6444370278"
+app_android: "https://play.google.com/store/search?q=ezvolt&c=apps"
+
 # Modelo comercial (usado nas páginas e na calculadora)
 preco_kwh: "2,00"
 repasse_parceiro: 15
+
+permalink: /novidades/:year/:month/:title/
 
 exclude:
   - CLAUDE.md

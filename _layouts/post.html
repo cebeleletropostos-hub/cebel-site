@@ -1,0 +1,22 @@
+---
+layout: default
+---
+<div class="dark agua">
+  <div class="wrap page-hero">
+    <p class="eyebrow"><a href="{{ '/novidades/' | relative_url }}" style="text-decoration:none">Novidades</a> · {% include data-br.html d=page.date %}</p>
+    <h1 class="h-lg" style="max-width:20em">{{ page.title }}</h1>
+    {% if page.resumo %}<p class="lead">{{ page.resumo }}</p>{% endif %}
+  </div>
+</div>
+<section>
+  <div class="wrap">
+    <article class="post">
+      {% if page.imagem %}<img class="post-img" src="{{ page.imagem | relative_url }}" alt="{{ page.imagem_alt }}" width="1440" height="900">{% endif %}
+      <div class="prose post-body">{{ content }}</div>
+      <div class="post-foot">
+        <a class="btn linha" href="{{ '/novidades/' | relative_url }}">Todas as novidades</a>
+        <a class="btn sol" href="{{ page.cta_link | default: '/parceiros/' | relative_url }}">{{ page.cta | default: "Seja parceiro" }} {% include icons.html i="arrow" %}</a>
+      </div>
+    </article>
+  </div>
+</section>

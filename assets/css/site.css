@@ -419,3 +419,53 @@ form.wa textarea{min-height:110px;resize:vertical}
 .consent a{color:var(--azul);font-weight:600}
 .consent-actions{display:flex;gap:10px;justify-content:flex-end}
 @media (max-width:700px){.consent{left:12px;right:12px;bottom:calc(84px + env(safe-area-inset-bottom,0px));max-width:none}}
+
+/* página de links (bio do Instagram) */
+.links-page{min-height:100vh;display:flex;flex-direction:column}
+.links-wrap{flex:1;width:100%;max-width:520px;margin:0 auto;padding:max(40px,env(safe-area-inset-top,0px)) max(20px,env(safe-area-inset-right,0px)) 40px max(20px,env(safe-area-inset-left,0px));display:grid;gap:28px;align-content:start}
+.links-head{display:grid;justify-items:center;gap:10px;text-align:center}
+.links-head img{width:112px;height:112px;border-radius:50%;box-shadow:0 0 0 4px rgba(255,255,255,.14),0 20px 40px -12px rgba(0,0,0,.6)}
+.links-head h1{font-size:40px;font-weight:800;letter-spacing:-.01em;margin-top:6px}
+.links-head p{color:var(--on-dark-2);font-size:15.5px}
+.links-list{display:grid;gap:12px}
+.lk{display:flex;align-items:center;gap:14px;padding:16px 18px;border-radius:18px;text-decoration:none;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);color:var(--on-dark);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.lk:hover{background:rgba(255,255,255,.13)}
+.lk > svg{width:18px;height:18px;flex:none;margin-left:auto;opacity:.75}
+.lk-ico{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:rgba(255,255,255,.12);flex:none}
+.lk-ico svg{width:22px;height:22px}
+.lk-txt{display:grid;gap:2px;min-width:0}
+.lk-txt b{font-size:17px;font-weight:700}
+.lk-txt small{font-size:13.5px;color:var(--on-dark-2)}
+.lk-hot{background:var(--amarelo);color:var(--sol-ink);border-color:var(--amarelo)}
+.lk-hot:hover{background:#FFD21F}
+.lk-hot .lk-ico{background:rgba(31,26,0,.12)}
+.lk-hot .lk-txt small{color:rgba(31,26,0,.72)}
+.links-foot{text-align:center;font-size:13.5px;color:var(--on-dark-2)}
+.links-foot a{color:var(--on-dark);font-weight:600}
+.links-faixa{height:8px}
+@media (prefers-reduced-motion:no-preference){.lk{transition:transform .15s,background .15s}.lk:hover{transform:translateY(-1px)}}
+
+/* novidades */
+.news{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.news-card{display:grid;grid-template-rows:auto 1fr;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;text-decoration:none;box-shadow:var(--shadow)}
+.news-img{aspect-ratio:16/10;max-width:100%;overflow:hidden;background:var(--marinho)}
+.news-img img{width:100%;height:100%;object-fit:cover}
+.news-body{display:grid;gap:10px;padding:22px;align-content:start}
+.news-date{font-family:var(--label);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--azul)}
+.news-body b{font-family:var(--display);font-size:23px;font-weight:700;line-height:1.15}
+.news-sum{color:var(--muted);font-size:15.5px}
+.news-more{display:inline-flex;align-items:center;gap:6px;font-weight:700;color:var(--azul);margin-top:4px}
+.news-more svg{width:16px;height:16px}
+.news-card:not(:has(.news-img)) .news-body{border-top:6px solid transparent;border-image:var(--faixa) 1}
+.post{max-width:780px;display:grid;gap:32px}
+.post-img{width:100%;border-radius:var(--r-lg);aspect-ratio:16/10;object-fit:cover;box-shadow:var(--shadow)}
+.post-body{font-size:18px}
+.post-body p{color:var(--muted)}
+.post-body strong{display:block;font-family:var(--display);font-size:24px;color:var(--ink);margin-top:8px}
+.post-body ul,.post-body ol{margin:0;padding-left:22px;display:grid;gap:8px;color:var(--muted)}
+.post-body li strong{display:inline;font-family:var(--body);font-size:inherit;margin:0}
+.post-body a{color:var(--azul);font-weight:600}
+.post-foot{display:flex;flex-wrap:wrap;gap:12px;border-top:1px solid var(--line);padding-top:24px}
+@media (max-width:900px){.news{grid-template-columns:1fr 1fr}}
+@media (max-width:600px){.news{grid-template-columns:1fr}}
+@media (max-width:700px){body:has(.links-page) .consent{bottom:calc(16px + env(safe-area-inset-bottom,0px))}}

@@ -1,0 +1,29 @@
+---
+layout: default
+titulo: Novidades
+descricao: Novas estações, parcerias e notícias da CEBEL, rede de recarga para carros elétricos no Rio de Janeiro.
+---
+<div class="dark agua">
+  <div class="wrap page-hero">
+    <p class="eyebrow">Novidades</p>
+    <h1 class="h-xl">A rede <span class="swash">não para.</span></h1>
+    <p class="lead">Novas estações, parcerias e tudo o que está acontecendo na CEBEL.</p>
+  </div>
+</div>
+<section>
+  <div class="wrap">
+    <div class="news">
+      {% for post in site.posts %}
+      <a class="news-card" href="{{ post.url | relative_url }}">
+        {% if post.imagem %}<span class="news-img"><img src="{{ post.imagem | relative_url }}" alt="" loading="lazy"></span>{% endif %}
+        <span class="news-body">
+          <span class="news-date">{% include data-br.html d=post.date %}</span>
+          <b>{{ post.title }}</b>
+          <span class="news-sum">{{ post.resumo }}</span>
+          <span class="news-more">Ler {% include icons.html i="arrow" %}</span>
+        </span>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
