@@ -10,7 +10,7 @@
     btn.addEventListener("click", function () {
       var open = nav.classList.toggle("open");
       btn.setAttribute("aria-expanded", open ? "true" : "false");
-      btn.textContent = open ? "Fechar" : "Menu";
+      var l = btn.querySelector(".lbl"); if (l) l.textContent = open ? "Fechar" : "Menu";
     });
   }
 
@@ -66,6 +66,31 @@
     });
     s.addEventListener("input", run); k.addEventListener("input", run);
     run();
+  }
+
+  // Copiar endereço das estações
+  $$(".copy-addr").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var t = b.getAttribute("data-copy");
+      var ok = function () { b.textContent = "Copiado"; setTimeout(function () { b.textContent = "Copiar"; }, 1800); };
+      if (navigator.clipboard) navigator.clipboard.writeText(t).then(ok, function () {}); 
+    });
+  });
+
+  // Painel do carregador no topo da home: animação leve da recarga
+  var ring = $(".charger .prog");
+  if (ring && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    var kwhEl = $("#ch-kwh"), brlEl = $("#ch-brl"), pctEl = $("#ch-pct"), C = 2 * Math.PI * 88;
+    var kwh = 18.4, target = 32.6;
+    var tick = function () {
+      kwh = kwh >= target ? 18.4 : +(kwh + 0.1).toFixed(1);
+      var pct = Math.round(38 + (kwh - 18.4) / (target - 18.4) * 44);
+      ring.style.strokeDashoffset = C * (1 - pct / 100);
+      pctEl.textContent = pct + "%";
+      kwhEl.textContent = kwh.toLocaleString("pt-BR", { minimumFractionDigits: 1 });
+      brlEl.textContent = (kwh * 2).toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+    };
+    setInterval(tick, 900);
   }
 
   // Filtro de estações

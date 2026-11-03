@@ -1,53 +1,68 @@
 ---
 layout: default
 titulo: Estações de recarga
-descricao: Estações de recarga CEBEL para carros elétricos no Rio de Janeiro. Veja onde carregar, o tipo de carregador e as novas estações a caminho.
+descricao: Estações de recarga CEBEL para carros elétricos no Rio de Janeiro. Endereços, rotas pelo Google Maps e Waze e as novas estações a caminho.
 ---
-<div class="band">
+{% assign operando = site.data.estacoes | where: "status", "operando" %}
+{% assign caminho = site.data.estacoes | where_exp: "e", "e.status != 'operando'" %}
+<div class="dark agua">
   <div class="wrap page-hero">
     <p class="eyebrow">Estações</p>
-    <h1>Onde carregar com a CEBEL</h1>
-    <p class="lead">Estações em funcionamento e as próximas que estão sendo instaladas. Preço único de R$ {{ site.preco_kwh }} por kWh, sem taxa de ociosidade.</p>
+    <h1 class="h-xl">Onde carregar com a <span class="swash">CEBEL.</span></h1>
+    <p class="lead">Endereço exato e rota direto no Google Maps ou no Waze. Preço único de R$ {{ site.preco_kwh }} por kWh em toda a rede, sem taxa de ociosidade.</p>
   </div>
-  <div class="ruler" aria-hidden="true"></div>
 </div>
 
 <section>
   <div class="wrap">
-    <div class="filters" role="group" aria-label="Filtrar estações">
-      <button type="button" data-filter="todas" aria-pressed="true">Todas</button>
-      <button type="button" data-filter="operando" aria-pressed="false">Em operação</button>
-      <button type="button" data-filter="instalacao" aria-pressed="false">Em instalação</button>
-      <button type="button" data-filter="em-breve" aria-pressed="false">Em breve</button>
+    <div class="sec-head">
+      <p class="eyebrow">Em operação</p>
+      <h2 class="h-lg">{{ operando.size }} estações abertas agora</h2>
     </div>
-    <div class="stations">
-      {% for st in site.data.estacoes %}{% include station.html st=st %}{% endfor %}
+    <div class="st-feature">
+      {% for st in operando %}{% include station.html st=st %}{% endfor %}
     </div>
   </div>
 </section>
 
-<section class="tight-top">
+<section class="flush-top">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">A caminho</p>
+      <h2 class="h-lg">Próximas estações</h2>
+      <p class="lead">Equipamentos comprados e instalação em andamento. Os endereços entram aqui assim que cada estação abrir.</p>
+    </div>
+    <div class="st-list">
+      {% for st in caminho %}{% include station-mini.html st=st %}{% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="flush-top">
   <div class="wrap">
     <div class="price">
-      <p class="tag">R$ {{ site.preco_kwh }}<small>por kWh</small></p>
+      <p class="tag">R$ {{ site.preco_kwh }}<small>por kWh · toda a rede</small></p>
       <ul>
-        <li>Você paga só a energia que entrou no carro.</li>
-        <li>Sem taxa por tempo conectado após a recarga.</li>
-        <li>Pagamento pelo aplicativo, direto no celular.</li>
+        <li><span class="check">{% include icons.html i="check" %}</span>Você paga só a energia que entrou no carro.</li>
+        <li><span class="check">{% include icons.html i="check" %}</span>Sem taxa por tempo conectado após a recarga.</li>
+        <li><span class="check">{% include icons.html i="check" %}</span>Pagamento pelo aplicativo, direto no celular.</li>
       </ul>
     </div>
-    <p style="margin-top:20px"><a class="btn ghost" href="{{ '/motoristas/' | relative_url }}">Como carregar, passo a passo</a></p>
   </div>
 </section>
 
-<div class="band">
-  <div class="wrap cta-band">
-    <div>
-      <h2>Quer uma estação perto de você?</h2>
-      <p>Indique um local ou fale com a gente se você é dono de um estacionamento na sua região.</p>
-    </div>
-    <div class="actions">
-      <a class="btn primary" href="{{ '/parceiros/' | relative_url }}">Indicar um local</a>
+<section class="flush-top">
+  <div class="wrap">
+    <div class="cta-final dark agua">
+      <div class="in">
+        <div>
+          <h2 class="h-lg">Quer uma estação perto de você?</h2>
+          <p>Se você é dono de um estacionamento, ou conhece um bom local, fale com a gente.</p>
+        </div>
+        <div class="actions">
+          <a class="btn sol" href="{{ '/parceiros/' | relative_url }}">Indicar um local {% include icons.html i="arrow" %}</a>
+        </div>
+      </div>
     </div>
   </div>
-</div>
+</section>

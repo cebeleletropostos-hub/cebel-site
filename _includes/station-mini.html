@@ -1,0 +1,9 @@
+{% assign st = include.st %}
+{% case st.status %}{% when "instalacao" %}{% assign label = "Em instalação" %}{% else %}{% assign label = "Em breve" %}{% endcase %}
+<article class="st-mini">
+  <span class="pill {{ st.status }}">{{ label }}</span>
+  <h4>{{ st.nome }}</h4>
+  <p>{{ st.cidade }} · {{ st.regiao }}</p>
+  {% if st.carregador != "" %}<p class="spec">{{ st.carregador }}</p>{% endif %}
+  {% if st.nota %}<p>{{ st.nota }}</p>{% endif %}
+</article>

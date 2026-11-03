@@ -3,34 +3,38 @@ layout: default
 titulo: Contato
 descricao: Fale com a CEBEL pelo WhatsApp. Suporte a motoristas, parcerias para instalar eletropostos e imprensa.
 ---
-<section class="band">
-  <div class="wrap">
-    <div class="page-hero" style="padding-top:0">
-      <p class="eyebrow">Contato</p>
-      <h1>Fale com a CEBEL</h1>
-      <p class="lead">Atendemos pelo WhatsApp. Escolha o assunto e a mensagem vai pronta para a nossa equipe.</p>
-    </div>
+<div class="dark agua">
+  <div class="wrap page-hero">
     <div class="contact-grid">
-      <div class="contact-list">
-        <div><span class="k">WhatsApp</span><span class="v">{{ site.whatsapp_display }}</span><a class="btn small primary" style="justify-self:start;margin-top:6px" href="https://wa.me/{{ site.whatsapp }}" target="_blank" rel="noopener">Abrir conversa</a></div>
-        <div><span class="k">Endereço</span><span class="v addr">{{ site.endereco }}</span></div>
-        <div><span class="k">Empresa</span><span class="v addr">{{ site.razao_social }}</span></div>
+      <div style="display:grid;gap:20px">
+        <p class="eyebrow">Contato</p>
+        <h1 class="h-xl">Fale com a <span class="swash">CEBEL.</span></h1>
+        <p class="lead">Atendemos pelo WhatsApp. Escolha o assunto e a mensagem vai pronta para a nossa equipe.</p>
+        <div class="contact-list">
+          <div><span class="k">WhatsApp</span><span class="v">{{ site.whatsapp_display }}</span><a class="btn small sol" style="justify-self:start;margin-top:6px" href="https://wa.me/{{ site.whatsapp }}" target="_blank" rel="noopener">{% include icons.html i="wa" %}Abrir conversa</a></div>
+          <div><span class="k">Endereço</span><span class="v addr-t">{{ site.endereco }}</span></div>
+          <div><span class="k">Empresa</span><span class="v addr-t">{{ site.razao_social }}</span></div>
+        </div>
       </div>
-      <form class="wa" novalidate data-intro="Olá, CEBEL! Vim pelo site.">
-        <label class="full">Assunto
-          <select id="c-assunto" data-label="Assunto">
-            <option>Sou motorista e preciso de ajuda</option>
-            <option>Quero um eletroposto no meu negócio</option>
-            <option>Quero indicar um local</option>
-            <option>Imprensa</option>
-            <option>Outro</option>
-          </select>
-        </label>
-        <label>Seu nome<input id="c-nome" data-label="Nome" autocomplete="name" required></label>
-        <label>WhatsApp<input id="c-tel" data-label="WhatsApp" type="tel" autocomplete="tel" inputmode="tel" placeholder="(21) 9..." required></label>
-        <label class="full">Mensagem<textarea id="c-msg" data-label="Mensagem" required></textarea></label>
-        {% include wa-done.html %}
-      </form>
+      <div class="form-card">
+        <h3>Envie sua mensagem</h3>
+        <p>Preencha e toque em enviar. O WhatsApp abre com tudo pronto.</p>
+        <form class="wa" novalidate data-intro="Olá, CEBEL! Vim pelo site.">
+          <label class="full">Assunto
+            <select id="c-assunto" data-label="Assunto">
+              <option>Quero um eletroposto no meu negócio</option>
+              <option>Sou motorista e preciso de ajuda</option>
+              <option>Quero indicar um local</option>
+              <option>Imprensa</option>
+              <option>Outro</option>
+            </select>
+          </label>
+          <label>Seu nome<input id="c-nome" data-label="Nome" autocomplete="name" required></label>
+          <label>WhatsApp<input id="c-tel" data-label="WhatsApp" type="tel" autocomplete="tel" inputmode="tel" placeholder="(21) 9..." required></label>
+          <label class="full">Mensagem<textarea id="c-msg" data-label="Mensagem" required></textarea></label>
+          {% include wa-done.html %}
+        </form>
+      </div>
     </div>
   </div>
-</section>
+</div>

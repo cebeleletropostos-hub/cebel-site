@@ -3,32 +3,32 @@ layout: default
 titulo: Seja parceiro
 descricao: Tenha um eletroposto no estacionamento do seu negócio sem investir nada. A CEBEL instala, opera e paga a energia; você recebe parte da receita.
 ---
-<div class="band">
-  <div class="wrap home-hero">
+<div class="dark agua">
+  <div class="wrap hero hero-grid">
     <div>
       <p class="eyebrow">Para donos de estacionamento no RJ</p>
-      <h1>Um eletroposto no seu estacionamento. <em>Investimento zero.</em></h1>
+      <h1 class="h-xl">Um eletroposto no seu estacionamento. <span class="swash">Investimento zero.</span></h1>
       <p class="lead">Parceira da Smart Fit em Itaguaí e Rio das Ostras, a CEBEL compra, instala e opera o carregador de carro elétrico. Você cede a vaga, recebe uma parte de cada recarga e ganha clientes que ficam de 30 minutos a 1 hora no seu negócio.</p>
-      <div class="form-actions" style="margin-top:26px">
-        <a class="btn primary" href="#calculadora">Calcular meu retorno</a>
-        <a class="btn ghost" href="#contato">Falar com a CEBEL</a>
+      <div class="hero-actions">
+        <a class="btn sol" href="#contato">Pedir estudo gratuito {% include icons.html i="arrow" %}</a>
+        <a class="btn linha" href="#calculadora">Simular meu retorno</a>
       </div>
     </div>
     <dl class="terms" aria-label="Condições da parceria">
       <div><dt>Seu investimento</dt><dd>R$ 0</dd></div>
       <div><dt>Conta de energia do carregador</dt><dd>Paga pela CEBEL</dd></div>
       <div><dt>Sua parte da receita líquida</dt><dd>{{ site.repasse_parceiro }}<small>%</small></dd></div>
-      <div><dt>Manutenção e suporte</dt><dd>Por nossa conta</dd></div>
+      <div><dt>Instalação e manutenção</dt><dd>Por nossa conta</dd></div>
+      <div><dt>Visita técnica</dt><dd>Gratuita</dd></div>
     </dl>
   </div>
-  <div class="ruler" aria-hidden="true"></div>
 </div>
 
 <section id="calculadora">
   <div class="wrap">
     <div class="sec-head">
       <p class="eyebrow">Calculadora</p>
-      <h2>Quanto um carregador rende para você</h2>
+      <h2 class="h-lg">Quanto um carregador rende para você</h2>
       <p>Ajuste o tipo de carregador e o movimento esperado. Os valores são estimativas; o estudo do seu local é gratuito.</p>
     </div>
     <div class="calc">
@@ -67,11 +67,11 @@ descricao: Tenha um eletroposto no estacionamento do seu negócio sem investir n
   </div>
 </section>
 
-<section class="tight-top">
+<section class="flush-top">
   <div class="wrap">
     <div class="sec-head">
       <p class="eyebrow">Como funciona</p>
-      <h2>Do primeiro contato à primeira recarga</h2>
+      <h2 class="h-lg">Do primeiro contato à primeira recarga</h2>
     </div>
     <ol class="steps">
       <li><h3>Visita técnica</h3><p>Avaliamos as vagas, o quadro elétrico e o fluxo do local. Sem custo.</p></li>
@@ -82,11 +82,11 @@ descricao: Tenha um eletroposto no estacionamento do seu negócio sem investir n
   </div>
 </section>
 
-<section class="tight-top">
+<section class="flush-top">
   <div class="wrap">
     <div class="sec-head">
       <p class="eyebrow">Para quem é</p>
-      <h2>Lugares onde o motorista já para</h2>
+      <h2 class="h-lg">Lugares onde o motorista já para</h2>
       <p>Já operamos carregadores nas unidades Smart Fit de Itaguaí e Rio das Ostras, e a Smart Fit Saquarema vem em seguida.</p>
     </div>
     <div class="fit">
@@ -100,11 +100,11 @@ descricao: Tenha um eletroposto no estacionamento do seu negócio sem investir n
   </div>
 </section>
 
-<section class="tight-top">
+<section class="flush-top">
   <div class="wrap">
     <div class="sec-head">
       <p class="eyebrow">Dúvidas frequentes</p>
-      <h2>Perguntas de quem está avaliando</h2>
+      <h2 class="h-lg">Perguntas de quem está avaliando</h2>
     </div>
     <div class="faq">
       <details><summary>Eu pago alguma coisa?</summary><p>Não. Equipamento, instalação, energia consumida pelo carregador, manutenção e software ficam por conta da CEBEL.</p></details>
@@ -116,28 +116,40 @@ descricao: Tenha um eletroposto no estacionamento do seu negócio sem investir n
   </div>
 </section>
 
-<section class="band" id="contato">
+<section class="flush-top" id="contato">
   <div class="wrap">
-    <div class="sec-head">
-      <p class="eyebrow">Fale com a CEBEL</p>
-      <h2>Peça o estudo gratuito do seu local</h2>
-      <p>Preencha os dados abaixo. A mensagem vai pronta para o nosso WhatsApp.</p>
+    <div class="parceiro-band dark agua">
+      <div class="parceiro-grid" style="align-items:start">
+        <div>
+          <p class="eyebrow">Fale com a CEBEL</p>
+          <h2 class="h-lg" style="margin-top:16px">Peça o estudo <span class="swash">gratuito</span> do seu local.</h2>
+          <ul>
+            <li><span class="check">{% include icons.html i="check" %}</span><span><b>Atendimento direto</b> com a equipe da CEBEL, pelo WhatsApp.</span></li>
+            <li><span class="check">{% include icons.html i="check" %}</span><span><b>Visita técnica sem custo</b> para avaliar vagas e rede elétrica.</span></li>
+            <li><span class="check">{% include icons.html i="check" %}</span><span><b>Proposta com números do seu local</b>, sem compromisso.</span></li>
+          </ul>
+        </div>
+        <div class="form-card">
+          <h3>Seus dados</h3>
+          <p>A mensagem vai pronta para o nosso WhatsApp.</p>
+          <form class="wa" novalidate data-intro="Olá, CEBEL! Quero um estudo gratuito para instalar um eletroposto.">
+            <label>Seu nome<input id="f-nome" data-label="Nome" autocomplete="name" required></label>
+            <label>WhatsApp<input id="f-tel" data-label="WhatsApp" type="tel" autocomplete="tel" inputmode="tel" placeholder="(21) 9..." required></label>
+            <label>Nome do negócio<input id="f-negocio" data-label="Negócio" autocomplete="organization" required></label>
+            <label>Tipo de negócio
+              <select id="f-tipo" data-label="Tipo">
+                <option>Academia</option><option>Shopping ou centro comercial</option><option>Supermercado ou atacarejo</option><option>Hotel ou pousada</option><option>Restaurante</option><option>Estacionamento ou posto</option><option>Outro</option>
+              </select>
+            </label>
+            <label>Cidade e bairro<input id="f-cidade" data-label="Local" autocomplete="address-level2" placeholder="Ex.: Maricá, Centro" required></label>
+            <label>Vagas de estacionamento
+              <select id="f-vagas" data-label="Vagas"><option>Até 20</option><option>21 a 50</option><option>51 a 150</option><option>Mais de 150</option></select>
+            </label>
+            <label class="full">Algo mais que devemos saber? (opcional)<textarea id="f-obs" data-label="Obs."></textarea></label>
+            {% include wa-done.html botao="Pedir estudo gratuito" %}
+          </form>
+        </div>
+      </div>
     </div>
-    <form class="wa" novalidate data-intro="Olá, CEBEL! Quero um estudo gratuito para instalar um eletroposto.">
-      <label>Seu nome<input id="f-nome" data-label="Nome" autocomplete="name" required></label>
-      <label>WhatsApp<input id="f-tel" data-label="WhatsApp" type="tel" autocomplete="tel" inputmode="tel" placeholder="(21) 9..." required></label>
-      <label>Nome do negócio<input id="f-negocio" data-label="Negócio" autocomplete="organization" required></label>
-      <label>Tipo de negócio
-        <select id="f-tipo" data-label="Tipo">
-          <option>Academia</option><option>Shopping ou centro comercial</option><option>Supermercado ou atacarejo</option><option>Hotel ou pousada</option><option>Restaurante</option><option>Estacionamento ou posto</option><option>Outro</option>
-        </select>
-      </label>
-      <label>Cidade e bairro<input id="f-cidade" data-label="Local" autocomplete="address-level2" placeholder="Ex.: Maricá, Centro" required></label>
-      <label>Vagas de estacionamento
-        <select id="f-vagas" data-label="Vagas"><option>Até 20</option><option>21 a 50</option><option>51 a 150</option><option>Mais de 150</option></select>
-      </label>
-      <label class="full">Algo mais que devemos saber? (opcional)<textarea id="f-obs" data-label="Obs."></textarea></label>
-      {% include wa-done.html %}
-    </form>
   </div>
 </section>

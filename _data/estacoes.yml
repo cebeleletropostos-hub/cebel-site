@@ -1,58 +1,67 @@
 # Lista de estações. Para adicionar uma estação, copie um bloco e ajuste.
 # status: operando | instalacao | em-breve
-# endereco: deixe vazio ("") se ainda não for público; o botão do mapa usa `busca_mapa`.
+# endereco: endereço completo; os botões de Google Maps e Waze são gerados a partir dele.
+# foto: caminho da foto em assets/img/estacoes/ (deixe "" enquanto não houver foto).
 
-- nome: Smart Fit Itaguaí
+- id: itaguai
+  nome: Smart Fit Itaguaí
   cidade: Itaguaí
   regiao: Costa Verde
   parceiro: Smart Fit
   status: operando
-  endereco: "Av. Dep. Octávio Cabral, 840 – Jardim América, Itaguaí – RJ"
+  endereco: "Av. Dep. Octávio Cabral, 840 – Jardim América, Itaguaí – RJ, 23810-301"
   carregador: ""
-  busca_mapa: "CEBEL Av. Dep. Octávio Cabral, 840, Itaguaí"
+  foto: ""
+  desde: "Primeira estação da rede"
 
-- nome: Smart Fit Rio das Ostras
+- id: rio-das-ostras
+  nome: Smart Fit Rio das Ostras
   cidade: Rio das Ostras
   regiao: Região dos Lagos
   parceiro: Smart Fit
   status: operando
-  endereco: ""
+  endereco: "Rod. Amaral Peixoto, 3690 – Bosque da Praia, Rio das Ostras – RJ, 28893-160"
   carregador: ""
-  busca_mapa: "CEBEL Smart Fit Rio das Ostras"
+  foto: ""
+  desde: "Na Rodovia Amaral Peixoto (RJ-106)"
 
-- nome: Irajá
+- id: iraja
+  nome: Irajá
   cidade: Rio de Janeiro
   regiao: Zona Norte
   parceiro: ""
   status: instalacao
   endereco: ""
   carregador: "DC 40 kW · recarga rápida"
-  busca_mapa: ""
+  foto: ""
 
-- nome: Nilópolis
+- id: nilopolis
+  nome: Nilópolis
   cidade: Nilópolis
   regiao: Baixada Fluminense
   parceiro: ""
   status: instalacao
   endereco: ""
   carregador: "DC 40 kW · recarga rápida"
-  busca_mapa: ""
+  foto: ""
 
-- nome: Araruama
+- id: araruama
+  nome: Araruama
   cidade: Araruama
   regiao: Região dos Lagos
   parceiro: ""
   status: instalacao
   endereco: ""
   carregador: "AC 7,4 kW · recarga lenta"
-  busca_mapa: ""
+  foto: ""
 
-- nome: Smart Fit Saquarema
+- id: saquarema
+  nome: Smart Fit Saquarema
   cidade: Saquarema
   regiao: Região dos Lagos
   parceiro: Smart Fit
   status: em-breve
   endereco: ""
   carregador: "DC 40 kW · 2 conectores"
-  busca_mapa: ""
+  foto: ""
   nota: "Abre junto com a nova unidade Smart Fit"

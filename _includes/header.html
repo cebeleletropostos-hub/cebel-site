@@ -1,15 +1,21 @@
-{% assign nav = "estacoes:Estações,motoristas:Motoristas,sobre:Sobre,contato:Contato" | split: "," %}
+{% assign nav = "estacoes:Estações,motoristas:Como carregar,sobre:Sobre,contato:Contato" | split: "," %}
+{% unless page.url == "/parceiros/" %}
+<div class="topbar">
+  <a href="{{ '/parceiros/' | relative_url }}"><span>Tem um estacionamento?<span class="long"> Ganhe com um eletroposto, sem investir nada.</span></span> <b>Simule agora</b></a>
+</div>
+{% endunless %}
 <header class="site-header">
   <div class="wrap bar">
-    <a class="logo" href="{{ '/' | relative_url }}" aria-label="CEBEL, página inicial">
-      <span class="bolt" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M9.5 1 3 9h4l-1 6 6.5-8h-4z" fill="#2B1D00"/></svg></span>CEBEL
+    <a class="brand" href="{{ '/' | relative_url }}" aria-label="CEBEL, página inicial">
+      <img src="{{ '/assets/img/logo-cebel.png' | relative_url }}" alt="" width="44" height="44">
+      <span class="wm"><b>CEBEL</b><small>Energia &amp; Mobilidade Elétrica</small></span>
     </a>
-    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav"><span class="bars" aria-hidden="true"><i></i><i></i><i></i></span><span class="lbl">Menu</span></button>
     <nav class="nav" id="nav" aria-label="Principal">
       {% for item in nav %}{% assign parts = item | split: ":" %}{% assign path = "/" | append: parts[0] | append: "/" %}
       <a href="{{ path | relative_url }}"{% if page.url == path %} aria-current="page"{% endif %}>{{ parts[1] }}</a>
       {% endfor %}
-      <a class="nav-cta" href="{{ '/parceiros/' | relative_url }}"{% if page.url == "/parceiros/" %} aria-current="page"{% endif %}>Seja parceiro</a>
+      <a class="nav-cta" href="{{ '/parceiros/' | relative_url }}"{% if page.url == "/parceiros/" %} aria-current="page"{% endif %}><span class="dot" aria-hidden="true"></span>Seja parceiro</a>
     </nav>
   </div>
 </header>

@@ -1,11 +1,22 @@
 {% assign st = include.st %}
-{% case st.status %}{% when "operando" %}{% assign label = "Em operação" %}{% when "instalacao" %}{% assign label = "Em instalação" %}{% else %}{% assign label = "Em breve" %}{% endcase %}
-<article class="station" data-status="{{ st.status }}">
-  <span class="pill {{ st.status }}">{{ label }}</span>
-  <h3>{{ st.nome }}</h3>
-  <p class="place">{{ st.cidade }} · {{ st.regiao }}</p>
-  {% if st.carregador != "" %}<p class="spec">{{ st.carregador }}</p>{% endif %}
-  {% if st.endereco != "" %}<p class="addr">{{ st.endereco }}</p>{% endif %}
-  {% if st.nota %}<p class="note">{{ st.nota }}</p>{% endif %}
-  {% if st.busca_mapa != "" %}<div class="actions"><a class="btn small dark" href="https://www.google.com/maps/search/?api=1&amp;query={{ st.busca_mapa | url_encode }}" target="_blank" rel="noopener">Abrir no mapa</a></div>{% endif %}
+{% assign q = st.endereco | url_encode %}
+<article class="st-card" id="{{ st.id }}">
+  <div class="st-photo{% if st.foto == "" %} vazio{% endif %}">
+    {% if st.foto != "" %}<img src="{{ st.foto | relative_url }}" alt="Eletroposto CEBEL na {{ st.nome }}" loading="lazy">{% else %}<span class="glyph">{% include icons.html i="plug" %}</span><span class="city">{{ st.cidade }}</span>{% endif %}
+    <span class="badge pill operando">Em operação</span>
+  </div>
+  <div class="st-body">
+    <h3>{{ st.nome }}</h3>
+    <p class="sub">{{ st.regiao }}{% if st.desde %} · {{ st.desde }}{% endif %}</p>
+    {% if st.carregador != "" %}<p class="spec">{{ st.carregador }}</p>{% endif %}
+    <div class="addr">
+      {% include icons.html i="pin" %}
+      <p>{{ st.endereco }}</p>
+      <button class="copy-addr" type="button" data-copy="{{ st.endereco | escape }}">Copiar</button>
+    </div>
+    <div class="nav-links">
+      <a class="btn gmaps small" href="https://www.google.com/maps/dir/?api=1&amp;destination={{ q }}" target="_blank" rel="noopener">{% include icons.html i="pin" %}Google Maps</a>
+      <a class="btn waze small" href="https://waze.com/ul?q={{ q }}&amp;navigate=yes" target="_blank" rel="noopener">{% include icons.html i="route" %}Waze</a>
+    </div>
+  </div>
 </article>

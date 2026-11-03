@@ -9,9 +9,15 @@ Endereço atual: https://cebeleletropostos-hub.github.io/cebel-site/
 - `_config.yml` — dados globais: WhatsApp, endereço, preço por kWh, repasse ao parceiro, `url` e `baseurl`.
 - `_data/estacoes.yml` — lista de estações. Para adicionar ou mudar o status de uma estação, edite só este arquivo (status: `operando`, `instalacao`, `em-breve`). Home e /estacoes/ leem daqui, e os números da home são calculados a partir dele.
 - `_layouts/default.html` — `<head>`, SEO/Open Graph, botão flutuante de WhatsApp, scripts.
-- `_includes/` — `header.html` (menu), `footer.html`, `station.html` (card de estação), `wa-done.html` (botões e resposta dos formulários).
+- `_includes/` — `header.html` (menu), `footer.html`, `wa-done.html` (botões e resposta dos formulários).
 - Páginas: `index.html` (home), `estacoes/`, `motoristas/`, `parceiros/` (landing de captação de anfitriões, com calculadora), `sobre/`, `contato/`, `404.html`.
 - `assets/css/site.css` — todo o estilo. Cores e fontes são tokens no `:root`, com tema escuro.
+  Identidade: azul do logo (#0A459F) e marinho (#061A3F) como campo, verde/amarelo da bandeira como energia.
+  `.swash` = pincelada amarelo→lima atrás de palavras-chave (vem do logo); `.dark.agua` = fundo azul com textura de água;
+  `.faixa` = listra verde/amarelo/azul. Fontes: Bricolage Grotesque (títulos), Figtree (texto), DM Mono (rótulos).
+- `assets/img/logo-cebel.png` — logo redondo (recortado de um print; trocar pelo arquivo original quando houver).
+- `_includes/station.html` (estação em operação: foto, endereço, botões Google Maps/Waze) e `station-mini.html` (a caminho).
+  Fotos das estações vão em `assets/img/estacoes/` e o caminho entra no campo `foto` de `_data/estacoes.yml`.
 - `assets/js/site.js` — menu móvel, formulários de WhatsApp, calculadora e filtro de estações.
 - `assets/img/og.png` — imagem de compartilhamento (gerada a partir de `tools/og.html`).
 

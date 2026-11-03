@@ -3,47 +3,57 @@ layout: default
 titulo: Sobre a CEBEL
 descricao: A CEBEL, Companhia Brasileira de Energia Limpa, constrói uma rede de eletropostos no Rio de Janeiro em parceria com academias, shoppings e comércios.
 ---
-<div class="band">
+<div class="dark agua">
   <div class="wrap page-hero">
     <p class="eyebrow">Sobre</p>
-    <h1>Companhia Brasileira de Energia Limpa</h1>
+    <h1 class="h-xl">Companhia Brasileira de <span class="swash">Energia Limpa.</span></h1>
     <p class="lead">Somos uma empresa fluminense de mobilidade elétrica. Construímos uma rede de eletropostos e de geração de energia limpa, levando a recarga para os lugares onde as pessoas já passam o dia.</p>
   </div>
-  <div class="ruler" aria-hidden="true"></div>
 </div>
 
 <section>
-  <div class="wrap prose">
-    <p class="eyebrow">Nossa história</p>
-    <p>A CEBEL nasceu em 2026, no Rio de Janeiro, de uma constatação simples: a frota elétrica cresce mais rápido do que a rede de recarga, principalmente fora da capital. Quem tem um carro elétrico em Itaguaí, na Região dos Lagos ou na Baixada ainda roda pensando em onde vai carregar.</p>
-    <p>Nossa primeira estação foi instalada na <strong>Smart Fit de Itaguaí</strong>. Depois veio <strong>Rio das Ostras</strong>, e hoje a rede cresce para Irajá, Nilópolis, Araruama e Saquarema.</p>
-    <p>Trabalhamos num modelo de concessão: a CEBEL investe no equipamento, opera e mantém a estação, e o local parceiro recebe parte da receita. Assim o eletroposto chega a negócios que nunca investiriam num carregador sozinhos.</p>
+  <div class="wrap two-col">
+    <div class="logo-plate dark agua">
+      <img src="{{ '/assets/img/logo-cebel.png' | relative_url }}" alt="Logo da CEBEL, Companhia Brasileira de Energia Limpa" width="256" height="256">
+      <div class="faixa" aria-hidden="true"></div>
+    </div>
+    <div class="prose">
+      <p class="eyebrow">Nossa história</p>
+      <h2 class="h-lg">Recarga onde o motorista já está.</h2>
+      <p>A CEBEL nasceu em 2026, no Rio de Janeiro, de uma constatação simples: a frota elétrica cresce mais rápido do que a rede de recarga, principalmente fora da capital. Quem tem um carro elétrico em Itaguaí, na Região dos Lagos ou na Baixada ainda roda pensando em onde vai carregar.</p>
+      <p>Nossa primeira estação foi instalada na <strong>Smart Fit de Itaguaí</strong>. Depois veio <strong>Rio das Ostras</strong>, e hoje a rede cresce para Irajá, Nilópolis, Araruama e Saquarema.</p>
+      <p>Trabalhamos num modelo de concessão: a CEBEL investe no equipamento, opera e mantém a estação, e o local parceiro recebe parte da receita. Assim o eletroposto chega a negócios que nunca investiriam num carregador sozinhos.</p>
+    </div>
   </div>
 </section>
 
-<section class="tight-top">
+<section class="flush-top">
   <div class="wrap">
     <div class="sec-head">
       <p class="eyebrow">Como trabalhamos</p>
-      <h2>O que a gente promete</h2>
+      <h2 class="h-lg">O que a gente promete</h2>
     </div>
-    <div class="fit">
-      <div><span class="stay">Preço</span><h3>Preço claro</h3><p>R$ {{ site.preco_kwh }} por kWh em toda a rede. Sem taxa escondida, sem cobrança por tempo parado.</p></div>
-      <div><span class="stay">Operação</span><h3>Estação funcionando</h3><p>Monitoramos as recargas e acionamos a manutenção rápido quando algo para.</p></div>
-      <div><span class="stay">Parceiros</span><h3>Relação transparente</h3><p>Relatório mensal de uso e repasse para cada local parceiro.</p></div>
+    <div class="trio">
+      <article><span class="ico">{% include icons.html i="bolt" %}</span><span class="who">Preço</span><h3>Preço claro</h3><p>R$ {{ site.preco_kwh }} por kWh em toda a rede. Sem taxa escondida, sem cobrança por tempo parado.</p></article>
+      <article><span class="ico">{% include icons.html i="shield" %}</span><span class="who">Operação</span><h3>Estação funcionando</h3><p>Monitoramos as recargas e acionamos a manutenção rápido quando algo para.</p></article>
+      <article><span class="ico">{% include icons.html i="store" %}</span><span class="who">Parceiros</span><h3>Relação transparente</h3><p>Relatório mensal de uso e repasse para cada local parceiro.</p></article>
     </div>
   </div>
 </section>
 
-<div class="band">
-  <div class="wrap cta-band">
-    <div>
-      <h2>Vamos crescer juntos</h2>
-      <p>Se o seu negócio tem estacionamento no estado do Rio, a gente quer conversar.</p>
-    </div>
-    <div class="actions">
-      <a class="btn primary" href="{{ '/parceiros/' | relative_url }}">Seja parceiro</a>
-      <a class="btn ghost" href="{{ '/contato/' | relative_url }}">Fale conosco</a>
+<section class="flush-top">
+  <div class="wrap">
+    <div class="cta-final dark agua">
+      <div class="in">
+        <div>
+          <h2 class="h-lg">Vamos crescer juntos.</h2>
+          <p>Se o seu negócio tem estacionamento no estado do Rio, a gente quer conversar.</p>
+        </div>
+        <div class="actions">
+          <a class="btn sol" href="{{ '/parceiros/' | relative_url }}">Seja parceiro {% include icons.html i="arrow" %}</a>
+          <a class="btn linha" href="{{ '/contato/' | relative_url }}">Fale conosco</a>
+        </div>
+      </div>
     </div>
   </div>
-</div>
+</section>

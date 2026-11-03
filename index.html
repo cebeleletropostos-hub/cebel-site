@@ -3,76 +3,128 @@ layout: default
 ---
 {% assign operando = site.data.estacoes | where: "status", "operando" %}
 {% assign caminho = site.data.estacoes | where_exp: "e", "e.status != 'operando'" %}
-<div class="band">
-  <div class="wrap home-hero">
+<div class="dark agua">
+  <div class="wrap hero hero-grid">
     <div>
       <p class="eyebrow">Recarga de carros elétricos · Estado do RJ</p>
-      <h1>Energia limpa onde você <em>já para.</em></h1>
-      <p class="lead">A CEBEL instala e opera eletropostos em academias, shoppings e comércios do Rio de Janeiro. O motorista carrega enquanto treina ou faz compras, e o local ganha receita sem investir nada.</p>
+      <h1 class="h-xl">Energia limpa onde você <span class="swash">já para.</span></h1>
+      <p class="lead">A CEBEL instala e opera eletropostos em academias, shoppings e comércios do Rio de Janeiro. Você carrega enquanto treina ou faz compras.</p>
+      <div class="hero-actions">
+        <a class="btn sol" href="{{ '/estacoes/' | relative_url }}">Encontrar uma estação {% include icons.html i="arrow" %}</a>
+        <a class="btn linha" href="{{ '/parceiros/' | relative_url }}">Tenho um estacionamento</a>
+      </div>
+      <div class="hero-proof">
+        <span>Parceira da <b>Smart Fit</b></span><span class="sep"></span>
+        <span><b>{{ operando.size }}</b> estações ativas</span><span class="sep"></span>
+        <span><b>R$ {{ site.preco_kwh }}</b>/kWh, sem taxa de ociosidade</span>
+      </div>
     </div>
-    <div class="doors">
-      <a class="door" href="{{ '/estacoes/' | relative_url }}">
-        <span class="who">Para motoristas</span>
-        <b>Encontre uma estação</b>
-        <span class="go">Endereços, tipo de carregador e preço →</span>
-      </a>
-      <a class="door hot" href="{{ '/parceiros/' | relative_url }}">
-        <span class="who">Para donos de estacionamento</span>
-        <b>Tenha um eletroposto, investimento zero</b>
-        <span class="go">Calcule quanto seu local pode render →</span>
-      </a>
+    <div class="charger" aria-hidden="true">
+      <div class="top"><span class="live">Recarga em andamento</span><span>DC · 40 kW</span></div>
+      <div class="ring">
+        <svg viewBox="0 0 200 200"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F7C600"/><stop offset="1" stop-color="#B6DC7A"/></linearGradient></defs><circle cx="100" cy="100" r="88" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="12"/><circle class="prog" cx="100" cy="100" r="88" fill="none" stroke="url(#g)" stroke-width="12" stroke-linecap="round" stroke-dasharray="552.9" stroke-dashoffset="210" style="transition:stroke-dashoffset .8s ease"/></svg>
+        <div class="val"><b id="ch-pct">62%</b><span>bateria</span></div>
+      </div>
+      <dl class="stats">
+        <div><dt>energia</dt><dd><span id="ch-kwh">24,6</span> kWh</dd></div>
+        <div><dt>valor</dt><dd id="ch-brl">R$ 49,20</dd></div>
+        <div><dt>tempo</dt><dd>38 min</dd></div>
+      </dl>
+      <div class="where">{% include icons.html i="pin" %}<span><b>Smart Fit Itaguaí</b> · Av. Dep. Octávio Cabral</span></div>
     </div>
   </div>
-  <div class="ruler" aria-hidden="true"></div>
+</div>
+
+<div class="wrap">
+  <dl class="meter" aria-label="A CEBEL em números">
+    <div><dt>estações em operação</dt><dd>{{ operando.size }}</dd></div>
+    <div><dt>novas estações a caminho</dt><dd>{{ caminho.size }}</dd></div>
+    <div><dt>por kWh, em toda a rede</dt><dd><small>R$</small>{{ site.preco_kwh }}</dd></div>
+    <div><dt>de investimento para o local parceiro</dt><dd><small>R$</small>0</dd></div>
+  </dl>
 </div>
 
 <section>
   <div class="wrap">
-    <dl class="meter" aria-label="A CEBEL em números">
-      <div><dt>estações em operação</dt><dd>{{ operando.size }}</dd></div>
-      <div><dt>novas estações a caminho</dt><dd>{{ caminho.size }}</dd></div>
-      <div><dt>preço por kWh para o motorista</dt><dd><small>R$</small> {{ site.preco_kwh }}</dd></div>
-      <div><dt>taxa de ociosidade</dt><dd>R$ 0</dd></div>
-    </dl>
+    <div class="sec-head split">
+      <div style="display:grid;gap:16px">
+        <p class="eyebrow">Rede CEBEL</p>
+        <h2 class="h-lg">Onde carregar hoje</h2>
+      </div>
+      <p class="lead">Endereço exato, rota pelo Google Maps ou Waze e o tipo de carregador de cada estação.</p>
+    </div>
+    <div class="st-feature">
+      {% for st in operando %}{% include station.html st=st %}{% endfor %}
+    </div>
+    <div style="margin-top:40px;display:grid;gap:18px">
+      <p class="eyebrow">A caminho</p>
+      <div class="st-list">
+        {% for st in caminho %}{% include station-mini.html st=st %}{% endfor %}
+      </div>
+    </div>
   </div>
 </section>
 
-<section class="tight-top">
+<section class="flush-top">
   <div class="wrap">
-    <div class="sec-head">
-      <p class="eyebrow">Rede CEBEL</p>
-      <h2>Onde carregar</h2>
-      <p>Já operamos nas unidades Smart Fit de Itaguaí e Rio das Ostras. A rede cresce pela Zona Norte, pela Baixada e pela Região dos Lagos.</p>
+    <div class="parceiro-band dark agua">
+      <div class="parceiro-grid">
+        <div>
+          <p class="eyebrow">Para donos de estacionamento</p>
+          <h2 class="h-lg" style="margin-top:16px">Seu estacionamento pode <span class="swash">gerar receita.</span></h2>
+          <ul>
+            <li><span class="check">{% include icons.html i="check" %}</span><span><b>Zero investimento.</b> Compramos, instalamos e mantemos o carregador.</span></li>
+            <li><span class="check">{% include icons.html i="check" %}</span><span><b>{{ site.repasse_parceiro }}% da receita líquida</b> de cada recarga, todo mês.</span></li>
+            <li><span class="check">{% include icons.html i="check" %}</span><span><b>A energia é por nossa conta.</b> Sua conta de luz não muda.</span></li>
+            <li><span class="check">{% include icons.html i="check" %}</span><span><b>Clientes que ficam mais tempo</b> no seu negócio enquanto o carro carrega.</span></li>
+          </ul>
+          <div class="hero-actions">
+            <a class="btn sol" href="{{ '/parceiros/' | relative_url }}">Simular meu retorno {% include icons.html i="arrow" %}</a>
+            <a class="btn linha" href="{{ '/parceiros/' | relative_url }}#contato">Pedir visita técnica</a>
+          </div>
+        </div>
+        <div class="sim">
+          <span class="k">Exemplo · carregador rápido</span>
+          <span class="big">R$ 641<small> /mês</small></span>
+          <div class="rows">
+            <div><span>Recargas por dia</span><span>6</span></div>
+            <div><span>Energia por recarga</span><span>25 kWh</span></div>
+            <div><span>Receita bruta no mês</span><span>R$ 9.000</span></div>
+            <div><span>Seu investimento</span><span>R$ 0</span></div>
+          </div>
+          <p class="fine">Estimativa ilustrativa para o local parceiro, com as premissas da nossa calculadora.</p>
+        </div>
+      </div>
     </div>
-    <div class="stations">
-      {% for st in site.data.estacoes limit: 6 %}{% include station.html st=st %}{% endfor %}
-    </div>
-    <p style="margin-top:24px"><a class="btn ghost" href="{{ '/estacoes/' | relative_url }}">Ver todas as estações</a></p>
   </div>
 </section>
 
-<section class="tight-top">
+<section class="flush-top">
   <div class="wrap">
     <div class="sec-head">
       <p class="eyebrow">Como funciona</p>
-      <h2>Um modelo em que todo mundo ganha</h2>
+      <h2 class="h-lg">Um modelo em que todo mundo ganha</h2>
     </div>
-    <div class="fit">
-      <div><span class="stay">Motorista</span><h3>Carrega enquanto faz outra coisa</h3><p>Paga só a energia que usa, R$ {{ site.preco_kwh }} por kWh, sem taxa por tempo parado.</p></div>
-      <div><span class="stay">Local parceiro</span><h3>Ganha sem investir</h3><p>Cede a vaga e recebe {{ site.repasse_parceiro }}% da receita líquida, além de clientes que ficam mais tempo.</p></div>
-      <div><span class="stay">CEBEL</span><h3>Cuida de tudo</h3><p>Compramos o equipamento, fazemos a instalação, pagamos a energia e mantemos o carregador funcionando.</p></div>
+    <div class="trio">
+      <article><span class="ico">{% include icons.html i="car" %}</span><span class="who">Motorista</span><h3>Carrega enquanto faz outra coisa</h3><p>Paga só a energia que usa, R$ {{ site.preco_kwh }} por kWh, sem taxa por tempo parado.</p></article>
+      <article><span class="ico">{% include icons.html i="store" %}</span><span class="who">Local parceiro</span><h3>Ganha sem investir</h3><p>Cede a vaga e recebe parte de cada recarga, além de clientes que ficam mais tempo.</p></article>
+      <article><span class="ico">{% include icons.html i="shield" %}</span><span class="who">CEBEL</span><h3>Cuida de tudo</h3><p>Equipamento, instalação, energia, software e manutenção. A estação funcionando é responsabilidade nossa.</p></article>
     </div>
   </div>
 </section>
 
-<div class="band">
-  <div class="wrap cta-band">
-    <div>
-      <h2>Seu estacionamento pode ser o próximo</h2>
-      <p>Academias, shoppings, supermercados, hotéis e restaurantes de estrada. A visita técnica é gratuita.</p>
-    </div>
-    <div class="actions">
-      <a class="btn primary" href="{{ '/parceiros/' | relative_url }}">Quero ser parceiro</a>
+<section class="flush-top">
+  <div class="wrap">
+    <div class="cta-final dark agua">
+      <div class="in">
+        <div>
+          <h2 class="h-lg">Vamos levar energia limpa para o seu negócio?</h2>
+          <p>Academias, shoppings, supermercados, hotéis e restaurantes de estrada no estado do Rio. A visita técnica é gratuita.</p>
+        </div>
+        <div class="actions">
+          <a class="btn sol" href="{{ '/parceiros/' | relative_url }}">Quero ser parceiro {% include icons.html i="arrow" %}</a>
+        </div>
+      </div>
     </div>
   </div>
-</div>
+</section>

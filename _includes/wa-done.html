@@ -1,13 +1,14 @@
 <p class="err" hidden></p>
 <div class="form-actions full">
-  <button class="btn primary" type="submit">{{ include.botao | default: "Enviar pelo WhatsApp" }}</button>
+  <button class="btn sol" type="submit">{% include icons.html i="wa" %}{{ include.botao | default: "Enviar pelo WhatsApp" }}</button>
 </div>
+<p class="privacy">Seus dados só são usados para a CEBEL responder ao seu contato.</p>
 <div class="done" hidden>
   <strong>Sua mensagem está pronta.</strong>
   <p>Toque em Abrir WhatsApp ou copie o texto e envie para {{ site.whatsapp_display }}.</p>
   <pre></pre>
   <div class="form-actions">
-    <a class="btn primary wa-link" href="https://wa.me/{{ site.whatsapp }}" target="_blank" rel="noopener">Abrir WhatsApp</a>
-    <button class="btn ghost copy" type="button">Copiar mensagem</button>
+    <a class="btn azul wa-link" href="https://wa.me/{{ site.whatsapp }}" target="_blank" rel="noopener">Abrir WhatsApp</a>
+    <button class="btn linha copy" type="button">Copiar mensagem</button>
   </div>
 </div>
