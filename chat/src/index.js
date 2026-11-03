@@ -17,7 +17,7 @@ export default {
     const url = new URL(req.url);
     const p = url.pathname.replace(/\/+$/, "") || "/";
     try {
-      if (p === "/") return json({ ok: true, servico: "CEBEL atendimento", whatsapp: !!env.WHATSAPP_TOKEN, instagram: !!env.INSTAGRAM_TOKEN, claude: !!env.ANTHROPIC_API_KEY });
+      if (p === "/") return json({ ok: true, servico: "CEBEL atendimento", whatsapp: !!env.WHATSAPP_TOKEN, instagram: !!env.INSTAGRAM_TOKEN, claude: !!env.ANTHROPIC_API_KEY, senha_teste: !!env.ADMIN_SENHA, versao: 4 });
       if (p === "/webhook/whatsapp" || p === "/webhook/instagram") {
         if (req.method === "GET") return verificar(url, env);
         const corpo = await req.text();
