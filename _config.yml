@@ -14,6 +14,16 @@ whatsapp: "5521996948090"
 whatsapp_display: "+55 21 99694-8090"
 endereco: "Av. Dep. Octávio Cabral, 840 – Jardim América, Itaguaí – RJ, 23810-301"
 
+# Medição e leads (deixe vazio para desligar)
+# google_tag: ID do Google Analytics 4 (G-XXXXXXX) ou Google Ads (AW-XXXXXXX)
+# meta_pixel: ID do Pixel/conjunto de dados da Meta (só números)
+# leads_endpoint: URL do app da planilha (Apps Script, termina em /exec)
+# leads_token: mesma palavra configurada no script da planilha
+google_tag: ""
+meta_pixel: ""
+leads_endpoint: ""
+leads_token: "cebel-leads"
+
 # Modelo comercial (usado nas páginas e na calculadora)
 preco_kwh: "2,00"
 repasse_parceiro: 15

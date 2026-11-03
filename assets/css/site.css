@@ -411,3 +411,11 @@ form.wa textarea{min-height:110px;resize:vertical}
 }
 @media (max-width:420px){.ls-label .live{font-size:0;gap:0}.ls-label b{font-size:16px}}
 
+
+/* aviso de cookies e campo anti-spam */
+.hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;overflow:hidden}
+.consent{position:fixed;left:calc(16px + env(safe-area-inset-left,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:35;max-width:420px;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:var(--shadow);padding:18px 20px;display:grid;gap:14px;font-size:14.5px;line-height:1.5}
+.consent p{color:var(--muted)}
+.consent a{color:var(--azul);font-weight:600}
+.consent-actions{display:flex;gap:10px;justify-content:flex-end}
+@media (max-width:700px){.consent{left:12px;right:12px;bottom:calc(84px + env(safe-area-inset-bottom,0px));max-width:none}}

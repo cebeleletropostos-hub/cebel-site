@@ -132,7 +132,7 @@ descricao: Tenha um eletroposto no estacionamento do seu negócio sem investir n
         <div class="form-card">
           <h3>Seus dados</h3>
           <p>A mensagem vai pronta para o nosso WhatsApp.</p>
-          <form class="wa" novalidate data-intro="Olá, CEBEL! Quero um estudo gratuito para instalar um eletroposto.">
+          <form class="wa" novalidate data-form="parceiro" data-intro="Olá, CEBEL! Quero um estudo gratuito para instalar um eletroposto.">
             <label>Seu nome<input id="f-nome" data-label="Nome" autocomplete="name" required></label>
             <label>WhatsApp<input id="f-tel" data-label="WhatsApp" type="tel" autocomplete="tel" inputmode="tel" placeholder="(21) 9..." required></label>
             <label>Nome do negócio<input id="f-negocio" data-label="Negócio" autocomplete="organization" required></label>
@@ -146,6 +146,7 @@ descricao: Tenha um eletroposto no estacionamento do seu negócio sem investir n
               <select id="f-vagas" data-label="Vagas"><option>Até 20</option><option>21 a 50</option><option>51 a 150</option><option>Mais de 150</option></select>
             </label>
             <label class="full">Algo mais que devemos saber? (opcional)<textarea id="f-obs" data-label="Obs."></textarea></label>
+            <label class="hp" aria-hidden="true">Não preencha<input name="empresa_site" tabindex="-1" autocomplete="off"></label>
             {% include wa-done.html botao="Pedir estudo gratuito" %}
           </form>
         </div>

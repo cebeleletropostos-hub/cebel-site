@@ -14,25 +14,117 @@
     });
   }
 
-  // Formulários que viram mensagem de WhatsApp.
-  // Cada campo com data-label entra na mensagem; data-intro define a primeira linha.
+  // ---------- Origem do visitante (UTM, anúncios, indicação) ----------
+  // Guardamos a primeira origem da visita para identificar de onde veio cada lead.
+  var store = {
+    get: function (k) { try { return JSON.parse(localStorage.getItem(k)); } catch (e) { return null; } },
+    set: function (k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
+  };
+  var origem = (function () {
+    var q = new URLSearchParams(location.search), saved = store.get("cebel-origem");
+    var src = q.get("utm_source"), med = q.get("utm_medium"), camp = q.get("utm_campaign");
+    if (!src && q.get("fbclid")) { src = "meta"; med = med || "anuncio"; }
+    if (!src && q.get("gclid")) { src = "google"; med = med || "anuncio"; }
+    if (!src && document.referrer) {
+      try {
+        var host = new URL(document.referrer).hostname.replace(/^www\./, "");
+        if (host && host !== location.hostname) {
+          src = /instagram/.test(host) ? "instagram" : /facebook|fb\./.test(host) ? "facebook" : /google/.test(host) ? "google" : host;
+          med = /google|bing/.test(host) ? "busca" : "link";
+        }
+      } catch (e) {}
+    }
+    if (src) {
+      var o = { fonte: src, meio: med || "", campanha: camp || "", entrada: location.pathname, data: new Date().toISOString() };
+      if (!saved || q.get("utm_source") || q.get("fbclid") || q.get("gclid")) store.set("cebel-origem", o);
+      return saved && !(q.get("utm_source") || q.get("fbclid") || q.get("gclid")) ? saved : o;
+    }
+    return saved || { fonte: "direto", meio: "", campanha: "", entrada: location.pathname };
+  })();
+  var origemTexto = origem.fonte + (origem.meio ? " / " + origem.meio : "");
+
+  // ---------- Medição (Google e Meta), só depois do consentimento ----------
+  var hasTags = !!(cfg.googleTag || cfg.metaPixel);
+  var loadTags = function () {
+    if (cfg.googleTag && !window.gtag) {
+      var g = document.createElement("script"); g.async = true;
+      g.src = "https://www.googletagmanager.com/gtag/js?id=" + cfg.googleTag; document.head.appendChild(g);
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { dataLayer.push(arguments); };
+      gtag("js", new Date()); gtag("config", cfg.googleTag);
+    }
+    if (cfg.metaPixel && !window.fbq) {
+      (function (f, b, e, v, n, t, s) { if (f.fbq) return; n = f.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments); };
+        if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = "2.0"; n.queue = []; t = b.createElement(e); t.async = !0;
+        t.src = v; s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s); })(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
+      fbq("init", cfg.metaPixel); fbq("track", "PageView");
+    }
+  };
+  // Eventos: generate_lead (formulário), contact (clique no WhatsApp), calculadora_usada.
+  var track = function (name, params) {
+    params = params || {};
+    try { if (window.gtag) gtag("event", name, params); } catch (e) {}
+    try {
+      if (window.fbq) {
+        if (name === "generate_lead") fbq("track", "Lead", params);
+        else if (name === "contact") fbq("track", "Contact", params);
+        else fbq("trackCustom", name, params);
+      }
+    } catch (e) {}
+  };
+  window.cebelTrack = track;
+
+  var consent = store.get("cebel-consent");
+  var banner = $(".consent");
+  if (hasTags) {
+    if (consent === "sim") loadTags();
+    else if (consent !== "nao" && banner) banner.hidden = false;
+  }
+  if (banner) {
+    $(".consent-yes", banner).addEventListener("click", function () { store.set("cebel-consent", "sim"); banner.hidden = true; loadTags(); });
+    $(".consent-no", banner).addEventListener("click", function () { store.set("cebel-consent", "nao"); banner.hidden = true; });
+  }
+
+  // Cliques em qualquer link de WhatsApp contam como contato.
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest && e.target.closest('a[href*="wa.me/"]');
+    if (a) track("contact", { local: a.className || "link", pagina: location.pathname });
+  });
+
+  // ---------- Formulários que viram mensagem de WhatsApp ----------
+  // Cada campo com data-label entra na mensagem; data-intro define a primeira linha;
+  // data-form identifica o formulário. Se houver endpoint configurado, o lead também vai para a planilha.
   $$("form.wa").forEach(function (form) {
     var done = $(".done", form), err = $(".err", form), pre = $("pre", form), link = $(".wa-link", form), copy = $(".copy", form);
     form.addEventListener("submit", function (e) {
       e.preventDefault();
-      var missing = [], lines = [form.getAttribute("data-intro") || "Olá, CEBEL!", ""];
+      var hp = form.querySelector('input[name="empresa_site"]');
+      var missing = [], lines = [form.getAttribute("data-intro") || "Olá, CEBEL!", ""], dados = {};
       $$("[data-label]", form).forEach(function (el) {
-        var v = (el.value || "").trim();
-        if (el.required && !v) missing.push(el.getAttribute("data-label").toLowerCase());
-        if (v) lines.push(el.getAttribute("data-label") + ": " + v);
+        var v = (el.value || "").trim(), lbl = el.getAttribute("data-label");
+        if (el.required && !v) missing.push(lbl.toLowerCase());
+        if (v) { lines.push(lbl + ": " + v); dados[lbl] = v; }
       });
       if (missing.length) { err.textContent = "Preencha: " + missing.join(", ") + "."; err.hidden = false; return; }
       err.hidden = true;
+      lines.push("Origem: " + origemTexto + (origem.campanha ? " (" + origem.campanha + ")" : ""));
       var msg = lines.join("\n");
       pre.textContent = msg;
       link.href = "https://wa.me/" + cfg.whatsapp + "?text=" + encodeURIComponent(msg);
       done.hidden = false;
       done.scrollIntoView({ behavior: "smooth", block: "nearest" });
+
+      var formName = form.getAttribute("data-form") || "contato";
+      track("generate_lead", { formulario: formName, origem: origem.fonte });
+      if (cfg.leadsEndpoint && !(hp && hp.value) && !form.dataset.sent) {
+        form.dataset.sent = "1";
+        var payload = { token: cfg.leadsToken || "", formulario: formName, pagina: location.pathname,
+          origem: origem.fonte, meio: origem.meio, campanha: origem.campanha, entrada: origem.entrada, campos: dados };
+        try {
+          fetch(cfg.leadsEndpoint, { method: "POST", mode: "no-cors", keepalive: true,
+            headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify(payload) });
+        } catch (x) {}
+      }
     });
     if (copy) copy.addEventListener("click", function () {
       var t = pre.textContent;
@@ -64,7 +156,9 @@
     $$("input[name=tipo]", calc).forEach(function (r) {
       r.addEventListener("change", function () { var d = defaults[r.value]; s.value = d.s; k.value = d.k; run(); });
     });
-    s.addEventListener("input", run); k.addEventListener("input", run);
+    var used = false;
+    var mark = function () { if (!used) { used = true; track("calculadora_usada", { pagina: location.pathname }); } };
+    s.addEventListener("input", function () { run(); mark(); }); k.addEventListener("input", function () { run(); mark(); });
     run();
   }
 

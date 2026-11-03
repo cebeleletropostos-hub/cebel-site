@@ -39,7 +39,8 @@
   {% if page.url == "/parceiros/" %}<a class="btn sol" href="#contato">Pedir estudo gratuito</a>{% else %}<a class="btn sol" href="{{ '/parceiros/' | relative_url }}">Seja parceiro</a>{% endif %}
   <a class="btn wa" href="https://wa.me/{{ site.whatsapp }}" target="_blank" rel="noopener" aria-label="WhatsApp">{% include icons.html i="wa" %}</a>
 </div>
-<script>window.CEBEL={whatsapp:"{{ site.whatsapp }}",whatsappDisplay:"{{ site.whatsapp_display }}"};</script>
+{% include consent.html %}
+<script>window.CEBEL={whatsapp:"{{ site.whatsapp }}",whatsappDisplay:"{{ site.whatsapp_display }}",googleTag:"{{ site.google_tag }}",metaPixel:"{{ site.meta_pixel }}",leadsEndpoint:"{{ site.leads_endpoint }}",leadsToken:"{{ site.leads_token }}"};</script>
 <script src="{{ '/assets/js/site.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
 </body>
 </html>

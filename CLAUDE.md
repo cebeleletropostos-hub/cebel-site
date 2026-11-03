@@ -31,6 +31,15 @@ Endereço atual: https://cebeleletropostos-hub.github.io/cebel-site/
 - Calculadora (premissas em `assets/js/site.js` e no texto de `parceiros/`): R$ 2,00/kWh, energia R$ 0,85/kWh, 10% de impostos, repasse 15% da receita líquida.
 - Para conferir antes de publicar: `jekyll build` e abrir `_site/` num navegador headless.
 
+## Leads e medição
+
+- `_config.yml`: `google_tag` (GA4 G-…), `meta_pixel` (número), `leads_endpoint` (URL /exec do Apps Script), `leads_token`. Vazio = desligado.
+- `assets/js/site.js` guarda a origem da visita (utm_*, fbclid, gclid, referrer) e a escreve em toda mensagem de WhatsApp ("Origem: …").
+- Eventos: `generate_lead` (formulário; Meta = Lead), `contact` (clique em wa.me; Meta = Contact), `calculadora_usada`.
+- Google/Meta só carregam após "Aceitar" no aviso de cookies (`_includes/consent.html`); o aviso só aparece se houver tag configurada. Política em `privacidade/`.
+- Planilha de leads: Google Sheets na conta da CEBEL (carreagadoritaguai@gmail.com), montada por `tools/planilha-leads.gs` (funções `configurar`, `testarEnvio`, `doPost`). O formulário manda JSON (text/plain, no-cors) ao `leads_endpoint`; campo anti-spam `empresa_site`.
+- Guia para o João: doc "CEBEL · Guia de leads e medição" (https://claude.ai/artifact/1ADhEsAJj27NyrTWhuipz8).
+
 ## Domínio próprio (pendente)
 
 Quando o domínio for comprado: criar o arquivo `CNAME` com o domínio, trocar `url` em `_config.yml` para `https://dominio` e `baseurl` para `""`. No registro.br, 4 registros A para 185.199.108.153, 185.199.109.153, 185.199.110.153, 185.199.111.153 e CNAME `www` → `cebeleletropostos-hub.github.io`.
