@@ -19,7 +19,7 @@ endereco: "Av. Dep. Octávio Cabral, 840 – Jardim América, Itaguaí – RJ, 2
 # meta_pixel: ID do Pixel/conjunto de dados da Meta (só números)
 # leads_endpoint: URL do app da planilha (Apps Script, termina em /exec)
 # leads_token: mesma palavra configurada no script da planilha
-google_tag: ""
+google_tag: "G-FPE5Q5BCJH"
 meta_pixel: "1135209462228309"
 leads_endpoint: "https://script.google.com/macros/s/AKfycbyd-twHaXwk75WesZLhxmKf0ufZ-BrJarvFHJc9PjARoOyhXEsEDDV3rTbHI_TaDM2J/exec"
 leads_token: "cebel-leads"
