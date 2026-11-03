@@ -22,7 +22,7 @@
   status: operando
   endereco: "Rod. Amaral Peixoto, 3690 – Bosque da Praia, Rio das Ostras – RJ, 28893-160"
   carregador: ""
-  foto: ""
+  foto: "/assets/img/estacoes/rio-das-ostras.jpg"
   desde: "Na Rodovia Amaral Peixoto (RJ-106)"
 
 - id: iraja
