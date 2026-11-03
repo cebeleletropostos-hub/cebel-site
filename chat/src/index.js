@@ -17,7 +17,7 @@ export default {
     const url = new URL(req.url);
     const p = url.pathname.replace(/\/+$/, "") || "/";
     try {
-      if (p === "/") return json({ ok: true, servico: "CEBEL atendimento", whatsapp: !!env.WHATSAPP_TOKEN, instagram: !!env.INSTAGRAM_TOKEN, claude: !!env.ANTHROPIC_API_KEY, senha_teste: !!senhaAdmin(env), versao: 6 });
+      if (p === "/") return json({ ok: true, servico: "CEBEL atendimento", whatsapp: !!env.WHATSAPP_TOKEN, instagram: !!env.INSTAGRAM_TOKEN, claude: !!env.ANTHROPIC_API_KEY, senha_teste: !!senhaAdmin(env), telegram: !!env.TELEGRAM_BOT_TOKEN, versao: 7 });
       if (p === "/webhook/whatsapp" || p === "/webhook/instagram") {
         if (req.method === "GET") return verificar(url, env);
         const corpo = await req.text();
@@ -36,6 +36,10 @@ export default {
         const stub = conversa(env, "web:" + String(sessao).slice(0, 40));
         const r = await stub.fetch("https://do/entrada", { method: "POST", body: JSON.stringify({ canal: "web", usuario: sessao, texto, botao, nome: "Teste", retornar: true }) });
         return new Response(r.body, { headers: { "content-type": "application/json" } });
+      }
+      if (p === "/config/telegram") {
+        if (!senhaOk(url, env)) return json({ erro: "senha" }, 401);
+        return json(await configurarTelegram(env));
       }
       if (p === "/config/instagram" && req.method === "POST") {
         if (!senhaOk(url, env)) return json({ erro: "senha" }, 401);
@@ -144,6 +148,8 @@ export class Conversa {
     const b = await req.json();
     if (rota === "/humano") return this.humanoAssumiu(b);
     if (rota === "/entrada") return this.entrada(b);
+    if (rota === "/cfg-get") return json((await this.state.storage.get("cfg")) || {});
+    if (rota === "/cfg-set") { const atual = (await this.state.storage.get("cfg")) || {}; await this.state.storage.put("cfg", { ...atual, ...b }); return json({ ok: true }); }
     return new Response("?", { status: 404 });
   }
 
@@ -449,13 +455,33 @@ async function alertar(env, { texto, s, assunto, mensagem }) {
 }
 
 async function telegram(env, texto) {
-  if (!env.TELEGRAM_BOT_TOKEN || !env.TELEGRAM_CHAT_ID) return;
-  for (const chat of String(env.TELEGRAM_CHAT_ID).split(",")) {
+  if (!env.TELEGRAM_BOT_TOKEN) return;
+  let ids = String(env.TELEGRAM_CHAT_ID || "").split(",").map((x) => x.trim()).filter(Boolean);
+  if (!ids.length) ids = await idsTelegramSalvos(env);
+  for (const chat of ids) {
     await fetch(`https://api.telegram.org/bot${env.TELEGRAM_BOT_TOKEN}/sendMessage`, {
       method: "POST", headers: { "content-type": "application/json" },
-      body: JSON.stringify({ chat_id: chat.trim(), text: texto.slice(0, 4000), disable_web_page_preview: true }),
+      body: JSON.stringify({ chat_id: chat, text: texto.slice(0, 4000), disable_web_page_preview: true }),
     }).catch(() => {});
   }
+}
+
+// IDs do Telegram guardados automaticamente (quem mandou "oi" para o bot de alertas).
+const cfg = (env) => conversa(env, "__config__");
+async function idsTelegramSalvos(env) {
+  try { return (await (await cfg(env).fetch("https://do/cfg-get", { method: "POST", body: "{}" })).json()).telegram || []; } catch (e) { return []; }
+}
+async function configurarTelegram(env) {
+  if (!env.TELEGRAM_BOT_TOKEN) return { ok: false, erro: "Falta o segredo TELEGRAM_BOT_TOKEN no Cloudflare" };
+  const r = await (await fetch(`https://api.telegram.org/bot${env.TELEGRAM_BOT_TOKEN}/getUpdates`)).json();
+  if (!r.ok) return { ok: false, erro: "Token do Telegram inválido", detalhe: r.description };
+  const pessoas = {};
+  for (const u of r.result || []) { const c = (u.message || u.my_chat_member || {}).chat; if (c) pessoas[c.id] = c.first_name || c.title || c.username || String(c.id); }
+  const antigos = await idsTelegramSalvos(env);
+  const ids = [...new Set([...antigos, ...Object.keys(pessoas)])];
+  await cfg(env).fetch("https://do/cfg-set", { method: "POST", body: JSON.stringify({ telegram: ids }) });
+  await telegram(env, "✅ Alertas da CEBEL ligados! Você vai receber aqui: pedidos de atendimento humano, problemas em carregadores e novos leads de parceiros.");
+  return { ok: true, avisos_vao_para: ids.map((i) => pessoas[i] || i), dica: ids.length ? "Pronto. Quem mais mandar 'oi' para o bot e abrir este link de novo também passa a receber." : "Ninguém encontrado: mande 'oi' para o bot no Telegram e abra este link de novo." };
 }
 
 async function planilha(env, { formulario, origem, campos }) {
