@@ -16,6 +16,9 @@ class_name = "Conversa"
 tag = "v1"
 new_sqlite_classes = ["Conversa"]
 
+[triggers]
+crons = ["17 9 * * 1"]
+
 [observability]
 enabled = true
 

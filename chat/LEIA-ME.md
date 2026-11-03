@@ -19,7 +19,7 @@ Do próprio site: `bot.json` (gerado pelo Jekyll a partir de `_config.yml` e `_d
 ## Avisos para a equipe
 
 - **Planilha + e-mail** (já funciona): todo pedido de pessoa e todo lead vira linha na planilha de leads e o Apps Script manda e-mail para a conta da CEBEL. Pedidos de atendimento entram com Assunto "Atendimento humano: …" e formulário `chat-atendimento`.
-- **Telegram** (opcional, aviso instantâneo no celular): configure `TELEGRAM_BOT_TOKEN` e `TELEGRAM_CHAT_ID` (vários IDs separados por vírgula). Se ninguém responder em 10 min dentro do horário, chega um lembrete.
+- **Telegram** (desligado por escolha do João; e-mail basta): configure `TELEGRAM_BOT_TOKEN` e `TELEGRAM_CHAT_ID` (vários IDs separados por vírgula). Se ninguém responder em 10 min dentro do horário, chega um lembrete.
 
 ## Configuração (Cloudflare → Worker → Settings → Variables and Secrets)
 
@@ -42,3 +42,9 @@ Com a **coexistência** da Meta, o mesmo número funciona no app WhatsApp Busine
 ## Testes
 
 `npm install`, depois `node test/mock.mjs` (serviços falsos), `npx wrangler dev` com um `.dev.vars` apontando `ANTHROPIC_URL`, `FB_BASE`, `IG_BASE`, `SITE_URL` e `LEADS_ENDPOINT` para o mock, e `node test/teste.mjs` (20 cenários).
+
+## Para funcionar para sempre
+
+- Chave do Instagram: vence em 60 dias; o Worker renova sozinho toda segunda às 6h (cron) e guarda a nova. `GET /config/instagram-renovar?senha=…` força agora. Trocar o segredo `INSTAGRAM_TOKEN` no Cloudflare passa a valer na hora.
+- WhatsApp: usar token permanente (usuário do sistema) no `WHATSAPP_TOKEN`.
+- Claude: créditos com recarga automática ligada no console da Anthropic.

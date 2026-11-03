@@ -13,11 +13,15 @@ import PAGINA_TESTE from "./teste.html";
 const HIST_MAX = 30;
 
 export default {
+  // Toda segunda de manhã: renova a chave do Instagram (ela vence em 60 dias se não for renovada).
+  async scheduled(evento, env, ctx) {
+    ctx.waitUntil(renovarInstagram(env).then((r) => console.log("renovação instagram", JSON.stringify(r))));
+  },
   async fetch(req, env, ctx) {
     const url = new URL(req.url);
     const p = url.pathname.replace(/\/+$/, "") || "/";
     try {
-      if (p === "/") return json({ ok: true, servico: "CEBEL atendimento", whatsapp: !!env.WHATSAPP_TOKEN, instagram: !!env.INSTAGRAM_TOKEN, claude: !!env.ANTHROPIC_API_KEY, senha_teste: !!senhaAdmin(env), telegram: !!env.TELEGRAM_BOT_TOKEN, versao: 7 });
+      if (p === "/") return json({ ok: true, servico: "CEBEL atendimento", whatsapp: !!env.WHATSAPP_TOKEN, instagram: !!env.INSTAGRAM_TOKEN, claude: !!env.ANTHROPIC_API_KEY, senha_teste: !!senhaAdmin(env), telegram: !!env.TELEGRAM_BOT_TOKEN, versao: 8 });
       if (p === "/webhook/whatsapp" || p === "/webhook/instagram") {
         if (req.method === "GET") return verificar(url, env);
         const corpo = await req.text();
@@ -36,6 +40,10 @@ export default {
         const stub = conversa(env, "web:" + String(sessao).slice(0, 40));
         const r = await stub.fetch("https://do/entrada", { method: "POST", body: JSON.stringify({ canal: "web", usuario: sessao, texto, botao, nome: "Teste", retornar: true }) });
         return new Response(r.body, { headers: { "content-type": "application/json" } });
+      }
+      if (p === "/config/instagram-renovar") {
+        if (!senhaOk(url, env)) return json({ erro: "senha" }, 401);
+        return json(await renovarInstagram(env));
       }
       if (p === "/config/telegram") {
         if (!senhaOk(url, env)) return json({ erro: "senha" }, 401);
@@ -386,7 +394,7 @@ async function enviarInstagram(env, para, texto, botoes) {
   for (let i = 0; i < partes.length; i++) {
     const msg = { text: partes[i] };
     if (i === partes.length - 1 && botoes.length) msg.quick_replies = botoes.map((x) => ({ content_type: "text", title: x.titulo.slice(0, 20), payload: x.id }));
-    const out = await graph(env, url, env.INSTAGRAM_TOKEN, { recipient: { id: para }, message: msg });
+    const out = await graph(env, url, await igTok(env), { recipient: { id: para }, message: msg });
     if (out.message_id) ids.push(out.message_id);
   }
   return ids;
@@ -398,8 +406,8 @@ async function digitando(env, s, msgId) {
       { messaging_product: "whatsapp", status: "read", message_id: msgId, typing_indicator: { type: "text" } });
   if (s.canal === "instagram") {
     const url = `${env.IG_BASE || "https://graph.instagram.com"}/${GRAPH(env)}/me/messages`;
-    await graph(env, url, env.INSTAGRAM_TOKEN, { recipient: { id: s.usuario }, sender_action: "mark_seen" });
-    await graph(env, url, env.INSTAGRAM_TOKEN, { recipient: { id: s.usuario }, sender_action: "typing_on" });
+    await graph(env, url, await igTok(env), { recipient: { id: s.usuario }, sender_action: "mark_seen" });
+    await graph(env, url, await igTok(env), { recipient: { id: s.usuario }, sender_action: "typing_on" });
   }
 }
 
@@ -434,7 +442,7 @@ async function perfil(env, s) {
   if (s.canal !== "instagram" || !env.INSTAGRAM_TOKEN) return {};
   if (s.perfil) return s.perfil;
   try {
-    const r = await fetch(`${env.IG_BASE || "https://graph.instagram.com"}/${GRAPH(env)}/${s.usuario}?fields=name,username`, { headers: { Authorization: "Bearer " + env.INSTAGRAM_TOKEN } });
+    const r = await fetch(`${env.IG_BASE || "https://graph.instagram.com"}/${GRAPH(env)}/${s.usuario}?fields=name,username`, { headers: { Authorization: "Bearer " + (await igTok(env)) } });
     const j = await r.json();
     s.perfil = { nome: j.name || "", usuario: j.username || "" };
     if (!s.nome && j.name) s.nome = j.name;
@@ -492,10 +500,31 @@ async function planilha(env, { formulario, origem, campos }) {
   }).catch((e) => console.log("planilha erro", e.message));
 }
 
+// ---------------- Instagram: chave que se renova sozinha ----------------
+let igCache = { em: 0, token: null };
+async function igTok(env) {
+  if (igCache.token && Date.now() - igCache.em < 3600 * 1000) return igCache.token;
+  let salvo = null;
+  try { salvo = (await (await cfg(env).fetch("https://do/cfg-get", { method: "POST", body: "{}" })).json()).ig; } catch (e) {}
+  // Se o segredo foi trocado no Cloudflare depois da última renovação, vale o segredo novo.
+  const token = salvo && salvo.origem === env.INSTAGRAM_TOKEN ? salvo.token : env.INSTAGRAM_TOKEN;
+  igCache = { em: Date.now(), token };
+  return token;
+}
+async function renovarInstagram(env) {
+  if (!env.INSTAGRAM_TOKEN) return { ok: false, erro: "sem INSTAGRAM_TOKEN" };
+  const atual = await igTok(env);
+  const r = await (await fetch(`${env.IG_BASE || "https://graph.instagram.com"}/refresh_access_token?grant_type=ig_refresh_token&access_token=${encodeURIComponent(atual)}`)).json();
+  if (!r.access_token) return { ok: false, erro: r.error?.message || "falhou" };
+  await cfg(env).fetch("https://do/cfg-set", { method: "POST", body: JSON.stringify({ ig: { token: r.access_token, origem: env.INSTAGRAM_TOKEN, em: Date.now() } }) });
+  igCache = { em: Date.now(), token: r.access_token };
+  return { ok: true, valido_por_dias: Math.round((r.expires_in || 0) / 86400) };
+}
+
 // ---------------- Instagram: menu fixo e perguntas iniciais ----------------
 async function configurarInstagram(env) {
   const url = `${env.IG_BASE || "https://graph.instagram.com"}/${GRAPH(env)}/me/messenger_profile`;
-  const ice = await graph(env, url, env.INSTAGRAM_TOKEN, {
+  const ice = await graph(env, url, await igTok(env), {
     platform: "instagram",
     ice_breakers: [
       { locale: "default", call_to_actions: [
@@ -515,7 +544,7 @@ async function configurarInstagram(env) {
         { question: "Hablar con una persona", payload: "PESSOA" } ] },
     ],
   });
-  const menu = await graph(env, url, env.INSTAGRAM_TOKEN, {
+  const menu = await graph(env, url, await igTok(env), {
     platform: "instagram",
     persistent_menu: [
       { locale: "default", composer_input_disabled: false, call_to_actions: [
