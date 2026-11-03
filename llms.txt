@@ -1,0 +1,38 @@
+---
+layout: null
+---
+# CEBEL · Energia & Mobilidade Elétrica
+
+> {{ site.sigla }} ({{ site.razao_social }}). Empresa fluminense que instala e opera eletropostos (estações de recarga para carros elétricos) no estado do Rio de Janeiro, em academias, shoppings, supermercados e outros estacionamentos. O local parceiro não investe nada: a CEBEL compra o equipamento, instala, opera, paga a energia e repassa ao parceiro parte da receita de cada recarga.
+
+## Para motoristas
+
+- Preço: R$ {{ site.preco_kwh }} por kWh em toda a rede, sem taxa de ociosidade.
+- Pagamento pelo app {{ site.app_nome }}, com créditos a partir de R$ 20, por Pix ou cartão. As estações são abertas a qualquer motorista.
+- Conectores: Tipo 2 (recarga AC) e CCS2 (recarga rápida DC).
+- Suporte pelo WhatsApp {{ site.whatsapp_display }}.
+
+## Estações em operação
+{% assign ops = site.data.estacoes | where: "status", "operando" %}{% for st in ops %}
+- {{ st.nome }}: {{ st.endereco }}{% if st.carregador != "" %} ({{ st.carregador }}){% endif %}{% endfor %}
+
+## Próximas estações
+{% assign prox = site.data.estacoes | where_exp: "e", "e.status != 'operando'" %}{% for st in prox %}
+- {{ st.nome }} ({{ st.cidade }}, {{ st.regiao }}){% if st.carregador != "" %}: {{ st.carregador }}{% endif %}{% endfor %}
+
+## Para donos de estacionamento
+
+- Investimento zero, energia paga pela CEBEL, instalação e manutenção por conta da CEBEL.
+- Repasse padrão de {{ site.repasse_parceiro }}% da receita líquida de cada recarga para o local parceiro.
+- Visita técnica e estudo de viabilidade gratuitos.
+- Parceira da Smart Fit nas unidades de Itaguaí e Rio das Ostras.
+
+## Páginas
+
+- [Início]({{ '/' | absolute_url }}): visão geral da rede.
+- [Estações]({{ '/estacoes/' | absolute_url }}): endereços, rota no Google Maps e Waze.
+- [Como carregar]({{ '/motoristas/' | absolute_url }}): passo a passo com vídeo e perguntas frequentes.
+- [Seja parceiro]({{ '/parceiros/' | absolute_url }}): calculadora de receita e pedido de estudo gratuito.
+- [Sobre]({{ '/sobre/' | absolute_url }}): história e modelo da CEBEL.
+- [Novidades]({{ '/novidades/' | absolute_url }}): novas estações e notícias.
+- [Contato]({{ '/contato/' | absolute_url }}): WhatsApp {{ site.whatsapp_display }}.

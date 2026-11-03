@@ -89,6 +89,8 @@
   document.addEventListener("click", function (e) {
     var a = e.target.closest && e.target.closest('a[href*="wa.me/"]');
     if (a) track("contact", { local: a.className || "link", pagina: location.pathname });
+    var bk = e.target.closest && e.target.closest('[data-track="agendar_visita"]');
+    if (bk) track("agendar_visita", { pagina: location.pathname });
   });
 
   // ---------- Formulários que viram mensagem de WhatsApp ----------

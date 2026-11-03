@@ -7,6 +7,7 @@
 {% assign desc = page.descricao | default: site.description %}
 <title>{{ full_title }}</title>
 <meta name="description" content="{{ desc }}">
+<link rel="alternate" type="text/plain" title="CEBEL para assistentes de IA" href="{{ '/llms.txt' | relative_url }}">
 <link rel="canonical" href="{{ page.url | absolute_url }}">
 <meta property="og:site_name" content="CEBEL">
 <meta property="og:title" content="{{ full_title }}">

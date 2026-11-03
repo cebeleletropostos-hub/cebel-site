@@ -11,7 +11,7 @@ descricao: Tenha um eletroposto no estacionamento do seu negócio sem investir n
       <p class="lead">Parceira da Smart Fit em Itaguaí e Rio das Ostras, a CEBEL compra, instala e opera o carregador de carro elétrico. Você cede a vaga, recebe uma parte de cada recarga e ganha clientes que ficam de 30 minutos a 1 hora no seu negócio.</p>
       <div class="hero-actions">
         <a class="btn sol" href="#contato">Pedir estudo gratuito {% include icons.html i="arrow" %}</a>
-        <a class="btn linha" href="#calculadora">Simular meu retorno</a>
+        {% if site.agenda_visita != "" %}<a class="btn linha" href="{{ site.agenda_visita }}" target="_blank" rel="noopener" data-track="agendar_visita">Agendar visita técnica</a>{% else %}<a class="btn linha" href="#calculadora">Simular meu retorno</a>{% endif %}
       </div>
     </div>
     <dl class="terms" aria-label="Condições da parceria">

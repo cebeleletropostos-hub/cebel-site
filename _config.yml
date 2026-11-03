@@ -28,6 +28,10 @@ google_site_verification: ""
 
 # Perfis oficiais (deixe vazio o que ainda não existe; entram no rodapé, na página de links e no Google)
 instagram: ""
+# Canal do WhatsApp (link https://whatsapp.com/channel/...)
+whatsapp_canal: ""
+# Página de agendamento da visita técnica (Google Agenda, link https://calendar.app.google/...)
+agenda_visita: ""
 linkedin: ""
 youtube: ""
 # App de recarga

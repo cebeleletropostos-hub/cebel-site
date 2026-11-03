@@ -3,4 +3,19 @@ layout: null
 ---
 User-agent: *
 Allow: /
+
+# Buscadores e assistentes de IA (Bing/Copilot, ChatGPT, Perplexity, Claude, Google/Gemini)
+User-agent: Bingbot
+Allow: /
+User-agent: OAI-SearchBot
+Allow: /
+User-agent: ChatGPT-User
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: Claude-SearchBot
+Allow: /
+User-agent: Google-Extended
+Allow: /
+
 Sitemap: {{ '/sitemap.xml' | absolute_url }}

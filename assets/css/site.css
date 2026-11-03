@@ -469,3 +469,6 @@ form.wa textarea{min-height:110px;resize:vertical}
 @media (max-width:900px){.news{grid-template-columns:1fr 1fr}}
 @media (max-width:600px){.news{grid-template-columns:1fr}}
 @media (max-width:700px){body:has(.links-page) .consent{bottom:calc(16px + env(safe-area-inset-bottom,0px))}}
+
+.book-next{font-size:14.5px;color:var(--muted)}
+.book-next a{color:var(--azul);font-weight:700}

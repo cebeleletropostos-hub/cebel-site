@@ -38,6 +38,16 @@ descricao: Estações, parcerias e contato da CEBEL em um só lugar.
         <span class="lk-txt"><b>Baixar o app {{ site.app_nome }}</b><small>Créditos a partir de R$ 20, por Pix ou cartão</small></span>
         {% include icons.html i="arrow" %}
       </a>
+      {% if site.agenda_visita != "" %}<a class="lk" href="{{ site.agenda_visita }}" target="_blank" rel="noopener" data-track="agendar_visita">
+        <span class="lk-ico">{% include icons.html i="shield" %}</span>
+        <span class="lk-txt"><b>Agendar visita técnica</b><small>Gratuita, no seu estacionamento</small></span>
+        {% include icons.html i="arrow" %}
+      </a>{% endif %}
+      {% if site.whatsapp_canal != "" %}<a class="lk" href="{{ site.whatsapp_canal }}" target="_blank" rel="noopener">
+        <span class="lk-ico">{% include icons.html i="wa" %}</span>
+        <span class="lk-txt"><b>Canal da CEBEL no WhatsApp</b><small>Novas estações e avisos em primeira mão</small></span>
+        {% include icons.html i="arrow" %}
+      </a>{% endif %}
       <a class="lk" href="{{ '/novidades/' | relative_url }}">
         <span class="lk-ico">{% include icons.html i="shield" %}</span>
         <span class="lk-txt"><b>Novidades</b><small>Novas estações e parcerias</small></span>

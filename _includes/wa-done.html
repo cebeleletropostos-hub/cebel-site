@@ -11,4 +11,5 @@
     <a class="btn azul wa-link" href="https://wa.me/{{ site.whatsapp }}" target="_blank" rel="noopener">Abrir WhatsApp</a>
     <button class="btn linha copy" type="button">Copiar mensagem</button>
   </div>
+  {% if site.agenda_visita != "" %}<p class="book-next">Quer adiantar? <a href="{{ site.agenda_visita }}" target="_blank" rel="noopener" data-track="agendar_visita">Escolha um horário para a visita técnica</a>.</p>{% endif %}
 </div>
