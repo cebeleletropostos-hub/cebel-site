@@ -77,6 +77,22 @@
     });
   });
 
+  // Recarga simulada na home
+  var fill = $(".ls-fill");
+  if (fill && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    var kwh = 24.6, start = 18.4, end = 32.6, ticks = 0;
+    var fmt1 = function (n) { return n.toLocaleString("pt-BR", { minimumFractionDigits: 1, maximumFractionDigits: 1 }); };
+    setInterval(function () {
+      kwh = kwh >= end ? start : +(kwh + 0.1).toFixed(1);
+      var pct = Math.round(38 + (kwh - start) / (end - start) * 44);
+      fill.style.width = pct + "%";
+      $("#ls-pct").textContent = pct + "%";
+      $("#ls-kwh").textContent = fmt1(kwh);
+      $("#ls-brl").textContent = (kwh * 2).toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+      $("#ls-min").textContent = Math.round(28 + (kwh - start) / (end - start) * 22);
+    }, 900);
+  }
+
   // Vídeo: som ligado/desligado e pausa para quem prefere menos movimento
   var reel = $("#reel-video"), snd = $(".reel-sound");
   if (reel && snd) {
