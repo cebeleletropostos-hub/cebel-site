@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Tenha um eletroposto no estacionamento do seu negócio sem investir nada. A CEBEL instala, opera e paga a energia; você recebe parte da receita.">
+<meta property="og:title" content="Eletroposto no seu estacionamento, investimento zero | CEBEL">
+<meta property="og:description" content="A CEBEL instala e opera carregadores de carro elétrico no seu negócio. Você cede a vaga e recebe parte de cada recarga.">
+<meta property="og:type" content="website">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>CEBEL Eletroposto Parceiro</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+/* Layout: sinalização de eletroposto — faixa escura de topo, régua de kWh, seções em coluna única de leitura com calculadora como peça central */
+:root{
+  --bg:#F3F5F4; --surface:#FFFFFF; --ink:#0F2A2E; --muted:#55686B; --line:#D5DEDC;
+  --signal:#E8A317; --signal-ink:#2B1D00; --teal:#0F6E68; --band:#0F2A2E; --band-ink:#EAF2F0;
+  --display:"Barlow Condensed","Arial Narrow",system-ui,sans-serif;
+  --body:"Barlow",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0B1719; --surface:#13252A; --ink:#E6EFED; --muted:#9AB0AE; --line:#24393D;
+  --signal:#F0B23A; --signal-ink:#231700; --teal:#4FC1B6; --band:#06100F; --band-ink:#E6EFED; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0B1719; --surface:#13252A; --ink:#E6EFED; --muted:#9AB0AE; --line:#24393D;
+  --signal:#F0B23A; --signal-ink:#231700; --teal:#4FC1B6; --band:#06100F; --band-ink:#E6EFED; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55}
+.wrap{max-width:1040px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--display);line-height:1.02;text-wrap:balance;margin:0;letter-spacing:.005em}
+p{margin:0}
+.eyebrow{font-family:var(--mono);font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--teal)}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--signal);outline-offset:2px}
+
+/* topo */
+.band{background:var(--band);color:var(--band-ink)}
+.band .eyebrow{color:var(--signal)}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:18px}
+.logo{font-family:var(--display);font-weight:800;font-size:26px;letter-spacing:.04em;display:flex;align-items:center;gap:10px}
+.bolt{width:28px;height:28px;border-radius:6px;background:var(--signal);display:grid;place-items:center}
+.bolt svg{width:16px;height:16px}
+.top a.cta-sm{font-weight:600;font-size:15px;text-decoration:none;border:1.5px solid color-mix(in srgb,var(--band-ink) 40%,transparent);padding:8px 14px;border-radius:999px}
+.hero{display:grid;grid-template-columns:1.25fr 1fr;gap:40px;padding-block:28px 56px;align-items:end}
+.hero h1{font-size:clamp(44px,7.4vw,84px);font-weight:800;text-transform:uppercase}
+.hero h1 em{font-style:normal;color:var(--signal)}
+.hero p.lead{margin-top:18px;font-size:19px;max-width:34em;color:color-mix(in srgb,var(--band-ink) 82%,transparent)}
+.hero .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.btn{font-family:var(--body);font-weight:600;font-size:17px;border:0;border-radius:10px;padding:14px 22px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+.btn.primary{background:var(--signal);color:var(--signal-ink)}
+.btn.ghost{background:transparent;color:inherit;border:1.5px solid color-mix(in srgb,currentColor 35%,transparent)}
+.terms{display:grid;gap:0;border-top:1px solid color-mix(in srgb,var(--band-ink) 20%,transparent)}
+.terms div{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding-block:14px;border-bottom:1px solid color-mix(in srgb,var(--band-ink) 20%,transparent)}
+.terms dt{font-size:15px;color:color-mix(in srgb,var(--band-ink) 72%,transparent)}
+.terms dd{margin:0;font-family:var(--display);font-weight:700;font-size:30px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.terms dd small{font-size:16px;font-weight:600;opacity:.7}
+
+/* régua kWh */
+.ruler{height:14px;background:repeating-linear-gradient(90deg,var(--signal) 0 2px,transparent 2px 12px);opacity:.9}
+
+section{padding-block:64px}
+.sec-head{display:grid;gap:10px;margin-bottom:28px;max-width:40em}
+.sec-head h2{font-size:clamp(34px,5vw,50px);font-weight:800;text-transform:uppercase}
+.sec-head p{color:var(--muted)}
+
+/* calculadora */
+.calc{display:grid;grid-template-columns:1fr 1fr;gap:0;background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.calc .inputs{padding:28px;display:grid;gap:24px;border-right:1px solid var(--line)}
+.field{display:grid;gap:8px}
+.field label,.field .lbl{font-weight:600;font-size:15px;display:flex;justify-content:space-between;gap:8px}
+.field output{font-family:var(--mono);font-weight:600;color:var(--teal)}
+.seg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.seg input{position:absolute;opacity:0;pointer-events:none}
+.seg label{display:grid;gap:2px;border:1.5px solid var(--line);border-radius:10px;padding:12px;cursor:pointer;font-weight:500}
+.seg label b{font-family:var(--display);font-size:22px;font-weight:700}
+.seg label span{font-size:13.5px;color:var(--muted)}
+.seg input:checked + label{border-color:var(--teal);box-shadow:inset 0 0 0 1px var(--teal)}
+.seg input:focus-visible + label{outline:3px solid var(--signal);outline-offset:2px}
+input[type=range]{width:100%;accent-color:var(--teal)}
+.hint{font-size:13.5px;color:var(--muted)}
+.calc .result{padding:28px;display:grid;gap:18px;align-content:start;background:color-mix(in srgb,var(--teal) 7%,var(--surface))}
+.readout{display:grid;gap:4px}
+.readout .k{font-family:var(--mono);font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.readout .v{font-family:var(--display);font-weight:800;font-size:clamp(46px,7vw,64px);line-height:1;font-variant-numeric:tabular-nums;color:var(--ink)}
+.readout .v.small{font-size:30px}
+.rows{display:grid;border-top:1px solid var(--line)}
+.rows div{display:flex;justify-content:space-between;gap:12px;padding-block:9px;border-bottom:1px solid var(--line);font-size:15px}
+.rows div span:last-child{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+.fine{font-size:12.5px;color:var(--muted);line-height:1.45}
+
+/* como funciona */
+.steps{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(4,1fr);gap:20px;counter-reset:s}
+.steps li{counter-increment:s;display:grid;gap:8px;align-content:start;padding-top:16px;border-top:3px solid var(--ink)}
+.steps li::before{content:"Etapa " counter(s);font-family:var(--mono);font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--teal)}
+.steps h3{font-size:26px;font-weight:700}
+.steps p{color:var(--muted);font-size:15.5px}
+
+/* quem */
+.fit{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.fit div{background:var(--surface);padding:22px;display:grid;gap:6px;align-content:start}
+.fit h3{font-size:24px;font-weight:700}
+.fit p{font-size:15px;color:var(--muted)}
+.fit .stay{font-family:var(--mono);font-size:12.5px;color:var(--teal)}
+
+/* faq */
+.faq{display:grid;gap:0;border-top:1px solid var(--line);max-width:760px}
+details{border-bottom:1px solid var(--line);padding-block:16px}
+summary{font-weight:600;font-size:18px;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:16px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-family:var(--mono);color:var(--teal)}
+details[open] summary::after{content:"–"}
+details p{margin-top:10px;color:var(--muted)}
+
+/* formulário */
+.contact{background:var(--band);color:var(--band-ink)}
+.contact .sec-head p{color:color-mix(in srgb,var(--band-ink) 75%,transparent)}
+.contact .eyebrow{color:var(--signal)}
+form{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:760px}
+form .full{grid-column:1/-1}
+form label{display:grid;gap:6px;font-weight:600;font-size:15px}
+form input,form select,form textarea{font:inherit;font-weight:400;font-size:16px;padding:12px 14px;border-radius:10px;border:1.5px solid color-mix(in srgb,var(--band-ink) 25%,transparent);background:color-mix(in srgb,var(--band-ink) 6%,transparent);color:var(--band-ink);width:100%}
+form select option{color:#0F2A2E}
+form textarea{min-height:90px;resize:vertical}
+.form-actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.done{grid-column:1/-1;border:1.5px solid var(--signal);border-radius:12px;padding:16px;display:grid;gap:10px}
+.done pre{white-space:pre-wrap;font-family:var(--mono);font-size:13.5px;margin:0;color:color-mix(in srgb,var(--band-ink) 85%,transparent)}
+.err{color:var(--signal);font-size:14.5px;grid-column:1/-1}
+footer{padding-block:28px;font-size:14px;color:color-mix(in srgb,var(--band-ink) 60%,transparent);border-top:1px solid color-mix(in srgb,var(--band-ink) 15%,transparent)}
+
+@media (max-width:820px){
+  .hero{grid-template-columns:1fr;gap:28px}
+  .calc{grid-template-columns:1fr}
+  .calc .inputs{border-right:0;border-bottom:1px solid var(--line)}
+  .steps{grid-template-columns:1fr 1fr}
+  .fit{grid-template-columns:1fr 1fr}
+}
+@media (max-width:520px){
+  .steps,.fit,form{grid-template-columns:1fr}
+  .calc .inputs,.calc .result{padding:20px}
+  section{padding-block:48px}
+  .top a.cta-sm{display:none}
+}
+@media (prefers-reduced-motion:no-preference){.btn{transition:transform .15s}.btn:hover{transform:translateY(-1px)}}
+</style>
+
+</head>
+<body>
+<div class="band">
+  <div class="wrap">
+    <div class="top">
+      <div class="logo"><span class="bolt" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M9.5 1 3 9h4l-1 6 6.5-8h-4z" fill="#2B1D00"/></svg></span>CEBEL</div>
+      <a class="cta-sm" href="#contato">Quero um eletroposto</a>
+    </div>
+    <div class="hero">
+      <div>
+        <p class="eyebrow">Para donos de estacionamento no RJ</p>
+        <h1 style="margin-top:12px">Um eletroposto no seu estacionamento. <em>Investimento zero.</em></h1>
+        <p class="lead">Parceira da Smart Fit em Itaguaí e Rio das Ostras, a CEBEL compra, instala e opera o carregador de carro elétrico. Você cede a vaga, recebe uma parte de cada recarga e ganha clientes que ficam de 30 minutos a 1 hora no seu negócio.</p>
+        <div class="actions">
+          <a class="btn primary" href="#calculadora">Calcular meu retorno</a>
+          <a class="btn ghost" href="#contato">Falar com a CEBEL</a>
+        </div>
+      </div>
+      <dl class="terms" aria-label="Condições da parceria">
+        <div><dt>Seu investimento</dt><dd>R$ 0</dd></div>
+        <div><dt>Conta de energia do carregador</dt><dd>Paga pela CEBEL</dd></div>
+        <div><dt>Sua parte da receita líquida</dt><dd>15<small>%</small></dd></div>
+        <div><dt>Manutenção e suporte</dt><dd>Por nossa conta</dd></div>
+      </dl>
+    </div>
+  </div>
+  <div class="ruler" aria-hidden="true"></div>
+</div>
+
+<section id="calculadora">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Calculadora</p>
+      <h2>Quanto um carregador rende para você</h2>
+      <p>Ajuste o tipo de carregador e o movimento esperado. Os valores são estimativas; o estudo do seu local é gratuito.</p>
+    </div>
+    <div class="calc">
+      <div class="inputs">
+        <div class="field">
+          <span class="lbl">Tipo de carregador</span>
+          <div class="seg" role="radiogroup" aria-label="Tipo de carregador">
+            <input type="radio" name="tipo" id="tipo-ac" value="ac">
+            <label for="tipo-ac"><b>AC 7 kW</b><span>Recarga lenta, 2 a 6 h. Ideal para quem fica muito tempo.</span></label>
+            <input type="radio" name="tipo" id="tipo-dc" value="dc" checked>
+            <label for="tipo-dc"><b>DC 40 kW</b><span>Recarga rápida, 30 a 60 min. Ideal para alto giro.</span></label>
+          </div>
+        </div>
+        <div class="field">
+          <label for="sessoes">Recargas por dia <output id="sessoes-out" for="sessoes">6</output></label>
+          <input type="range" id="sessoes" min="1" max="20" step="1" value="6">
+          <span class="hint">Locais em avenidas e rodovias movimentadas costumam ficar entre 4 e 10.</span>
+        </div>
+        <div class="field">
+          <label for="kwh">Energia média por recarga <output id="kwh-out" for="kwh">25 kWh</output></label>
+          <input type="range" id="kwh" min="5" max="45" step="1" value="25">
+          <span class="hint">Um carro elétrico médio recebe de 15 a 30 kWh por parada.</span>
+        </div>
+      </div>
+      <div class="result" aria-live="polite">
+        <div class="readout">
+          <span class="k">Sua parte por mês</span>
+          <span class="v" id="r-parte">R$ 0</span>
+        </div>
+        <div class="readout">
+          <span class="k">Em 12 meses</span>
+          <span class="v small" id="r-ano">R$ 0</span>
+        </div>
+        <div class="rows">
+          <div><span>Energia vendida no mês</span><span id="r-kwh">0 kWh</span></div>
+          <div><span>Receita bruta (R$ 2,00/kWh)</span><span id="r-bruta">R$ 0</span></div>
+          <div><span>Motoristas no seu local por mês</span><span id="r-visitas">0</span></div>
+        </div>
+        <p class="fine">Premissas: 30 dias por mês, tarifa ao motorista de R$ 2,00/kWh, custo de energia de R$ 0,85/kWh e 10% de impostos. Receita líquida = bruta − impostos − energia. Valores ilustrativos, sem garantia de resultado.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Como funciona</p>
+      <h2>Do primeiro contato à primeira recarga</h2>
+    </div>
+    <ol class="steps">
+      <li><h3>Visita técnica</h3><p>Avaliamos as vagas, o quadro elétrico e o fluxo do local. Sem custo.</p></li>
+      <li><h3>Proposta e contrato</h3><p>Definimos quantidade de carregadores, vagas e o repasse. Contrato de cessão de uso simples.</p></li>
+      <li><h3>Instalação</h3><p>A CEBEL compra o equipamento e cuida da obra elétrica e da aprovação junto à concessionária.</p></li>
+      <li><h3>Operação</h3><p>Seu local entra no app e no Google Maps. Você recebe o repasse todo mês, com relatório de uso.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Para quem é</p>
+      <h2>Lugares onde o motorista já para</h2>
+      <p>Já operamos carregadores nas unidades Smart Fit de Itaguaí e Rio das Ostras, e a Smart Fit Saquarema vem em seguida. Novas unidades estão em instalação no Rio e na Região dos Lagos.</p>
+    </div>
+    <div class="fit">
+      <div><span class="stay">Permanência: 1 a 2 h</span><h3>Academias</h3><p>O aluno treina enquanto o carro carrega. É o modelo que já roda nas nossas unidades Smart Fit.</p></div>
+      <div><span class="stay">Permanência: 1 a 3 h</span><h3>Shoppings e centros comerciais</h3><p>Mais tempo no local, mais consumo nas lojas.</p></div>
+      <div><span class="stay">Permanência: 30 a 60 min</span><h3>Supermercados e atacarejos</h3><p>A recarga cabe no tempo da compra.</p></div>
+      <div><span class="stay">Permanência: a noite toda</span><h3>Hotéis e pousadas</h3><p>Hóspedes com carro elétrico escolhem onde podem carregar.</p></div>
+      <div><span class="stay">Permanência: 30 a 60 min</span><h3>Restaurantes de estrada</h3><p>Parada natural em rodovias como RJ-106 e RJ-124.</p></div>
+      <div><span class="stay">Permanência: variável</span><h3>Estacionamentos e postos</h3><p>Receita nova em vagas que já existem.</p></div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Dúvidas frequentes</p>
+      <h2>Perguntas de quem está avaliando</h2>
+    </div>
+    <div class="faq">
+      <details><summary>Eu pago alguma coisa?</summary><p>Não. Equipamento, instalação, energia consumida pelo carregador, manutenção e software ficam por conta da CEBEL.</p></details>
+      <details><summary>Como recebo minha parte?</summary><p>Mensalmente, com relatório das recargas feitas no seu local. O percentual padrão é de 15% da receita líquida e pode ser ajustado conforme o local.</p></details>
+      <details><summary>Preciso reservar vagas só para carros elétricos?</summary><p>Recomendamos uma ou duas vagas sinalizadas ao lado do carregador. Definimos a quantidade junto com você na visita técnica.</p></details>
+      <details><summary>Minha rede elétrica aguenta?</summary><p>É isso que a visita técnica confirma. Quando a carga disponível é baixa, existem soluções como carregadores AC ou baterias de apoio.</p></details>
+      <details><summary>Qual o prazo do contrato?</summary><p>Os contratos costumam ter prazo de alguns anos para cobrir o investimento no equipamento. Os termos são discutidos caso a caso.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contato">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Fale com a CEBEL</p>
+      <h2>Peça o estudo gratuito do seu local</h2>
+      <p>Preencha os dados abaixo. A mensagem vai pronta para o nosso WhatsApp.</p>
+    </div>
+    <form id="lead" novalidate>
+      <label>Seu nome<input id="f-nome" name="nome" autocomplete="name" required></label>
+      <label>WhatsApp<input id="f-tel" name="tel" type="tel" autocomplete="tel" inputmode="tel" placeholder="(21) 9..." required></label>
+      <label>Nome do negócio<input id="f-negocio" name="negocio" autocomplete="organization" required></label>
+      <label>Tipo de negócio
+        <select id="f-tipo" name="tipo">
+          <option>Academia</option><option>Shopping ou centro comercial</option><option>Supermercado ou atacarejo</option><option>Hotel ou pousada</option><option>Restaurante</option><option>Estacionamento ou posto</option><option>Outro</option>
+        </select>
+      </label>
+      <label>Cidade e bairro<input id="f-cidade" name="cidade" autocomplete="address-level2" placeholder="Ex.: Maricá, Centro" required></label>
+      <label>Vagas de estacionamento
+        <select id="f-vagas" name="vagas"><option>Até 20</option><option>21 a 50</option><option>51 a 150</option><option>Mais de 150</option></select>
+      </label>
+      <label class="full">Algo mais que devemos saber? (opcional)<textarea id="f-obs" name="obs"></textarea></label>
+      <p class="err" id="err" hidden></p>
+      <div class="form-actions full">
+        <button class="btn primary" type="submit">Enviar pelo WhatsApp</button>
+      </div>
+      <div class="done" id="done" hidden>
+        <strong>Sua mensagem está pronta.</strong>
+        <p id="done-msg">Toque em Abrir WhatsApp ou copie o texto abaixo e envie para <span id="wa-num-show"></span>.</p>
+        <pre id="msg"></pre>
+        <div class="form-actions">
+          <a class="btn primary" id="wa-link" href="#" target="_blank" rel="noopener">Abrir WhatsApp</a>
+          <button class="btn ghost" type="button" id="copy">Copiar mensagem</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="wrap"><footer>CEBEL Energia &amp; Mobilidade Elétrica · Rio de Janeiro</footer></div>
+</section>
+
+<script>
+(function(){
+  // Número do WhatsApp da CEBEL, só dígitos com DDI e DDD. Ex.: "5521999999999"
+  const WHATSAPP = "5521996948090";
+  const PRECO = 2.00, ENERGIA = 0.85, IMPOSTO = 0.10, REPASSE = 0.15, DIAS = 30;
+  const brl = n => n.toLocaleString("pt-BR",{style:"currency",currency:"BRL",maximumFractionDigits:0});
+  const num = n => n.toLocaleString("pt-BR",{maximumFractionDigits:0});
+  const $ = id => document.getElementById(id);
+  const s = $("sessoes"), k = $("kwh");
+  const defaults = {ac:{s:3,k:18}, dc:{s:6,k:25}};
+  function calc(){
+    const ses = +s.value, kw = +k.value;
+    $("sessoes-out").textContent = ses;
+    $("kwh-out").textContent = kw + " kWh";
+    const kwhMes = ses*kw*DIAS;
+    const bruta = kwhMes*PRECO;
+    const liquida = Math.max(0, bruta*(1-IMPOSTO) - kwhMes*ENERGIA);
+    const parte = liquida*REPASSE;
+    $("r-parte").textContent = brl(parte);
+    $("r-ano").textContent = brl(parte*12);
+    $("r-kwh").textContent = num(kwhMes) + " kWh";
+    $("r-bruta").textContent = brl(bruta);
+    $("r-visitas").textContent = num(ses*DIAS);
+  }
+  document.querySelectorAll('input[name=tipo]').forEach(r=>r.addEventListener("change",()=>{
+    const d = defaults[r.value]; s.value = d.s; k.value = d.k; calc();
+  }));
+  s.addEventListener("input",calc); k.addEventListener("input",calc);
+  calc();
+
+  const form = $("lead");
+  form.addEventListener("submit", e=>{
+    e.preventDefault();
+    const v = id => $(id).value.trim();
+    const missing = [["f-nome","nome"],["f-tel","WhatsApp"],["f-negocio","nome do negócio"],["f-cidade","cidade"]].filter(([id])=>!v(id)).map(([,n])=>n);
+    const err = $("err");
+    if(missing.length){ err.textContent = "Preencha: " + missing.join(", ") + "."; err.hidden = false; return; }
+    err.hidden = true;
+    const msg = [
+      "Olá, CEBEL! Quero um estudo gratuito para instalar um eletroposto.",
+      "", "Nome: "+v("f-nome"), "WhatsApp: "+v("f-tel"), "Negócio: "+v("f-negocio")+" ("+v("f-tipo")+")",
+      "Local: "+v("f-cidade"), "Vagas: "+v("f-vagas"), v("f-obs") ? "Obs.: "+v("f-obs") : ""
+    ].filter((l,i,a)=>l!==""||i===1).join("\n");
+    $("msg").textContent = msg;
+    const link = $("wa-link");
+    if(WHATSAPP){
+      link.href = "https://wa.me/"+WHATSAPP+"?text="+encodeURIComponent(msg);
+      link.hidden = false;
+      $("wa-num-show").textContent = "+"+WHATSAPP;
+    } else {
+      link.hidden = true;
+      $("done-msg").textContent = "Copie o texto abaixo e envie para a CEBEL.";
+    }
+    $("done").hidden = false;
+    $("done").scrollIntoView({behavior:"smooth",block:"nearest"});
+  });
+  $("copy").addEventListener("click", ()=>{
+    const t = $("msg").textContent, b = $("copy");
+    const sel = ()=>{ const r=document.createRange(); r.selectNodeContents($("msg")); const s=getSelection(); s.removeAllRanges(); s.addRange(r); };
+    if(navigator.clipboard){ navigator.clipboard.writeText(t).then(()=>{ b.textContent="Copiado"; },sel); } else sel();
+  });
+})();
+</script>
+
+</body>
+</html>
