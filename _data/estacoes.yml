@@ -11,7 +11,7 @@
   status: operando
   endereco: "Av. Dep. Octávio Cabral, 840 – Jardim América, Itaguaí – RJ, 23810-301"
   carregador: ""
-  foto: ""
+  foto: "/assets/img/estacoes/itaguai.jpg"
   desde: "Primeira estação da rede"
 
 - id: rio-das-ostras
