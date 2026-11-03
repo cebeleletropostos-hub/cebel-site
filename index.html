@@ -32,19 +32,10 @@ layout: default
 
 <div class="wrap">
   <div class="live-strip" aria-label="Simulação de uma recarga em andamento">
-    <div class="ls-head">
-      <span class="live">Recarga em andamento</span>
-      <span class="ls-where">Smart Fit Itaguaí · DC</span>
-    </div>
-    <div class="ls-bar">
-      <div class="ls-track"><span class="ls-fill" style="width:57%"></span></div>
-      <b class="ls-pct" id="ls-pct">57%</b>
-    </div>
-    <dl class="ls-stats">
-      <div><dt>energia</dt><dd><span id="ls-kwh">24,6</span> kWh</dd></div>
-      <div><dt>valor</dt><dd id="ls-brl">R$ 49,20</dd></div>
-      <div><dt>tempo</dt><dd><span id="ls-min">38</span> min</dd></div>
-    </dl>
+    <p class="ls-label"><span class="live">Carregando</span><b>Smart Fit Itaguaí</b></p>
+    <div class="ls-track" aria-hidden="true"><span class="ls-fill" style="width:57%"></span></div>
+    <b class="ls-pct" id="ls-pct">57%</b>
+    <p class="ls-nums"><span><span id="ls-kwh">24,6</span> kWh</span><span id="ls-brl">R$ 49,20</span><span><span id="ls-min">38</span> min</span></p>
   </div>
 </div>
 

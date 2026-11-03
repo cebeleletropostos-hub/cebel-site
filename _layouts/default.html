@@ -22,7 +22,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700;800&family=DM+Mono:wght@500&display=swap">
-<link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
+<link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}?v={{ site.time | date: '%s' }}">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Organization","name":"{{ site.nome_completo }}","legalName":"{{ site.razao_social }}","url":"{{ '/' | absolute_url }}","telephone":"+{{ site.whatsapp }}","areaServed":"Rio de Janeiro, Brasil"}
 </script>
@@ -40,6 +40,6 @@
   <a class="btn wa" href="https://wa.me/{{ site.whatsapp }}" target="_blank" rel="noopener" aria-label="WhatsApp">{% include icons.html i="wa" %}</a>
 </div>
 <script>window.CEBEL={whatsapp:"{{ site.whatsapp }}",whatsappDisplay:"{{ site.whatsapp_display }}"};</script>
-<script src="{{ '/assets/js/site.js' | relative_url }}" defer></script>
+<script src="{{ '/assets/js/site.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
 </body>
 </html>
