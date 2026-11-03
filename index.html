@@ -1,5 +1,7 @@
 ---
 layout: default
+lang: pt
+ref: home
 ---
 {% assign operando = site.data.estacoes | where: "status", "operando" %}
 {% assign caminho = site.data.estacoes | where_exp: "e", "e.status != 'operando'" %}

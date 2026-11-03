@@ -1,37 +1,38 @@
+{% include t.html %}
 <footer class="site-footer">
   <div class="faixa" aria-hidden="true"></div>
   <div class="wrap">
     <div class="cols">
       <div class="about">
-        <a class="brand" href="{{ '/' | relative_url }}">
+        <a class="brand" href="{{ t.p.home | relative_url }}">
           <img src="{{ '/assets/img/logo-cebel.png' | relative_url }}" alt="" width="44" height="44" loading="lazy">
           <span class="wm"><b>CEBEL</b><small>{{ site.sigla }}</small></span>
         </a>
-        <p>Instalamos e operamos eletropostos no estado do Rio de Janeiro, sem custo para o local parceiro.</p>
+        <p>{{ t.rodape_sobre }}</p>
       </div>
       <div>
-        <h3>Motoristas</h3>
+        <h3>{{ t.rodape_motoristas }}</h3>
         <ul>
-          <li><a href="{{ '/estacoes/' | relative_url }}">Estações</a></li>
-          <li><a href="{{ '/motoristas/' | relative_url }}">Como carregar</a></li>
-          <li><a href="{{ '/motoristas/' | relative_url }}#duvidas">Dúvidas frequentes</a></li>
+          <li><a href="{{ t.p.estacoes | relative_url }}">{{ t.estacoes }}</a></li>
+          <li><a href="{{ t.p.motoristas | relative_url }}">{{ t.como_carregar }}</a></li>
+          <li><a href="{{ t.p.motoristas | relative_url }}#duvidas">{{ t.duvidas }}</a></li>
         </ul>
       </div>
       <div>
-        <h3>Parceiros</h3>
+        <h3>{{ t.rodape_parceiros }}</h3>
         <ul>
-          <li><a href="{{ '/parceiros/' | relative_url }}">Seja parceiro</a></li>
-          <li><a href="{{ '/parceiros/' | relative_url }}#calculadora">Simule seu retorno</a></li>
-          <li><a href="{{ '/sobre/' | relative_url }}">Sobre a CEBEL</a></li>
-          <li><a href="{{ '/novidades/' | relative_url }}">Novidades</a></li>
+          <li><a href="{{ t.p.parceiros | relative_url }}">{{ t.seja_parceiro }}</a></li>
+          <li><a href="{{ t.p.parceiros | relative_url }}#calculadora">{{ t.simule }}</a></li>
+          <li><a href="{{ t.p.sobre | relative_url }}">{{ t.sobre_cebel }}</a></li>
+          <li><a href="{{ '/novidades/' | relative_url }}">{{ t.novidades }}</a></li>
         </ul>
       </div>
       <div>
-        <h3>Contato</h3>
+        <h3>{{ t.rodape_contato }}</h3>
         <ul>
           <li><a href="https://wa.me/{{ site.whatsapp }}" target="_blank" rel="noopener">{{ site.whatsapp_display }}</a></li>
-          <li><a href="{{ '/contato/' | relative_url }}">Fale conosco</a></li>
-          {% if site.whatsapp_canal != "" %}<li><a href="{{ site.whatsapp_canal }}" target="_blank" rel="noopener">Canal no WhatsApp</a></li>{% endif %}
+          <li><a href="{{ t.p.contato | relative_url }}">{{ t.fale_conosco }}</a></li>
+          {% if site.whatsapp_canal != "" %}<li><a href="{{ site.whatsapp_canal }}" target="_blank" rel="noopener">{{ t.canal }}</a></li>{% endif %}
           {% if site.instagram != "" %}<li><a href="{{ site.instagram }}" target="_blank" rel="noopener">Instagram</a></li>{% endif %}
           {% if site.linkedin != "" %}<li><a href="{{ site.linkedin }}" target="_blank" rel="noopener">LinkedIn</a></li>{% endif %}
           {% if site.youtube != "" %}<li><a href="{{ site.youtube }}" target="_blank" rel="noopener">YouTube</a></li>{% endif %}
@@ -40,7 +41,7 @@
     </div>
     <div class="legal">
       <span>© {{ site.time | date: "%Y" }} {{ site.razao_social }}</span>
-      <span><a href="{{ '/privacidade/' | relative_url }}">Política de privacidade</a> · Feito no Rio de Janeiro</span>
+      <span><a href="{{ t.p.privacidade | relative_url }}">{{ t.privacidade }}</a> · {{ t.feito }}</span>
     </div>
   </div>
 </footer>

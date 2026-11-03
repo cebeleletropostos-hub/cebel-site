@@ -1,18 +1,20 @@
+{% include t.html %}
 {% assign st = include.st %}
 {% assign q = st.endereco | url_encode %}
+{% assign regiao = t.termos[st.regiao] | default: st.regiao %}{% assign desde = t.termos[st.desde] | default: st.desde %}{% assign carregador = t.termos[st.carregador] | default: st.carregador %}
 <article class="st-card" id="{{ st.id }}">
   <div class="st-photo{% if st.foto == "" %} vazio{% endif %}">
-    {% if st.foto != "" %}<img src="{{ st.foto | relative_url }}" alt="Eletroposto CEBEL na {{ st.nome }}" loading="lazy">{% else %}<span class="glyph">{% include icons.html i="plug" %}</span><span class="city">{{ st.cidade }}</span>{% endif %}
-    <span class="badge pill operando">Em operação</span>
+    {% if st.foto != "" %}<img src="{{ st.foto | relative_url }}" alt="{{ t.foto_alt }} {{ st.nome }}" loading="lazy">{% else %}<span class="glyph">{% include icons.html i="plug" %}</span><span class="city">{{ st.cidade }}</span>{% endif %}
+    <span class="badge pill operando">{{ t.em_operacao }}</span>
   </div>
   <div class="st-body">
     <h3>{{ st.nome }}</h3>
-    <p class="sub">{{ st.regiao }}{% if st.desde %} · {{ st.desde }}{% endif %}</p>
-    {% if st.carregador != "" %}<p class="spec">{{ st.carregador }}</p>{% endif %}
+    <p class="sub">{{ regiao }}{% if st.desde %} · {{ desde }}{% endif %}</p>
+    {% if st.carregador != "" %}<p class="spec">{{ carregador }}</p>{% endif %}
     <div class="addr">
       {% include icons.html i="pin" %}
       <p>{{ st.endereco }}</p>
-      <button class="copy-addr" type="button" data-copy="{{ st.endereco | escape }}">Copiar</button>
+      <button class="copy-addr" type="button" data-copy="{{ st.endereco | escape }}">{{ t.copiar }}</button>
     </div>
     <div class="nav-links">
       <a class="btn gmaps small" href="https://www.google.com/maps/dir/?api=1&amp;destination={{ q }}" target="_blank" rel="noopener">{% include icons.html i="pin" %}Google Maps</a>

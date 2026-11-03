@@ -1,0 +1,71 @@
+---
+layout: default
+titulo: Estaciones de carga
+descricao: Estaciones de carga CEBEL para autos eléctricos en Río de Janeiro. Direcciones, rutas por Google Maps y Waze y las nuevas estaciones en camino.
+lang: es
+ref: estacoes
+permalink: /es/estaciones/
+---
+{% assign operando = site.data.estacoes | where: "status", "operando" %}
+{% assign caminho = site.data.estacoes | where_exp: "e", "e.status != 'operando'" %}
+<div class="dark agua">
+  <div class="wrap page-hero">
+    <p class="eyebrow">Estaciones</p>
+    <h1 class="h-xl">Dónde cargar con <span class="swash">CEBEL.</span></h1>
+    <p class="lead">Dirección exacta y ruta directa en Google Maps o Waze. Precio único de R$ {{ site.preco_kwh }} por kWh en toda la red, sin tarifa por inactividad.</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">En operación</p>
+      <h2 class="h-lg">{{ operando.size }} estaciones abiertas ahora</h2>
+    </div>
+    <div class="st-feature">
+      {% for st in operando %}{% include station.html st=st %}{% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="flush-top">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Próximamente</p>
+      <h2 class="h-lg">Próximas estaciones</h2>
+      <p class="lead">Equipos comprados e instalación en curso. Las direcciones aparecerán aquí cuando abra cada estación.</p>
+    </div>
+    <div class="st-list">
+      {% for st in caminho %}{% include station-mini.html st=st %}{% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="flush-top">
+  <div class="wrap">
+    <div class="price">
+      <p class="tag">R$ {{ site.preco_kwh }}<small>por kWh · toda a rede</small></p>
+      <ul>
+        <li><span class="check">{% include icons.html i="check" %}</span>Usted paga solo la energía que entró en su auto.</li>
+        <li><span class="check">{% include icons.html i="check" %}</span>Sin tarifa por tiempo conectado después de cargar.</li>
+        <li><span class="check">{% include icons.html i="check" %}</span>Pago por la aplicación, directo en el celular.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="flush-top">
+  <div class="wrap">
+    <div class="cta-final dark agua">
+      <div class="in">
+        <div>
+          <h2 class="h-lg">¿Quiere una estación cerca de usted?</h2>
+          <p>Si tiene un estacionamiento, o conoce un buen lugar, hable con nosotros.</p>
+        </div>
+        <div class="actions">
+          <a class="btn sol" href="{{ '/es/anfitriones/' | relative_url }}">Sugerir un lugar {% include icons.html i="arrow" %}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

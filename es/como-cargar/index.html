@@ -1,0 +1,82 @@
+---
+layout: default
+titulo: Cómo cargar
+descricao: Cómo cargar su auto eléctrico en una estación CEBEL. Precio, aplicación, tipos de cargador y preguntas frecuentes.
+lang: es
+ref: motoristas
+permalink: /es/como-cargar/
+---
+<div class="dark agua">
+  <div class="wrap page-hero">
+    <p class="eyebrow">Para conductores</p>
+    <h1 class="h-xl">Cargar es <span class="swash">simple.</span></h1>
+    <p class="lead">Todo desde el celular. Estacione, conecte, inicie la carga en la aplicación y pague solo la energía que usó.</p>
+    <div class="hero-actions">
+      <a class="btn sol" href="{{ '/es/estaciones/' | relative_url }}">Ver estaciones {% include icons.html i="arrow" %}</a>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap how">
+    <div class="how-copy">
+      <div class="sec-head">
+        <p class="eyebrow">Paso a paso</p>
+        <h2 class="h-lg">Del estacionamiento a la batería llena</h2>
+      </div>
+      <ol class="steps two">
+      <li><h3>Descargue la app</h3><p>Nuestras estaciones funcionan con la aplicación EzVolt, para Android y iPhone. Cree su cuenta y agregue crédito, desde R$ 20, por Pix o tarjeta.</p></li>
+      <li><h3>Estacione y conecte</h3><p>Estacione en el lugar señalizado de CEBEL y conecte el cable a su auto.</p></li>
+      <li><h3>Inicie la carga</h3><p>En la app, elija la estación o lea el código QR del cargador e inicie la carga.</p></li>
+      <li><h3>Siga y finalice</h3><p>Vea la energía entregada en tiempo real. Al terminar, finalice en la app y el valor se descuenta de su crédito.</p></li>
+    </ol>
+    </div>
+    <figure class="how-video">
+      <video id="reel-video" src="{{ '/assets/video/itaguai.mp4' | relative_url }}" poster="{{ '/assets/video/itaguai-poster.jpg' | relative_url }}" autoplay muted loop playsinline preload="metadata" aria-label="Video en la estación de Smart Fit Itaguaí que muestra cómo cargar con la app EzVolt (en portugués)"></video>
+      <button class="reel-sound" type="button" aria-pressed="false">Activar sonido</button>
+      <figcaption>En la práctica, en nuestra estación de Itaguaí (video en portugués)</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="flush-top">
+  <div class="wrap">
+    <div class="price">
+      <p class="tag">R$ {{ site.preco_kwh }}<small>por kWh · toda a rede</small></p>
+      <ul>
+        <li><span class="check">{% include icons.html i="check" %}</span>Un auto promedio recibe de 15 a 30 kWh por parada: entre R$ 30 y R$ 60.</li>
+        <li><span class="check">{% include icons.html i="check" %}</span>Sin tarifa por inactividad. Pero libere el lugar al terminar, para el próximo conductor.</li>
+        <li><span class="check">{% include icons.html i="check" %}</span>Crédito en la app desde R$ 20, por Pix o tarjeta. Mismo precio en toda la red.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="flush-top">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Tipos de cargador</p>
+      <h2 class="h-lg">¿Rápido o lento?</h2>
+    </div>
+    <div class="trio">
+      <article><span class="ico">{% include icons.html i="bolt" %}</span><span class="who">DC · 40 kW</span><h3>Carga rápida</h3><p>De 30 minutos a 1 hora para buena parte de la batería. Ideal si está de paso.</p></article>
+      <article><span class="ico">{% include icons.html i="car" %}</span><span class="who">AC · 7 kW</span><h3>Carga lenta</h3><p>Algunas horas para llenar. Ideal si se queda bastante tiempo, como en el gimnasio o en el trabajo.</p></article>
+      <article><span class="ico">{% include icons.html i="shield" %}</span><span class="who">Conectores</span><h3>Estándar brasileño</h3><p>Tipo 2 en la carga lenta y CCS2 en la rápida, los estándares de la mayoría de los autos vendidos en Brasil.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="flush-top" id="duvidas">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Preguntas frecuentes</p>
+      <h2 class="h-lg">Preguntas de conductores</h2>
+    </div>
+    <div class="faq">
+      <details><summary>¿Necesito ser socio de Smart Fit para cargar?</summary><p>No. Las estaciones están abiertas a cualquier conductor, dentro del horario de funcionamiento del estacionamiento.</p></details>
+      <details><summary>¿Mi auto es compatible?</summary><p>Los autos eléctricos e híbridos enchufables vendidos en Brasil usan Tipo 2 (carga lenta) y CCS2 (carga rápida). Consulte el tipo de cada estación en la página de estaciones.</p></details>
+      <details><summary>¿Qué hago si el cargador no funciona?</summary><p>Escríbanos por WhatsApp al {{ site.whatsapp_display }}, indicando la estación. En la mayoría de los casos nuestro equipo puede reiniciar el cargador a distancia.</p></details>
+      <details><summary>¿Puedo dejar el auto en el lugar después de cargar?</summary><p>No cobramos tarifa por tiempo detenido, pero le pedimos que libere el lugar al terminar, para que otros conductores también puedan cargar.</p></details>
+    </div>
+  </div>
+</section>

@@ -472,3 +472,10 @@ form.wa textarea{min-height:110px;resize:vertical}
 
 .book-next{font-size:14.5px;color:var(--muted)}
 .book-next a{color:var(--azul);font-weight:700}
+
+/* seletor de idioma */
+.lang{display:inline-flex;align-items:center;gap:2px;margin-left:10px;padding:3px;border-radius:999px;background:var(--surface-2)}
+.lang a{font-family:var(--label);font-size:12px;letter-spacing:.06em;font-weight:500;padding:6px 9px;border-radius:999px;color:var(--muted);text-decoration:none;line-height:1}
+.lang a:hover{color:var(--ink);background:transparent}
+.lang a[aria-current="true"]{background:var(--surface);color:var(--ink);box-shadow:0 1px 2px rgba(6,26,63,.12)}
+@media (max-width:900px){.nav .lang{margin:14px 0 0;align-self:flex-start;border-bottom:0}.nav .lang a{padding:10px 14px;font-size:14px;border-bottom:0}}

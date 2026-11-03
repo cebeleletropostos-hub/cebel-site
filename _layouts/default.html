@@ -1,19 +1,22 @@
 <!doctype html>
-<html lang="pt-BR">
+{% assign L = page.lang | default: "pt" %}{% assign t = site.data.i18n[L] %}
+<html lang="{{ t.html }}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-{% if page.titulo %}{% assign full_title = page.titulo | append: " | CEBEL" %}{% else %}{% assign full_title = "CEBEL | Recarga de carros elétricos no RJ" %}{% endif %}
-{% assign desc = page.descricao | default: site.description %}
+{% if page.titulo %}{% assign full_title = page.titulo | append: " | CEBEL" %}{% else %}{% assign full_title = t.titulo_padrao %}{% endif %}
+{% assign desc = page.descricao | default: t.descricao_padrao %}
 <title>{{ full_title }}</title>
 <meta name="description" content="{{ desc }}">
 <link rel="alternate" type="text/plain" title="CEBEL para assistentes de IA" href="{{ '/llms.txt' | relative_url }}">
 <link rel="canonical" href="{{ page.url | absolute_url }}">
+{% if page.ref %}{% assign langs = "pt,en,es" | split: "," %}{% for code in langs %}{% assign lt = site.data.i18n[code] %}<link rel="alternate" hreflang="{{ lt.html }}" href="{{ lt.p[page.ref] | absolute_url }}">
+{% endfor %}<link rel="alternate" hreflang="x-default" href="{{ site.data.i18n.pt.p[page.ref] | absolute_url }}">{% endif %}
 <meta property="og:site_name" content="CEBEL">
 <meta property="og:title" content="{{ full_title }}">
 <meta property="og:description" content="{{ desc }}">
 <meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
-<meta property="og:locale" content="pt_BR">
+<meta property="og:locale" content="{{ t.locale }}">
 <meta property="og:url" content="{{ page.url | absolute_url }}">
 <meta property="og:image" content="{{ page.imagem | default: '/assets/img/og.png' | absolute_url }}">
 <meta name="twitter:card" content="summary_large_image">
@@ -28,19 +31,19 @@
 {% include schema.html %}
 </head>
 <body>
-<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+<a class="skip" href="#conteudo">{{ t.pular }}</a>
 {% unless page.bare %}{% include header.html %}{% endunless %}
 <main id="conteudo">
 {{ content }}
 </main>
 {% unless page.bare %}{% include footer.html %}
-<a class="wa-float" href="https://wa.me/{{ site.whatsapp }}" target="_blank" rel="noopener" aria-label="Falar com a CEBEL no WhatsApp">{% include icons.html i="wa" %}<span>WhatsApp</span></a>
+<a class="wa-float" href="https://wa.me/{{ site.whatsapp }}" target="_blank" rel="noopener" aria-label="{{ t.wa_float }}">{% include icons.html i="wa" %}<span>WhatsApp</span></a>
 <div class="mobile-bar">
-  {% if page.url == "/parceiros/" %}<a class="btn sol" href="#contato">Pedir estudo gratuito</a>{% else %}<a class="btn sol" href="{{ '/parceiros/' | relative_url }}">Seja parceiro</a>{% endif %}
+  {% if page.ref == "parceiros" %}<a class="btn sol" href="#contato">{{ t.pedir_estudo }}</a>{% else %}<a class="btn sol" href="{{ t.p.parceiros | relative_url }}">{{ t.seja_parceiro }}</a>{% endif %}
   <a class="btn wa" href="https://wa.me/{{ site.whatsapp }}" target="_blank" rel="noopener" aria-label="WhatsApp">{% include icons.html i="wa" %}</a>
 </div>{% endunless %}
 {% include consent.html %}
-<script>window.CEBEL={whatsapp:"{{ site.whatsapp }}",whatsappDisplay:"{{ site.whatsapp_display }}",googleTag:"{{ site.google_tag }}",metaPixel:"{{ site.meta_pixel }}",leadsEndpoint:"{{ site.leads_endpoint }}",leadsToken:"{{ site.leads_token }}"};</script>
+<script>window.CEBEL={whatsapp:"{{ site.whatsapp }}",whatsappDisplay:"{{ site.whatsapp_display }}",googleTag:"{{ site.google_tag }}",metaPixel:"{{ site.meta_pixel }}",leadsEndpoint:"{{ site.leads_endpoint }}",leadsToken:"{{ site.leads_token }}",lang:"{{ L }}",t:{preencha:{{ t.preencha | jsonify }},origem:{{ t.origem | jsonify }},copiar:{{ t.copiar | jsonify }},copiado:{{ t.copiado | jsonify }},menu:{{ t.menu | jsonify }},fechar:{{ t.fechar | jsonify }},ativarSom:{{ t.ativar_som | jsonify }},somAtivado:{{ t.som_ativado | jsonify }},ola:{{ t.ola | jsonify }}}};</script>
 <script src="{{ '/assets/js/site.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
 </body>
 </html>

@@ -27,6 +27,10 @@ layout: null
 - Visita técnica e estudo de viabilidade gratuitos.
 - Parceira da Smart Fit nas unidades de Itaguaí e Rio das Ostras.
 
+## Idiomas
+
+O site também está em inglês ({{ '/en/' | absolute_url }}) e espanhol ({{ '/es/' | absolute_url }}).
+
 ## Páginas
 
 - [Início]({{ '/' | absolute_url }}): visão geral da rede.

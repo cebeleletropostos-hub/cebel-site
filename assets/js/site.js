@@ -1,6 +1,7 @@
 // Comportamento compartilhado do site da CEBEL: menu, formulários de WhatsApp, calculadora e filtro de estações.
 (function () {
   var cfg = window.CEBEL || {};
+  var T = cfg.t || {};
   var $ = function (sel, root) { return (root || document).querySelector(sel); };
   var $$ = function (sel, root) { return Array.prototype.slice.call((root || document).querySelectorAll(sel)); };
 
@@ -10,7 +11,7 @@
     btn.addEventListener("click", function () {
       var open = nav.classList.toggle("open");
       btn.setAttribute("aria-expanded", open ? "true" : "false");
-      var l = btn.querySelector(".lbl"); if (l) l.textContent = open ? "Fechar" : "Menu";
+      var l = btn.querySelector(".lbl"); if (l) l.textContent = open ? (T.fechar || "Fechar") : (T.menu || "Menu");
     });
   }
 
@@ -101,15 +102,16 @@
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       var hp = form.querySelector('input[name="empresa_site"]');
-      var missing = [], lines = [form.getAttribute("data-intro") || "Olá, CEBEL!", ""], dados = {};
+      var missing = [], lines = [form.getAttribute("data-intro") || T.ola || "Olá, CEBEL!", ""], dados = {};
       $$("[data-label]", form).forEach(function (el) {
         var v = (el.value || "").trim(), lbl = el.getAttribute("data-label");
         if (el.required && !v) missing.push(lbl.toLowerCase());
-        if (v) { lines.push(lbl + ": " + v); dados[lbl] = v; }
+        if (v) { lines.push(lbl + ": " + v); dados[el.getAttribute("data-key") || lbl] = v; }
       });
-      if (missing.length) { err.textContent = "Preencha: " + missing.join(", ") + "."; err.hidden = false; return; }
+      if (missing.length) { err.textContent = (T.preencha || "Preencha:") + " " + missing.join(", ") + "."; err.hidden = false; return; }
       err.hidden = true;
-      lines.push("Origem: " + origemTexto + (origem.campanha ? " (" + origem.campanha + ")" : ""));
+      if (cfg.lang && cfg.lang !== "pt") lines.push("Idioma: " + cfg.lang.toUpperCase());
+      lines.push((T.origem || "Origem") + ": " + origemTexto + (origem.campanha ? " (" + origem.campanha + ")" : ""));
       var msg = lines.join("\n");
       pre.textContent = msg;
       link.href = "https://wa.me/" + cfg.whatsapp + "?text=" + encodeURIComponent(msg);
@@ -120,7 +122,7 @@
       track("generate_lead", { formulario: formName, origem: origem.fonte });
       if (cfg.leadsEndpoint && !(hp && hp.value) && !form.dataset.sent) {
         form.dataset.sent = "1";
-        var payload = { token: cfg.leadsToken || "", formulario: formName, pagina: location.pathname,
+        var payload = { token: cfg.leadsToken || "", formulario: formName + (cfg.lang && cfg.lang !== "pt" ? "-" + cfg.lang : ""), pagina: location.pathname,
           origem: origem.fonte, meio: origem.meio, campanha: origem.campanha, entrada: origem.entrada, campos: dados };
         try {
           fetch(cfg.leadsEndpoint, { method: "POST", mode: "no-cors", keepalive: true,
@@ -131,7 +133,7 @@
     if (copy) copy.addEventListener("click", function () {
       var t = pre.textContent;
       var sel = function () { var r = document.createRange(); r.selectNodeContents(pre); var s = getSelection(); s.removeAllRanges(); s.addRange(r); };
-      if (navigator.clipboard) navigator.clipboard.writeText(t).then(function () { copy.textContent = "Copiado"; }, sel); else sel();
+      if (navigator.clipboard) navigator.clipboard.writeText(t).then(function () { copy.textContent = T.copiado || "Copiado"; }, sel); else sel();
     });
   });
 
@@ -168,7 +170,7 @@
   $$(".copy-addr").forEach(function (b) {
     b.addEventListener("click", function () {
       var t = b.getAttribute("data-copy");
-      var ok = function () { b.textContent = "Copiado"; setTimeout(function () { b.textContent = "Copiar"; }, 1800); };
+      var ok = function () { b.textContent = T.copiado || "Copiado"; setTimeout(function () { b.textContent = T.copiar || "Copiar"; }, 1800); };
       if (navigator.clipboard) navigator.clipboard.writeText(t).then(ok, function () {}); 
     });
   });
@@ -197,7 +199,7 @@
       reel.muted = !reel.muted;
       if (!reel.muted) { reel.currentTime = 0; reel.play(); }
       snd.setAttribute("aria-pressed", reel.muted ? "false" : "true");
-      snd.textContent = reel.muted ? "Ativar som" : "Som ativado";
+      snd.textContent = reel.muted ? (T.ativarSom || "Ativar som") : (T.somAtivado || "Som ativado");
     });
   }
 

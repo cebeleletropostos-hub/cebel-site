@@ -1,0 +1,128 @@
+---
+layout: default
+lang: en
+ref: home
+permalink: /en/
+---
+{% assign operando = site.data.estacoes | where: "status", "operando" %}
+{% assign caminho = site.data.estacoes | where_exp: "e", "e.status != 'operando'" %}
+<div class="dark agua">
+  <div class="wrap hero hero-grid">
+    <div>
+      <p class="eyebrow">EV charging · Rio de Janeiro State</p>
+      <h1 class="h-xl">Clean energy where you <span class="swash">already stop.</span></h1>
+      <p class="lead">CEBEL installs and operates EV chargers at gyms, malls and businesses across Rio de Janeiro. Charge while you work out or shop.</p>
+      <div class="hero-actions">
+        <a class="btn sol" href="{{ '/en/stations/' | relative_url }}">Find a station {% include icons.html i="arrow" %}</a>
+        <a class="btn linha" href="{{ '/en/partners/' | relative_url }}">I own a parking lot</a>
+      </div>
+      <div class="hero-proof">
+        <span>Partner of <b>Smart Fit</b></span><span class="sep"></span>
+        <span><b>{{ operando.size }}</b> stations open</span><span class="sep"></span>
+        <span><b>R$ {{ site.preco_kwh }}</b>/kWh, no idle fees</span>
+      </div>
+    </div>
+    <figure class="hero-media">
+      <video src="{{ '/assets/video/itaguai-hero.mp4' | relative_url }}" poster="{{ '/assets/video/itaguai-hero.jpg' | relative_url }}" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
+      <figcaption>
+        <span class="pill operando">Open</span>
+        <span class="where"><b>Smart Fit Itaguaí</b><span>Av. Dep. Octávio Cabral, 840</span></span>
+        <a class="btn small sol" href="{{ '/en/stations/' | relative_url }}#itaguai">Get directions {% include icons.html i="arrow" %}</a>
+      </figcaption>
+    </figure>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="live-strip" aria-label="Simulação de uma recarga em andamento">
+    <p class="ls-label"><span class="live">Carregando</span><b>Smart Fit Itaguaí</b></p>
+    <div class="ls-track" aria-hidden="true"><span class="ls-fill" style="width:57%"></span></div>
+    <b class="ls-pct" id="ls-pct">57%</b>
+    <p class="ls-nums"><span><span id="ls-kwh">24,6</span> kWh</span><span id="ls-brl">R$ 49,20</span><span><span id="ls-min">38</span> min</span></p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head split">
+      <div style="display:grid;gap:16px">
+        <p class="eyebrow">CEBEL network</p>
+        <h2 class="h-lg">Where to charge today</h2>
+      </div>
+      <p class="lead">Exact address, directions via Google Maps or Waze, and the charger type at each station.</p>
+    </div>
+    <div class="st-feature">
+      {% for st in operando %}{% include station.html st=st %}{% endfor %}
+    </div>
+    <div style="margin-top:40px;display:grid;gap:18px">
+      <p class="eyebrow">Coming next</p>
+      <div class="st-list">
+        {% for st in caminho %}{% include station-mini.html st=st %}{% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="flush-top">
+  <div class="wrap">
+    <div class="parceiro-band dark agua">
+      <div class="parceiro-grid">
+        <div>
+          <p class="eyebrow">For parking lot owners</p>
+          <h2 class="h-lg" style="margin-top:16px">Your parking lot can <span class="swash">earn revenue.</span></h2>
+          <ul>
+            <li><span class="check">{% include icons.html i="check" %}</span><span><b>Zero investment.</b> We buy, install and maintain the charger.</span></li>
+            <li><span class="check">{% include icons.html i="check" %}</span><span><b>{{ site.repasse_parceiro }}% of net revenue</b> from every charge, every month.</span></li>
+            <li><span class="check">{% include icons.html i="check" %}</span><span><b>We pay for the energy.</b> Your electricity bill stays the same.</span></li>
+            <li><span class="check">{% include icons.html i="check" %}</span><span><b>Customers who stay longer</b> at your business while their car charges.</span></li>
+          </ul>
+          <div class="hero-actions">
+            <a class="btn sol" href="{{ '/en/partners/' | relative_url }}">Estimate my earnings {% include icons.html i="arrow" %}</a>
+            <a class="btn linha" href="{{ '/en/partners/' | relative_url }}#contato">Request a site visit</a>
+          </div>
+        </div>
+        <div class="sim">
+          <span class="k">Example · fast charger</span>
+          <span class="big">R$ 641<small> /month</small></span>
+          <div class="rows">
+            <div><span>Charges per day</span><span>6</span></div>
+            <div><span>Energy per charge</span><span>25 kWh</span></div>
+            <div><span>Gross monthly revenue</span><span>R$ 9.000</span></div>
+            <div><span>Your investment</span><span>R$ 0</span></div>
+          </div>
+          <p class="fine">Illustrative estimate for the host, using our calculator's assumptions.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="flush-top">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">How it works</p>
+      <h2 class="h-lg">A model where everyone wins</h2>
+    </div>
+    <div class="trio">
+      <article><span class="ico">{% include icons.html i="car" %}</span><span class="who">Driver</span><h3>Charges while doing something else</h3><p>Pays only for the energy used, R$ {{ site.preco_kwh }} per kWh, with no idle fees.</p></article>
+      <article><span class="ico">{% include icons.html i="store" %}</span><span class="who">Host</span><h3>Earns without investing</h3><p>Provides the parking space and receives a share of every charge, plus customers who stay longer.</p></article>
+      <article><span class="ico">{% include icons.html i="shield" %}</span><span class="who">CEBEL</span><h3>Handles everything</h3><p>Equipment, installation, energy, software and maintenance. Keeping the station running is our job.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="flush-top">
+  <div class="wrap">
+    <div class="cta-final dark agua">
+      <div class="in">
+        <div>
+          <h2 class="h-lg">Shall we bring clean energy to your business?</h2>
+          <p>Gyms, malls, supermarkets, hotels and roadside restaurants in Rio de Janeiro state. The site visit is free.</p>
+        </div>
+        <div class="actions">
+          <a class="btn sol" href="{{ '/en/partners/' | relative_url }}">I want to be a host {% include icons.html i="arrow" %}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

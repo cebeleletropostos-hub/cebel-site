@@ -1,0 +1,159 @@
+---
+layout: default
+titulo: Become a host
+descricao: Get an EV charger in your business's parking lot with zero investment. CEBEL installs it, runs it and pays for the energy; you get a share of the revenue.
+lang: en
+ref: parceiros
+permalink: /en/partners/
+---
+<div class="dark agua">
+  <div class="wrap hero hero-grid">
+    <div>
+      <p class="eyebrow">For parking lot owners in Rio de Janeiro</p>
+      <h1 class="h-xl">An EV charger in your parking lot. <span class="swash">Zero investment.</span></h1>
+      <p class="lead">Partner of Smart Fit in Itaguaí and Rio das Ostras, CEBEL buys, installs and operates the EV charger. You provide the parking space, receive a share of every charge, and gain customers who spend 30 minutes to 1 hour at your business.</p>
+      <div class="hero-actions">
+        <a class="btn sol" href="#contato">Request a free site study {% include icons.html i="arrow" %}</a>
+        {% if site.agenda_visita != "" %}<a class="btn linha" href="{{ site.agenda_visita }}" target="_blank" rel="noopener" data-track="agendar_visita">Book a site visit</a>{% else %}<a class="btn linha" href="#calculadora">Estimate my earnings</a>{% endif %}
+      </div>
+    </div>
+    <dl class="terms" aria-label="Partnership terms">
+      <div><dt>Your investment</dt><dd>R$ 0</dd></div>
+      <div><dt>Charger electricity bill</dt><dd>Paid by CEBEL</dd></div>
+      <div><dt>Your share of net revenue</dt><dd>{{ site.repasse_parceiro }}<small>%</small></dd></div>
+      <div><dt>Installation and maintenance</dt><dd>On us</dd></div>
+      <div><dt>Site visit</dt><dd>Free</dd></div>
+    </dl>
+  </div>
+</div>
+
+<section id="calculadora">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Calculator</p>
+      <h2 class="h-lg">How much a charger earns for you</h2>
+      <p>Adjust the charger type and expected traffic. Figures are estimates; the study of your site is free.</p>
+    </div>
+    <div class="calc">
+      <div class="inputs">
+        <div class="field">
+          <span class="lbl">Charger type</span>
+          <div class="seg" role="radiogroup" aria-label="Charger type">
+            <input type="radio" name="tipo" id="tipo-ac" value="ac">
+            <label for="tipo-ac"><b>AC 7 kW</b><span>Slow charging, 2 to 6 h. Ideal for long stays.</span></label>
+            <input type="radio" name="tipo" id="tipo-dc" value="dc" checked>
+            <label for="tipo-dc"><b>DC 40 kW</b><span>Fast charging, 30 to 60 min. Ideal for high turnover.</span></label>
+          </div>
+        </div>
+        <div class="field">
+          <label for="sessoes">Charges per day <output id="sessoes-out" for="sessoes">6</output></label>
+          <input type="range" id="sessoes" min="1" max="20" step="1" value="6">
+          <span class="hint">Sites on busy avenues and highways usually see 4 to 10.</span>
+        </div>
+        <div class="field">
+          <label for="kwh">Average energy per charge <output id="kwh-out" for="kwh">25 kWh</output></label>
+          <input type="range" id="kwh" min="5" max="45" step="1" value="25">
+          <span class="hint">An average EV takes 15 to 30 kWh per stop.</span>
+        </div>
+      </div>
+      <div class="result" aria-live="polite">
+        <div class="readout"><span class="k">Your share per month</span><span class="v" id="r-parte">R$ 0</span></div>
+        <div class="readout"><span class="k">Over 12 months</span><span class="v small" id="r-ano">R$ 0</span></div>
+        <div class="rows">
+          <div><span>Energy sold per month</span><span id="r-kwh">0 kWh</span></div>
+          <div><span>Gross revenue (R$ {{ site.preco_kwh }}/kWh)</span><span id="r-bruta">R$ 0</span></div>
+          <div><span>Drivers at your site per month</span><span id="r-visitas">0</span></div>
+        </div>
+        <p class="fine">Assumptions: 30 days per month, driver price of R$ {{ site.preco_kwh }}/kWh, energy cost of R$ 0.85/kWh and 10% taxes. Net revenue = gross − taxes − energy. Illustrative figures, not a guarantee of results.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="flush-top">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">How it works</p>
+      <h2 class="h-lg">From first contact to first charge</h2>
+    </div>
+    <ol class="steps">
+      <li><h3>Site visit</h3><p>We assess the parking spaces, the electrical panel and the site's traffic. Free of charge.</p></li>
+      <li><h3>Proposal and contract</h3><p>We define the number of chargers, spaces and the revenue share. A simple space-use agreement.</p></li>
+      <li><h3>Installation</h3><p>CEBEL buys the equipment and handles the electrical work and the utility approval.</p></li>
+      <li><h3>Operation</h3><p>Your site goes live in the app and on Google Maps. You receive your share every month, with a usage report.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="flush-top">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Who it's for</p>
+      <h2 class="h-lg">Places where drivers already stop</h2>
+      <p>We already operate chargers at the Smart Fit locations in Itaguaí and Rio das Ostras, with Smart Fit Saquarema coming next.</p>
+    </div>
+    <div class="fit">
+      <div><span class="stay">Typical stay: 1 to 2 h</span><h3>Gyms</h3><p>Members work out while their car charges. It's the model already running at our Smart Fit locations.</p></div>
+      <div><span class="stay">Typical stay: 1 to 3 h</span><h3>Malls and shopping centers</h3><p>More time on site, more spending in the stores.</p></div>
+      <div><span class="stay">Typical stay: 30 to 60 min</span><h3>Supermarkets and wholesale stores</h3><p>The charge fits into the shopping trip.</p></div>
+      <div><span class="stay">Typical stay: overnight</span><h3>Hotels and inns</h3><p>Guests with EVs choose where they can charge.</p></div>
+      <div><span class="stay">Typical stay: 30 to 60 min</span><h3>Roadside restaurants</h3><p>A natural stop on highways like RJ-106 and RJ-124.</p></div>
+      <div><span class="stay">Typical stay: varies</span><h3>Parking lots and gas stations</h3><p>New revenue from spaces that already exist.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="flush-top">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">FAQ</p>
+      <h2 class="h-lg">Questions from owners considering it</h2>
+    </div>
+    <div class="faq">
+      <details><summary>Do I pay anything?</summary><p>No. Equipment, installation, the charger's electricity, maintenance and software are all covered by CEBEL.</p></details>
+      <details><summary>How do I receive my share?</summary><p>Monthly, with a report of the charges at your site. The standard share is {{ site.repasse_parceiro }}% of net revenue and can be adjusted depending on the site.</p></details>
+      <details><summary>Do I need to reserve spaces for EVs only?</summary><p>We recommend one or two marked spaces next to the charger. We decide the number with you during the site visit.</p></details>
+      <details><summary>Can my electrical system handle it?</summary><p>That's what the site visit confirms. When available capacity is low, there are solutions such as AC chargers or backup batteries.</p></details>
+      <details><summary>How long is the contract?</summary><p>Contracts usually run for a few years to cover the investment in equipment. Terms are discussed case by case.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="flush-top" id="contato">
+  <div class="wrap">
+    <div class="parceiro-band dark agua">
+      <div class="parceiro-grid" style="align-items:start">
+        <div>
+          <p class="eyebrow">Talk to CEBEL</p>
+          <h2 class="h-lg" style="margin-top:16px">Request a <span class="swash">free</span> study of your site.</h2>
+          <ul>
+            <li><span class="check">{% include icons.html i="check" %}</span><span><b>Direct contact</b> with the CEBEL team, on WhatsApp.</span></li>
+            <li><span class="check">{% include icons.html i="check" %}</span><span><b>Free site visit</b> to assess the spaces and the electrical system.</span></li>
+            <li><span class="check">{% include icons.html i="check" %}</span><span><b>A proposal with your site's numbers</b>, no commitment.</span></li>
+          </ul>
+        </div>
+        <div class="form-card">
+          <h3>Your details</h3>
+          <p>Your message goes straight to our WhatsApp, ready to send.</p>
+          <form class="wa" novalidate data-form="parceiro" data-intro="Hi, CEBEL! I'd like a free study to install an EV charger.">
+            <label>Your name<input id="f-nome" data-key="Nome" data-label="Name" autocomplete="name" required></label>
+            <label>WhatsApp<input id="f-tel" data-key="WhatsApp" data-label="WhatsApp" type="tel" autocomplete="tel" inputmode="tel" placeholder="+55 21 9..." required></label>
+            <label>Business name<input id="f-negocio" data-key="Negócio" data-label="Business" autocomplete="organization" required></label>
+            <label>Type of business
+              <select id="f-tipo" data-key="Tipo" data-label="Type">
+                <option>Gym</option><option>Mall or shopping center</option><option>Supermarket or wholesale store</option><option>Hotel or inn</option><option>Restaurant</option><option>Parking lot or gas station</option><option>Other</option>
+              </select>
+            </label>
+            <label>City and neighborhood<input id="f-cidade" data-key="Local" data-label="Location" autocomplete="address-level2" placeholder="E.g. Maricá, Centro" required></label>
+            <label>Parking spaces
+              <select id="f-vagas" data-key="Vagas" data-label="Spaces"><option>Up to 20</option><option>21 to 50</option><option>51 to 150</option><option>More than 150</option></select>
+            </label>
+            <label class="full">Anything else we should know? (optional)<textarea id="f-obs" data-key="Obs." data-label="Notes"></textarea></label>
+            <label class="hp" aria-hidden="true">Leave blank<input name="empresa_site" tabindex="-1" autocomplete="off"></label>
+            {% include wa-done.html botao="Request a free site study" %}
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

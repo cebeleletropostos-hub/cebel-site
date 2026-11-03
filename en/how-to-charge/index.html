@@ -1,0 +1,82 @@
+---
+layout: default
+titulo: How to charge
+descricao: How to charge your electric car at a CEBEL station. Price, app, charger types and FAQ.
+lang: en
+ref: motoristas
+permalink: /en/how-to-charge/
+---
+<div class="dark agua">
+  <div class="wrap page-hero">
+    <p class="eyebrow">For drivers</p>
+    <h1 class="h-xl">Charging is <span class="swash">simple.</span></h1>
+    <p class="lead">All from your phone. Park, plug in, start the charge in the app and pay only for the energy you used.</p>
+    <div class="hero-actions">
+      <a class="btn sol" href="{{ '/en/stations/' | relative_url }}">See stations {% include icons.html i="arrow" %}</a>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap how">
+    <div class="how-copy">
+      <div class="sec-head">
+        <p class="eyebrow">Step by step</p>
+        <h2 class="h-lg">From parking spot to full battery</h2>
+      </div>
+      <ol class="steps two">
+      <li><h3>Download the app</h3><p>Our stations run on the EzVolt app for Android and iPhone. Create an account and add credit, from R$ 20, by Pix or card.</p></li>
+      <li><h3>Park and plug in</h3><p>Park in the marked CEBEL spot and plug the connector into your car.</p></li>
+      <li><h3>Start charging</h3><p>In the app, choose the station or scan the charger's QR code and start the session.</p></li>
+      <li><h3>Track and finish</h3><p>See the energy delivered in real time. When you're done, stop it in the app and the amount comes out of your credit.</p></li>
+    </ol>
+    </div>
+    <figure class="how-video">
+      <video id="reel-video" src="{{ '/assets/video/itaguai.mp4' | relative_url }}" poster="{{ '/assets/video/itaguai-poster.jpg' | relative_url }}" autoplay muted loop playsinline preload="metadata" aria-label="Video at the Smart Fit Itaguaí station showing how to charge with the EzVolt app (in Portuguese)"></video>
+      <button class="reel-sound" type="button" aria-pressed="false">Turn sound on</button>
+      <figcaption>In practice, at our Itaguaí station (video in Portuguese)</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="flush-top">
+  <div class="wrap">
+    <div class="price">
+      <p class="tag">R$ {{ site.preco_kwh }}<small>por kWh · toda a rede</small></p>
+      <ul>
+        <li><span class="check">{% include icons.html i="check" %}</span>An average car takes 15 to 30 kWh per stop: roughly R$ 30 to R$ 60.</li>
+        <li><span class="check">{% include icons.html i="check" %}</span>No idle fees. But please free up the spot when you're done, for the next driver.</li>
+        <li><span class="check">{% include icons.html i="check" %}</span>App credit from R$ 20, by Pix or card. Same price across the network.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="flush-top">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Charger types</p>
+      <h2 class="h-lg">Fast or slow?</h2>
+    </div>
+    <div class="trio">
+      <article><span class="ico">{% include icons.html i="bolt" %}</span><span class="who">DC · 40 kW</span><h3>Fast charging</h3><p>30 minutes to 1 hour for a good part of the battery. Ideal if you're passing through.</p></article>
+      <article><span class="ico">{% include icons.html i="car" %}</span><span class="who">AC · 7 kW</span><h3>Slow charging</h3><p>A few hours to fill up. Ideal when you stay a while, like at the gym or at work.</p></article>
+      <article><span class="ico">{% include icons.html i="shield" %}</span><span class="who">Connectors</span><h3>Brazilian standard</h3><p>Type 2 for slow charging and CCS2 for fast charging, the standards on most cars sold in Brazil.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="flush-top" id="duvidas">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">FAQ</p>
+      <h2 class="h-lg">Driver questions</h2>
+    </div>
+    <div class="faq">
+      <details><summary>Do I need to be a Smart Fit member to charge?</summary><p>No. The stations are open to any driver during the parking lot's opening hours.</p></details>
+      <details><summary>Is my car compatible?</summary><p>Electric and plug-in hybrid cars sold in Brazil use Type 2 (slow charging) and CCS2 (fast charging). Check each station's type on the stations page.</p></details>
+      <details><summary>What if the charger doesn't work?</summary><p>Message us on WhatsApp at {{ site.whatsapp_display }} and tell us which station. In most cases our team can restart the charger remotely.</p></details>
+      <details><summary>Can I leave my car in the spot after charging?</summary><p>We don't charge idle fees, but please free up the spot when you're done so other drivers can charge too.</p></details>
+    </div>
+  </div>
+</section>

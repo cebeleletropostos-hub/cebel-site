@@ -1,15 +1,16 @@
+{% include t.html %}
 <p class="err" hidden></p>
 <div class="form-actions full">
-  <button class="btn sol" type="submit">{% include icons.html i="wa" %}{{ include.botao | default: "Enviar pelo WhatsApp" }}</button>
+  <button class="btn sol" type="submit">{% include icons.html i="wa" %}{{ include.botao | default: t.enviar_wa }}</button>
 </div>
-<p class="privacy">Seus dados só são usados para a CEBEL responder ao seu contato. <a href="{{ '/privacidade/' | relative_url }}">Privacidade</a></p>
+<p class="privacy">{{ t.privacy_form }} <a href="{{ t.p.privacidade | relative_url }}">{{ t.privacy_form_link }}</a></p>
 <div class="done" hidden>
-  <strong>Sua mensagem está pronta.</strong>
-  <p>Toque em Abrir WhatsApp ou copie o texto e envie para {{ site.whatsapp_display }}.</p>
+  <strong>{{ t.pronta }}</strong>
+  <p>{{ t.pronta_txt }} {{ site.whatsapp_display }}.</p>
   <pre></pre>
   <div class="form-actions">
-    <a class="btn azul wa-link" href="https://wa.me/{{ site.whatsapp }}" target="_blank" rel="noopener">Abrir WhatsApp</a>
-    <button class="btn linha copy" type="button">Copiar mensagem</button>
+    <a class="btn azul wa-link" href="https://wa.me/{{ site.whatsapp }}" target="_blank" rel="noopener">{{ t.abrir_wa }}</a>
+    <button class="btn linha copy" type="button">{{ t.copiar_msg }}</button>
   </div>
-  {% if site.agenda_visita != "" %}<p class="book-next">Quer adiantar? <a href="{{ site.agenda_visita }}" target="_blank" rel="noopener" data-track="agendar_visita">Escolha um horário para a visita técnica</a>.</p>{% endif %}
+  {% if site.agenda_visita != "" %}<p class="book-next">{{ t.adiantar }} <a href="{{ site.agenda_visita }}" target="_blank" rel="noopener" data-track="agendar_visita">{{ t.adiantar_link }}</a>.</p>{% endif %}
 </div>

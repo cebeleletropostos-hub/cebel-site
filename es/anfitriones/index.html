@@ -1,0 +1,159 @@
+---
+layout: default
+titulo: Sea anfitrión
+descricao: Tenga un cargador eléctrico en el estacionamiento de su negocio sin invertir nada. CEBEL lo instala, lo opera y paga la energía; usted recibe parte de los ingresos.
+lang: es
+ref: parceiros
+permalink: /es/anfitriones/
+---
+<div class="dark agua">
+  <div class="wrap hero hero-grid">
+    <div>
+      <p class="eyebrow">Para dueños de estacionamientos en Río de Janeiro</p>
+      <h1 class="h-xl">Un cargador eléctrico en su estacionamiento. <span class="swash">Inversión cero.</span></h1>
+      <p class="lead">Socia de Smart Fit en Itaguaí y Rio das Ostras, CEBEL compra, instala y opera el cargador. Usted cede el espacio, recibe parte de cada carga y gana clientes que pasan de 30 minutos a 1 hora en su negocio.</p>
+      <div class="hero-actions">
+        <a class="btn sol" href="#contato">Solicitar estudio gratuito {% include icons.html i="arrow" %}</a>
+        {% if site.agenda_visita != "" %}<a class="btn linha" href="{{ site.agenda_visita }}" target="_blank" rel="noopener" data-track="agendar_visita">Agendar visita técnica</a>{% else %}<a class="btn linha" href="#calculadora">Simular mis ingresos</a>{% endif %}
+      </div>
+    </div>
+    <dl class="terms" aria-label="Condiciones de la alianza">
+      <div><dt>Su inversión</dt><dd>R$ 0</dd></div>
+      <div><dt>Factura de energía del cargador</dt><dd>La paga CEBEL</dd></div>
+      <div><dt>Su parte de los ingresos netos</dt><dd>{{ site.repasse_parceiro }}<small>%</small></dd></div>
+      <div><dt>Instalación y mantenimiento</dt><dd>Por nuestra cuenta</dd></div>
+      <div><dt>Visita técnica</dt><dd>Gratuita</dd></div>
+    </dl>
+  </div>
+</div>
+
+<section id="calculadora">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Calculadora</p>
+      <h2 class="h-lg">Cuánto le rinde un cargador</h2>
+      <p>Ajuste el tipo de cargador y el movimiento esperado. Los valores son estimaciones; el estudio de su local es gratuito.</p>
+    </div>
+    <div class="calc">
+      <div class="inputs">
+        <div class="field">
+          <span class="lbl">Tipo de cargador</span>
+          <div class="seg" role="radiogroup" aria-label="Tipo de cargador">
+            <input type="radio" name="tipo" id="tipo-ac" value="ac">
+            <label for="tipo-ac"><b>AC 7 kW</b><span>Carga lenta, 2 a 6 h. Ideal para estadías largas.</span></label>
+            <input type="radio" name="tipo" id="tipo-dc" value="dc" checked>
+            <label for="tipo-dc"><b>DC 40 kW</b><span>Carga rápida, 30 a 60 min. Ideal para alta rotación.</span></label>
+          </div>
+        </div>
+        <div class="field">
+          <label for="sessoes">Cargas por día <output id="sessoes-out" for="sessoes">6</output></label>
+          <input type="range" id="sessoes" min="1" max="20" step="1" value="6">
+          <span class="hint">Los locales en avenidas y carreteras transitadas suelen tener entre 4 y 10.</span>
+        </div>
+        <div class="field">
+          <label for="kwh">Energía promedio por carga <output id="kwh-out" for="kwh">25 kWh</output></label>
+          <input type="range" id="kwh" min="5" max="45" step="1" value="25">
+          <span class="hint">Un auto eléctrico promedio recibe de 15 a 30 kWh por parada.</span>
+        </div>
+      </div>
+      <div class="result" aria-live="polite">
+        <div class="readout"><span class="k">Su parte por mes</span><span class="v" id="r-parte">R$ 0</span></div>
+        <div class="readout"><span class="k">En 12 meses</span><span class="v small" id="r-ano">R$ 0</span></div>
+        <div class="rows">
+          <div><span>Energía vendida en el mes</span><span id="r-kwh">0 kWh</span></div>
+          <div><span>Ingresos brutos (R$ {{ site.preco_kwh }}/kWh)</span><span id="r-bruta">R$ 0</span></div>
+          <div><span>Conductores en su local por mes</span><span id="r-visitas">0</span></div>
+        </div>
+        <p class="fine">Supuestos: 30 días por mes, tarifa al conductor de R$ {{ site.preco_kwh }}/kWh, costo de energía de R$ 0,85/kWh y 10% de impuestos. Ingresos netos = brutos − impuestos − energía. Valores ilustrativos, sin garantía de resultados.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="flush-top">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Cómo funciona</p>
+      <h2 class="h-lg">Del primer contacto a la primera carga</h2>
+    </div>
+    <ol class="steps">
+      <li><h3>Visita técnica</h3><p>Evaluamos los lugares, el tablero eléctrico y el flujo del local. Sin costo.</p></li>
+      <li><h3>Propuesta y contrato</h3><p>Definimos la cantidad de cargadores, lugares y el reparto. Un contrato simple de cesión de uso.</p></li>
+      <li><h3>Instalación</h3><p>CEBEL compra el equipo y se encarga de la obra eléctrica y de la aprobación ante la distribuidora.</p></li>
+      <li><h3>Operación</h3><p>Su local aparece en la app y en Google Maps. Recibe su parte todos los meses, con un informe de uso.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="flush-top">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Para quién es</p>
+      <h2 class="h-lg">Lugares donde el conductor ya se detiene</h2>
+      <p>Ya operamos cargadores en las sedes de Smart Fit de Itaguaí y Rio das Ostras, y Smart Fit Saquarema viene a continuación.</p>
+    </div>
+    <div class="fit">
+      <div><span class="stay">Permanencia: 1 a 2 h</span><h3>Gimnasios</h3><p>El socio entrena mientras el auto carga. Es el modelo que ya funciona en nuestras sedes de Smart Fit.</p></div>
+      <div><span class="stay">Permanencia: 1 a 3 h</span><h3>Centros comerciales</h3><p>Más tiempo en el lugar, más consumo en las tiendas.</p></div>
+      <div><span class="stay">Permanencia: 30 a 60 min</span><h3>Supermercados y mayoristas</h3><p>La carga cabe en el tiempo de la compra.</p></div>
+      <div><span class="stay">Permanencia: toda la noche</span><h3>Hoteles y posadas</h3><p>Los huéspedes con auto eléctrico eligen dónde pueden cargar.</p></div>
+      <div><span class="stay">Permanencia: 30 a 60 min</span><h3>Restaurantes de carretera</h3><p>Parada natural en carreteras como la RJ-106 y la RJ-124.</p></div>
+      <div><span class="stay">Permanencia: variable</span><h3>Estacionamientos y gasolineras</h3><p>Nuevos ingresos en lugares que ya existen.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="flush-top">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Preguntas frecuentes</p>
+      <h2 class="h-lg">Preguntas de quien lo está evaluando</h2>
+    </div>
+    <div class="faq">
+      <details><summary>¿Pago algo?</summary><p>No. El equipo, la instalación, la energía que consume el cargador, el mantenimiento y el software corren por cuenta de CEBEL.</p></details>
+      <details><summary>¿Cómo recibo mi parte?</summary><p>Mensualmente, con un informe de las cargas hechas en su local. El porcentaje estándar es {{ site.repasse_parceiro }}% de los ingresos netos y puede ajustarse según el local.</p></details>
+      <details><summary>¿Debo reservar lugares solo para autos eléctricos?</summary><p>Recomendamos uno o dos lugares señalizados junto al cargador. Definimos la cantidad con usted en la visita técnica.</p></details>
+      <details><summary>¿Mi red eléctrica lo soporta?</summary><p>Eso es lo que confirma la visita técnica. Cuando la carga disponible es baja, hay soluciones como cargadores AC o baterías de apoyo.</p></details>
+      <details><summary>¿Cuál es el plazo del contrato?</summary><p>Los contratos suelen durar algunos años para cubrir la inversión en el equipo. Los términos se discuten caso por caso.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="flush-top" id="contato">
+  <div class="wrap">
+    <div class="parceiro-band dark agua">
+      <div class="parceiro-grid" style="align-items:start">
+        <div>
+          <p class="eyebrow">Hable con CEBEL</p>
+          <h2 class="h-lg" style="margin-top:16px">Solicite el estudio <span class="swash">gratuito</span> de su local.</h2>
+          <ul>
+            <li><span class="check">{% include icons.html i="check" %}</span><span><b>Atención directa</b> con el equipo de CEBEL, por WhatsApp.</span></li>
+            <li><span class="check">{% include icons.html i="check" %}</span><span><b>Visita técnica sin costo</b> para evaluar los lugares y la red eléctrica.</span></li>
+            <li><span class="check">{% include icons.html i="check" %}</span><span><b>Propuesta con los números de su local</b>, sin compromiso.</span></li>
+          </ul>
+        </div>
+        <div class="form-card">
+          <h3>Sus datos</h3>
+          <p>El mensaje llega listo a nuestro WhatsApp.</p>
+          <form class="wa" novalidate data-form="parceiro" data-intro="¡Hola, CEBEL! Quiero un estudio gratuito para instalar un cargador eléctrico.">
+            <label>Su nombre<input id="f-nome" data-key="Nome" data-label="Nombre" autocomplete="name" required></label>
+            <label>WhatsApp<input id="f-tel" data-key="WhatsApp" data-label="WhatsApp" type="tel" autocomplete="tel" inputmode="tel" placeholder="+55 21 9..." required></label>
+            <label>Nombre del negocio<input id="f-negocio" data-key="Negócio" data-label="Negocio" autocomplete="organization" required></label>
+            <label>Tipo de negocio
+              <select id="f-tipo" data-key="Tipo" data-label="Tipo">
+                <option>Gimnasio</option><option>Centro comercial</option><option>Supermercado o mayorista</option><option>Hotel o posada</option><option>Restaurante</option><option>Estacionamiento o gasolinera</option><option>Otro</option>
+              </select>
+            </label>
+            <label>Ciudad y barrio<input id="f-cidade" data-key="Local" data-label="Ubicación" autocomplete="address-level2" placeholder="Ej.: Maricá, Centro" required></label>
+            <label>Lugares de estacionamiento
+              <select id="f-vagas" data-key="Vagas" data-label="Lugares"><option>Hasta 20</option><option>21 a 50</option><option>51 a 150</option><option>Más de 150</option></select>
+            </label>
+            <label class="full">¿Algo más que debamos saber? (opcional)<textarea id="f-obs" data-key="Obs." data-label="Notas"></textarea></label>
+            <label class="hp" aria-hidden="true">No completar<input name="empresa_site" tabindex="-1" autocomplete="off"></label>
+            {% include wa-done.html botao="Solicitar estudio gratuito" %}
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

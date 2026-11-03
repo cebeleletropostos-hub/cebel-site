@@ -1,0 +1,223 @@
+# Textos compartilhados do site em português, inglês e espanhol.
+# Cada página tem `lang` (pt, en, es) e `ref` (home, estacoes, motoristas, parceiros, sobre, contato, privacidade) no front matter.
+# Para mudar um texto de menu, rodapé, formulário ou estação, edite aqui.
+
+pt:
+  locale: pt_BR
+  html: pt-BR
+  nome: Português
+  curto: PT
+  titulo_padrao: "CEBEL | Recarga de carros elétricos no RJ"
+  descricao_padrao: "Rede de recarga para carros elétricos no Rio de Janeiro. Instalamos e operamos eletropostos em academias, shoppings e comércios, sem custo para o parceiro."
+  p:
+    home: /
+    estacoes: /estacoes/
+    motoristas: /motoristas/
+    parceiros: /parceiros/
+    sobre: /sobre/
+    contato: /contato/
+    privacidade: /privacidade/
+  nav: [[estacoes, "Estações"], [motoristas, "Como carregar"], [sobre, "Sobre"], [contato, "Contato"]]
+  seja_parceiro: "Seja parceiro"
+  topbar: "Tem um estacionamento?"
+  topbar_longo: " Ganhe com um eletroposto, sem investir nada."
+  topbar_cta: "Simule agora"
+  marca_sub: "Energia &amp; Mobilidade Elétrica"
+  home_aria: "CEBEL, página inicial"
+  menu: "Menu"
+  fechar: "Fechar"
+  idioma: "Idioma"
+  pular: "Pular para o conteúdo"
+  rodape_sobre: "Instalamos e operamos eletropostos no estado do Rio de Janeiro, sem custo para o local parceiro."
+  rodape_motoristas: "Motoristas"
+  rodape_parceiros: "Parceiros"
+  rodape_contato: "Contato"
+  estacoes: "Estações"
+  como_carregar: "Como carregar"
+  duvidas: "Dúvidas frequentes"
+  simule: "Simule seu retorno"
+  sobre_cebel: "Sobre a CEBEL"
+  novidades: "Novidades"
+  fale_conosco: "Fale conosco"
+  canal: "Canal no WhatsApp"
+  privacidade: "Política de privacidade"
+  feito: "Feito no Rio de Janeiro"
+  wa_float: "Falar com a CEBEL no WhatsApp"
+  pedir_estudo: "Pedir estudo gratuito"
+  consent: "Usamos cookies de medição para entender quais anúncios trazem visitas ao site. Veja a"
+  consent_link: "política de privacidade"
+  recusar: "Recusar"
+  aceitar: "Aceitar"
+  enviar_wa: "Enviar pelo WhatsApp"
+  privacy_form: "Seus dados só são usados para a CEBEL responder ao seu contato."
+  privacy_form_link: "Privacidade"
+  pronta: "Sua mensagem está pronta."
+  pronta_txt: "Toque em Abrir WhatsApp ou copie o texto e envie para"
+  abrir_wa: "Abrir WhatsApp"
+  copiar_msg: "Copiar mensagem"
+  adiantar: "Quer adiantar?"
+  adiantar_link: "Escolha um horário para a visita técnica"
+  em_operacao: "Em operação"
+  em_instalacao: "Em instalação"
+  em_breve: "Em breve"
+  copiar: "Copiar"
+  copiado: "Copiado"
+  foto_alt: "Eletroposto CEBEL na"
+  preencha: "Preencha:"
+  origem: "Origem"
+  ativar_som: "Ativar som"
+  som_ativado: "Som ativado"
+  ola: "Olá, CEBEL!"
+  termos: {}
+
+en:
+  locale: en_US
+  html: en
+  nome: English
+  curto: EN
+  titulo_padrao: "CEBEL | EV charging in Rio de Janeiro"
+  descricao_padrao: "Electric vehicle charging network in Rio de Janeiro state. We install and operate chargers at gyms, malls and businesses, at no cost to the host."
+  p:
+    home: /en/
+    estacoes: /en/stations/
+    motoristas: /en/how-to-charge/
+    parceiros: /en/partners/
+    sobre: /en/about/
+    contato: /en/contact/
+    privacidade: /en/privacy/
+  nav: [[estacoes, "Stations"], [motoristas, "How to charge"], [sobre, "About"], [contato, "Contact"]]
+  seja_parceiro: "Become a host"
+  topbar: "Own a parking lot?"
+  topbar_longo: " Earn from an EV charger with zero investment."
+  topbar_cta: "Run the numbers"
+  marca_sub: "Energy &amp; Electric Mobility"
+  home_aria: "CEBEL, home page"
+  menu: "Menu"
+  fechar: "Close"
+  idioma: "Language"
+  pular: "Skip to content"
+  rodape_sobre: "We install and operate EV chargers across Rio de Janeiro state, at no cost to the host."
+  rodape_motoristas: "Drivers"
+  rodape_parceiros: "Hosts"
+  rodape_contato: "Contact"
+  estacoes: "Stations"
+  como_carregar: "How to charge"
+  duvidas: "FAQ"
+  simule: "Estimate your earnings"
+  sobre_cebel: "About CEBEL"
+  novidades: "News (in Portuguese)"
+  fale_conosco: "Contact us"
+  canal: "WhatsApp channel"
+  privacidade: "Privacy policy"
+  feito: "Made in Rio de Janeiro"
+  wa_float: "Message CEBEL on WhatsApp"
+  pedir_estudo: "Request a free site study"
+  consent: "We use measurement cookies to understand which ads bring visitors to the site. See our"
+  consent_link: "privacy policy"
+  recusar: "Decline"
+  aceitar: "Accept"
+  enviar_wa: "Send via WhatsApp"
+  privacy_form: "Your details are only used by CEBEL to reply to you."
+  privacy_form_link: "Privacy"
+  pronta: "Your message is ready."
+  pronta_txt: "Tap Open WhatsApp or copy the text and send it to"
+  abrir_wa: "Open WhatsApp"
+  copiar_msg: "Copy message"
+  adiantar: "Want to move faster?"
+  adiantar_link: "Pick a time for the site visit"
+  em_operacao: "Open"
+  em_instalacao: "Being installed"
+  em_breve: "Coming soon"
+  copiar: "Copy"
+  copiado: "Copied"
+  foto_alt: "CEBEL EV charger at"
+  preencha: "Please fill in:"
+  origem: "Source"
+  ativar_som: "Turn sound on"
+  som_ativado: "Sound on"
+  ola: "Hi, CEBEL!"
+  termos:
+    "Região dos Lagos": "Lakes Region"
+    "Zona Norte": "North Zone"
+    "Primeira estação da rede": "The network's first station"
+    "Na Rodovia Amaral Peixoto (RJ-106)": "On the Amaral Peixoto highway (RJ-106)"
+    "DC 40 kW · recarga rápida": "DC 40 kW · fast charging"
+    "AC 7,4 kW · recarga lenta": "AC 7.4 kW · slow charging"
+    "DC 40 kW · 2 conectores": "DC 40 kW · 2 connectors"
+    "Abre junto com a nova unidade Smart Fit": "Opens with the new Smart Fit location"
+
+es:
+  locale: es_ES
+  html: es
+  nome: Español
+  curto: ES
+  titulo_padrao: "CEBEL | Carga de autos eléctricos en Río de Janeiro"
+  descricao_padrao: "Red de carga para autos eléctricos en el estado de Río de Janeiro. Instalamos y operamos cargadores en gimnasios, centros comerciales y negocios, sin costo para el anfitrión."
+  p:
+    home: /es/
+    estacoes: /es/estaciones/
+    motoristas: /es/como-cargar/
+    parceiros: /es/anfitriones/
+    sobre: /es/sobre/
+    contato: /es/contacto/
+    privacidade: /es/privacidad/
+  nav: [[estacoes, "Estaciones"], [motoristas, "Cómo cargar"], [sobre, "Nosotros"], [contato, "Contacto"]]
+  seja_parceiro: "Sea anfitrión"
+  topbar: "¿Tiene un estacionamiento?"
+  topbar_longo: " Gane con un cargador eléctrico sin invertir nada."
+  topbar_cta: "Simule ahora"
+  marca_sub: "Energía y Movilidad Eléctrica"
+  home_aria: "CEBEL, página de inicio"
+  menu: "Menú"
+  fechar: "Cerrar"
+  idioma: "Idioma"
+  pular: "Saltar al contenido"
+  rodape_sobre: "Instalamos y operamos cargadores para autos eléctricos en el estado de Río de Janeiro, sin costo para el anfitrión."
+  rodape_motoristas: "Conductores"
+  rodape_parceiros: "Anfitriones"
+  rodape_contato: "Contacto"
+  estacoes: "Estaciones"
+  como_carregar: "Cómo cargar"
+  duvidas: "Preguntas frecuentes"
+  simule: "Calcule sus ingresos"
+  sobre_cebel: "Sobre CEBEL"
+  novidades: "Noticias (en portugués)"
+  fale_conosco: "Contáctenos"
+  canal: "Canal de WhatsApp"
+  privacidade: "Política de privacidad"
+  feito: "Hecho en Río de Janeiro"
+  wa_float: "Hable con CEBEL por WhatsApp"
+  pedir_estudo: "Solicitar estudio gratuito"
+  consent: "Usamos cookies de medición para saber qué anuncios traen visitas al sitio. Vea nuestra"
+  consent_link: "política de privacidad"
+  recusar: "Rechazar"
+  aceitar: "Aceptar"
+  enviar_wa: "Enviar por WhatsApp"
+  privacy_form: "Sus datos solo se usan para que CEBEL responda a su contacto."
+  privacy_form_link: "Privacidad"
+  pronta: "Su mensaje está listo."
+  pronta_txt: "Toque en Abrir WhatsApp o copie el texto y envíelo a"
+  abrir_wa: "Abrir WhatsApp"
+  copiar_msg: "Copiar mensaje"
+  adiantar: "¿Quiere adelantar?"
+  adiantar_link: "Elija un horario para la visita técnica"
+  em_operacao: "En operación"
+  em_instalacao: "En instalación"
+  em_breve: "Próximamente"
+  copiar: "Copiar"
+  copiado: "Copiado"
+  foto_alt: "Cargador CEBEL en"
+  preencha: "Complete:"
+  origem: "Origen"
+  ativar_som: "Activar sonido"
+  som_ativado: "Sonido activado"
+  ola: "¡Hola, CEBEL!"
+  termos:
+    "Região dos Lagos": "Región de los Lagos"
+    "Zona Norte": "Zona Norte"
+    "Primeira estação da rede": "Primera estación de la red"
+    "Na Rodovia Amaral Peixoto (RJ-106)": "En la carretera Amaral Peixoto (RJ-106)"
+    "DC 40 kW · recarga rápida": "DC 40 kW · carga rápida"
+    "AC 7,4 kW · recarga lenta": "AC 7,4 kW · carga lenta"
+    "DC 40 kW · 2 conectores": "DC 40 kW · 2 conectores"
+    "Abre junto com a nova unidade Smart Fit": "Abre junto con la nueva sede de Smart Fit"

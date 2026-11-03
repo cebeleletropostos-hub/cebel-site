@@ -1,0 +1,71 @@
+---
+layout: default
+titulo: Charging stations
+descricao: CEBEL EV charging stations in Rio de Janeiro. Addresses, directions via Google Maps and Waze, and the new stations on the way.
+lang: en
+ref: estacoes
+permalink: /en/stations/
+---
+{% assign operando = site.data.estacoes | where: "status", "operando" %}
+{% assign caminho = site.data.estacoes | where_exp: "e", "e.status != 'operando'" %}
+<div class="dark agua">
+  <div class="wrap page-hero">
+    <p class="eyebrow">Stations</p>
+    <h1 class="h-xl">Where to charge with <span class="swash">CEBEL.</span></h1>
+    <p class="lead">Exact address and directions straight in Google Maps or Waze. One price, R$ {{ site.preco_kwh }} per kWh, across the whole network, with no idle fees.</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Open now</p>
+      <h2 class="h-lg">{{ operando.size }} stations open now</h2>
+    </div>
+    <div class="st-feature">
+      {% for st in operando %}{% include station.html st=st %}{% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="flush-top">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Coming next</p>
+      <h2 class="h-lg">Upcoming stations</h2>
+      <p class="lead">Equipment purchased and installation under way. Addresses will appear here as each station opens.</p>
+    </div>
+    <div class="st-list">
+      {% for st in caminho %}{% include station-mini.html st=st %}{% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="flush-top">
+  <div class="wrap">
+    <div class="price">
+      <p class="tag">R$ {{ site.preco_kwh }}<small>por kWh · toda a rede</small></p>
+      <ul>
+        <li><span class="check">{% include icons.html i="check" %}</span>You pay only for the energy that went into your car.</li>
+        <li><span class="check">{% include icons.html i="check" %}</span>No fee for staying plugged in after charging.</li>
+        <li><span class="check">{% include icons.html i="check" %}</span>Pay through the app, right on your phone.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="flush-top">
+  <div class="wrap">
+    <div class="cta-final dark agua">
+      <div class="in">
+        <div>
+          <h2 class="h-lg">Want a station near you?</h2>
+          <p>If you own a parking lot, or know a good location, get in touch.</p>
+        </div>
+        <div class="actions">
+          <a class="btn sol" href="{{ '/en/partners/' | relative_url }}">Suggest a location {% include icons.html i="arrow" %}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

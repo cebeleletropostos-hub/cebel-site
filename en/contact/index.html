@@ -1,0 +1,44 @@
+---
+layout: default
+titulo: Contact
+descricao: Contact CEBEL on WhatsApp. Driver support, partnerships to install EV chargers, and press.
+lang: en
+ref: contato
+permalink: /en/contact/
+---
+<div class="dark agua">
+  <div class="wrap page-hero">
+    <div class="contact-grid">
+      <div style="display:grid;gap:20px">
+        <p class="eyebrow">Contact</p>
+        <h1 class="h-xl">Talk to <span class="swash">CEBEL.</span></h1>
+        <p class="lead">We answer on WhatsApp. Pick a subject and your message goes to our team ready to send. Our team replies in Portuguese, English or Spanish.</p>
+        <div class="contact-list">
+          <div><span class="k">WhatsApp</span><span class="v">{{ site.whatsapp_display }}</span><a class="btn small sol" style="justify-self:start;margin-top:6px" href="https://wa.me/{{ site.whatsapp }}" target="_blank" rel="noopener">{% include icons.html i="wa" %}Open chat</a></div>
+          <div><span class="k">Address</span><span class="v addr-t">{{ site.endereco }}</span></div>
+          <div><span class="k">Company</span><span class="v addr-t">{{ site.razao_social }}</span></div>
+        </div>
+      </div>
+      <div class="form-card">
+        <h3>Send your message</h3>
+        <p>Fill in and tap send. WhatsApp opens with everything ready.</p>
+        <form class="wa" novalidate data-form="contato" data-intro="Hi, CEBEL! I found you through your website.">
+          <label class="full">Subject
+            <select id="c-assunto" data-key="Assunto" data-label="Subject">
+              <option>I want an EV charger at my business</option>
+              <option>I'm a driver and need help</option>
+              <option>I want to suggest a location</option>
+              <option>Press</option>
+              <option>Other</option>
+            </select>
+          </label>
+          <label>Your name<input id="c-nome" data-key="Nome" data-label="Name" autocomplete="name" required></label>
+          <label>WhatsApp<input id="c-tel" data-key="WhatsApp" data-label="WhatsApp" type="tel" autocomplete="tel" inputmode="tel" placeholder="+55 21 9..." required></label>
+          <label class="full">Message<textarea id="c-msg" data-key="Mensagem" data-label="Message" required></textarea></label>
+          <label class="hp" aria-hidden="true">Leave blank<input name="empresa_site" tabindex="-1" autocomplete="off"></label>
+            {% include wa-done.html %}
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

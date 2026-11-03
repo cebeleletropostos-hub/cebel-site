@@ -1,21 +1,22 @@
-{% assign nav = "estacoes:Estações,motoristas:Como carregar,sobre:Sobre,contato:Contato" | split: "," %}
-{% unless page.url == "/parceiros/" %}
+{% include t.html %}
+{% unless page.ref == "parceiros" %}
 <div class="topbar">
-  <a href="{{ '/parceiros/' | relative_url }}"><span>Tem um estacionamento?<span class="long"> Ganhe com um eletroposto, sem investir nada.</span></span> <b>Simule agora</b></a>
+  <a href="{{ t.p.parceiros | relative_url }}"><span>{{ t.topbar }}<span class="long">{{ t.topbar_longo }}</span></span> <b>{{ t.topbar_cta }}</b></a>
 </div>
 {% endunless %}
 <header class="site-header">
   <div class="wrap bar">
-    <a class="brand" href="{{ '/' | relative_url }}" aria-label="CEBEL, página inicial">
+    <a class="brand" href="{{ t.p.home | relative_url }}" aria-label="{{ t.home_aria }}">
       <img src="{{ '/assets/img/logo-cebel.png' | relative_url }}" alt="" width="44" height="44">
-      <span class="wm"><b>CEBEL</b><small>Energia &amp; Mobilidade Elétrica</small></span>
+      <span class="wm"><b>CEBEL</b><small>{{ t.marca_sub }}</small></span>
     </a>
-    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav"><span class="bars" aria-hidden="true"><i></i><i></i><i></i></span><span class="lbl">Menu</span></button>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav"><span class="bars" aria-hidden="true"><i></i><i></i><i></i></span><span class="lbl">{{ t.menu }}</span></button>
     <nav class="nav" id="nav" aria-label="Principal">
-      {% for item in nav %}{% assign parts = item | split: ":" %}{% assign path = "/" | append: parts[0] | append: "/" %}
-      <a href="{{ path | relative_url }}"{% if page.url == path %} aria-current="page"{% endif %}>{{ parts[1] }}</a>
+      {% for item in t.nav %}{% assign path = t.p[item[0]] %}
+      <a href="{{ path | relative_url }}"{% if page.ref == item[0] %} aria-current="page"{% endif %}>{{ item[1] }}</a>
       {% endfor %}
-      <a class="nav-cta" href="{{ '/parceiros/' | relative_url }}"{% if page.url == "/parceiros/" %} aria-current="page"{% endif %}><span class="dot" aria-hidden="true"></span>Seja parceiro</a>
+      <a class="nav-cta" href="{{ t.p.parceiros | relative_url }}"{% if page.ref == "parceiros" %} aria-current="page"{% endif %}><span class="dot" aria-hidden="true"></span>{{ t.seja_parceiro }}</a>
+      {% include lang-switch.html %}
     </nav>
   </div>
 </header>

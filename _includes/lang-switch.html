@@ -1,0 +1,6 @@
+{% assign R = page.ref | default: "home" %}
+<div class="lang" role="group" aria-label="{{ t.idioma }}">
+  {% assign langs = "pt,en,es" | split: "," %}{% for code in langs %}{% assign lt = site.data.i18n[code] %}{% assign target = lt.p[R] | default: lt.p.home %}
+  <a href="{{ target | relative_url }}" hreflang="{{ lt.html }}" lang="{{ lt.html }}" title="{{ lt.nome }}"{% if code == L %} aria-current="true"{% endif %}>{{ lt.curto }}</a>
+  {% endfor %}
+</div>

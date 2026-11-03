@@ -1,7 +1,8 @@
-<div class="consent" role="region" aria-label="Aviso de cookies" hidden>
-  <p>Usamos cookies de medição para entender quais anúncios trazem visitas ao site. Veja a <a href="{{ '/privacidade/' | relative_url }}">política de privacidade</a>.</p>
+{% include t.html %}
+<div class="consent" role="region" aria-label="Cookies" hidden>
+  <p>{{ t.consent }} <a href="{{ t.p.privacidade | relative_url }}">{{ t.consent_link }}</a>.</p>
   <div class="consent-actions">
-    <button class="btn small linha consent-no" type="button">Recusar</button>
-    <button class="btn small azul consent-yes" type="button">Aceitar</button>
+    <button class="btn small linha consent-no" type="button">{{ t.recusar }}</button>
+    <button class="btn small azul consent-yes" type="button">{{ t.aceitar }}</button>
   </div>
 </div>

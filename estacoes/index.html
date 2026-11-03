@@ -2,6 +2,8 @@
 layout: default
 titulo: Estações de recarga
 descricao: Estações de recarga CEBEL para carros elétricos no Rio de Janeiro. Endereços, rotas pelo Google Maps e Waze e as novas estações a caminho.
+lang: pt
+ref: estacoes
 ---
 {% assign operando = site.data.estacoes | where: "status", "operando" %}
 {% assign caminho = site.data.estacoes | where_exp: "e", "e.status != 'operando'" %}

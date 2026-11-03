@@ -26,6 +26,14 @@ Endereço atual: https://cebeleletropostos-hub.github.io/cebel-site/
 - `novidades/` + `_posts/` — notícias (layout `post`; campos `resumo`, `imagem`, `cta`, `cta_link`). Datas em pt-BR via `_includes/data-br.html`.
 - `_includes/schema.html` — dados estruturados para o Google (Organization com `sameAs` dos perfis em `_config.yml`, estações como LocalBusiness, posts como NewsArticle).
 
+## Idiomas (PT, EN, ES)
+
+- Páginas principais existem em português (raiz), inglês (`/en/…`) e espanhol (`/es/…`). Cada página tem `lang` e `ref` no front matter; o seletor PT/EN/ES no menu (`_includes/lang-switch.html`) e os `hreflang` do `<head>` usam o `ref` para achar a página equivalente.
+- Textos compartilhados (menu, rodapé, formulários, estações, cookies, textos do JS) ficam em `_data/i18n.yml`, incluindo os caminhos de cada página por idioma (`p`) e traduções de termos das estações (`termos`).
+- **As páginas EN/ES são geradas** por `python3 tools/traduzir.py` a partir das páginas PT. Ao mudar um texto em PT: atualize o par correspondente (pt, en, es) no script e rode-o de novo; ele avisa trechos não encontrados e palavras em PT que sobraram. Não edite as páginas de `/en/` e `/es/` à mão.
+- Formulários EN/ES: `data-label` é o rótulo traduzido (aparece na mensagem) e `data-key` é o nome em PT que a planilha espera. A mensagem inclui "Idioma: EN/ES" e o formulário vai como `parceiro-en`, `contato-es` etc.
+- Novidades, posts, links e 404 existem só em português.
+
 ## Regras
 
 - Links internos sempre com `{{ '/caminho/' | relative_url }}`, por causa do `baseurl`.

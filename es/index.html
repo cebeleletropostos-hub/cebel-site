@@ -1,0 +1,128 @@
+---
+layout: default
+lang: es
+ref: home
+permalink: /es/
+---
+{% assign operando = site.data.estacoes | where: "status", "operando" %}
+{% assign caminho = site.data.estacoes | where_exp: "e", "e.status != 'operando'" %}
+<div class="dark agua">
+  <div class="wrap hero hero-grid">
+    <div>
+      <p class="eyebrow">Carga de autos eléctricos · Estado de Río de Janeiro</p>
+      <h1 class="h-xl">Energía limpia donde <span class="swash">ya se detiene.</span></h1>
+      <p class="lead">CEBEL instala y opera cargadores para autos eléctricos en gimnasios, centros comerciales y negocios de Río de Janeiro. Cargue mientras entrena o hace compras.</p>
+      <div class="hero-actions">
+        <a class="btn sol" href="{{ '/es/estaciones/' | relative_url }}">Encontrar una estación {% include icons.html i="arrow" %}</a>
+        <a class="btn linha" href="{{ '/es/anfitriones/' | relative_url }}">Tengo un estacionamiento</a>
+      </div>
+      <div class="hero-proof">
+        <span>Socia de <b>Smart Fit</b></span><span class="sep"></span>
+        <span><b>{{ operando.size }}</b> estaciones activas</span><span class="sep"></span>
+        <span><b>R$ {{ site.preco_kwh }}</b>/kWh, sin tarifa por inactividad</span>
+      </div>
+    </div>
+    <figure class="hero-media">
+      <video src="{{ '/assets/video/itaguai-hero.mp4' | relative_url }}" poster="{{ '/assets/video/itaguai-hero.jpg' | relative_url }}" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
+      <figcaption>
+        <span class="pill operando">En operación</span>
+        <span class="where"><b>Smart Fit Itaguaí</b><span>Av. Dep. Octávio Cabral, 840</span></span>
+        <a class="btn small sol" href="{{ '/es/estaciones/' | relative_url }}#itaguai">Cómo llegar {% include icons.html i="arrow" %}</a>
+      </figcaption>
+    </figure>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="live-strip" aria-label="Simulação de uma recarga em andamento">
+    <p class="ls-label"><span class="live">Carregando</span><b>Smart Fit Itaguaí</b></p>
+    <div class="ls-track" aria-hidden="true"><span class="ls-fill" style="width:57%"></span></div>
+    <b class="ls-pct" id="ls-pct">57%</b>
+    <p class="ls-nums"><span><span id="ls-kwh">24,6</span> kWh</span><span id="ls-brl">R$ 49,20</span><span><span id="ls-min">38</span> min</span></p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head split">
+      <div style="display:grid;gap:16px">
+        <p class="eyebrow">Red CEBEL</p>
+        <h2 class="h-lg">Dónde cargar hoy</h2>
+      </div>
+      <p class="lead">Dirección exacta, ruta por Google Maps o Waze y el tipo de cargador de cada estación.</p>
+    </div>
+    <div class="st-feature">
+      {% for st in operando %}{% include station.html st=st %}{% endfor %}
+    </div>
+    <div style="margin-top:40px;display:grid;gap:18px">
+      <p class="eyebrow">Próximamente</p>
+      <div class="st-list">
+        {% for st in caminho %}{% include station-mini.html st=st %}{% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="flush-top">
+  <div class="wrap">
+    <div class="parceiro-band dark agua">
+      <div class="parceiro-grid">
+        <div>
+          <p class="eyebrow">Para dueños de estacionamientos</p>
+          <h2 class="h-lg" style="margin-top:16px">Su estacionamiento puede <span class="swash">generar ingresos.</span></h2>
+          <ul>
+            <li><span class="check">{% include icons.html i="check" %}</span><span><b>Inversión cero.</b> Compramos, instalamos y mantenemos el cargador.</span></li>
+            <li><span class="check">{% include icons.html i="check" %}</span><span><b>{{ site.repasse_parceiro }}% de los ingresos netos</b> de cada carga, todos los meses.</span></li>
+            <li><span class="check">{% include icons.html i="check" %}</span><span><b>La energía corre por nuestra cuenta.</b> Su factura de luz no cambia.</span></li>
+            <li><span class="check">{% include icons.html i="check" %}</span><span><b>Clientes que se quedan más tiempo</b> en su negocio mientras el auto carga.</span></li>
+          </ul>
+          <div class="hero-actions">
+            <a class="btn sol" href="{{ '/es/anfitriones/' | relative_url }}">Simular mis ingresos {% include icons.html i="arrow" %}</a>
+            <a class="btn linha" href="{{ '/es/anfitriones/' | relative_url }}#contato">Solicitar visita técnica</a>
+          </div>
+        </div>
+        <div class="sim">
+          <span class="k">Ejemplo · cargador rápido</span>
+          <span class="big">R$ 641<small> /mes</small></span>
+          <div class="rows">
+            <div><span>Cargas por día</span><span>6</span></div>
+            <div><span>Energía por carga</span><span>25 kWh</span></div>
+            <div><span>Ingresos brutos del mes</span><span>R$ 9.000</span></div>
+            <div><span>Su inversión</span><span>R$ 0</span></div>
+          </div>
+          <p class="fine">Estimación ilustrativa para el anfitrión, con los supuestos de nuestra calculadora.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="flush-top">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Cómo funciona</p>
+      <h2 class="h-lg">Un modelo en el que todos ganan</h2>
+    </div>
+    <div class="trio">
+      <article><span class="ico">{% include icons.html i="car" %}</span><span class="who">Conductor</span><h3>Carga mientras hace otra cosa</h3><p>Paga solo la energía que usa, R$ {{ site.preco_kwh }} por kWh, sin tarifa por tiempo detenido.</p></article>
+      <article><span class="ico">{% include icons.html i="store" %}</span><span class="who">Anfitrión</span><h3>Gana sin invertir</h3><p>Cede el espacio y recibe parte de cada carga, además de clientes que se quedan más tiempo.</p></article>
+      <article><span class="ico">{% include icons.html i="shield" %}</span><span class="who">CEBEL</span><h3>Se encarga de todo</h3><p>Equipo, instalación, energía, software y mantenimiento. Que la estación funcione es responsabilidad nuestra.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="flush-top">
+  <div class="wrap">
+    <div class="cta-final dark agua">
+      <div class="in">
+        <div>
+          <h2 class="h-lg">¿Llevamos energía limpia a su negocio?</h2>
+          <p>Gimnasios, centros comerciales, supermercados, hoteles y restaurantes de carretera en el estado de Río. La visita técnica es gratuita.</p>
+        </div>
+        <div class="actions">
+          <a class="btn sol" href="{{ '/es/anfitriones/' | relative_url }}">Quiero ser anfitrión {% include icons.html i="arrow" %}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
