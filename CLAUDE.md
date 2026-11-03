@@ -54,6 +54,13 @@ Endereço atual: https://cebeleletropostos-hub.github.io/cebel-site/
 - Google Search Console verificado pela conta da CEBEL com o arquivo `google3b894b6bffe2e85c.html` na raiz: não apagar. Sitemap: `sitemap.xml`. Ao trocar para o domínio próprio, criar nova propriedade no Search Console.
 - Guia para o João: doc "CEBEL · Guia de leads e medição" (https://claude.ai/artifact/1ADhEsAJj27NyrTWhuipz8).
 
+## Atendimento automático (chat/)
+
+- `chat/` é um Cloudflare Worker (não faz parte do site; está em `exclude`). Assistente Claude para WhatsApp e Instagram, PT/EN/ES. Detalhes em `chat/LEIA-ME.md`.
+- Conhecimento vem de `bot.json` (raiz, gerado pelo Jekyll de `_config.yml` + `_data/estacoes.yml`): ao mudar o site, o robô atualiza sozinho. Se criar campo novo relevante para motoristas/parceiros, inclua em `bot.json` e nas instruções de `chat/src/brain.js`.
+- Leads e pedidos de atendimento do chat vão para a mesma planilha (`formulario` = `chat-whatsapp`, `chat-instagram`, `chat-atendimento`).
+- Ao trocar de domínio: atualizar `SITE_URL` em `chat/wrangler.toml`.
+
 ## Domínio próprio (pendente)
 
 Quando o domínio for comprado: criar o arquivo `CNAME` com o domínio, trocar `url` em `_config.yml` para `https://dominio` e `baseurl` para `""`. No registro.br, 4 registros A para 185.199.108.153, 185.199.109.153, 185.199.110.153, 185.199.111.153 e CNAME `www` → `cebeleletropostos-hub.github.io`.

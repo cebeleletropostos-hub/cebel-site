@@ -47,5 +47,6 @@ permalink: /novidades/:year/:month/:title/
 
 exclude:
   - CLAUDE.md
+  - chat/
   - README.md
   - tools/

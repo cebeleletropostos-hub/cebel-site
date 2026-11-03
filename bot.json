@@ -1,0 +1,50 @@
+---
+layout: null
+permalink: /bot.json
+---
+{% assign ops = site.data.estacoes | where: "status", "operando" %}{
+  "atualizado": "{{ site.time | date: '%Y-%m-%dT%H:%M:%S%z' }}",
+  "empresa": {
+    "nome": {{ site.nome_completo | jsonify }},
+    "razao_social": {{ site.razao_social | jsonify }},
+    "sigla": {{ site.sigla | jsonify }},
+    "descricao": {{ site.description | jsonify }},
+    "whatsapp": {{ site.whatsapp_display | jsonify }},
+    "site": {{ '/' | absolute_url | jsonify }}
+  },
+  "preco_kwh": {{ site.preco_kwh | jsonify }},
+  "repasse_parceiro_pct": {{ site.repasse_parceiro }},
+  "app": { "nome": {{ site.app_nome | jsonify }}, "ios": {{ site.app_ios | jsonify }}, "android": {{ site.app_android | jsonify }} },
+  "links": {
+    "estacoes": {{ '/estacoes/' | absolute_url | jsonify }},
+    "como_carregar": {{ '/motoristas/' | absolute_url | jsonify }},
+    "parceiros": {{ '/parceiros/' | absolute_url | jsonify }},
+    "sobre": {{ '/sobre/' | absolute_url | jsonify }},
+    "novidades": {{ '/novidades/' | absolute_url | jsonify }},
+    "en": {{ '/en/' | absolute_url | jsonify }},
+    "es": {{ '/es/' | absolute_url | jsonify }},
+    "en_parceiros": {{ '/en/partners/' | absolute_url | jsonify }},
+    "es_parceiros": {{ '/es/anfitriones/' | absolute_url | jsonify }},
+    "canal_whatsapp": {{ site.whatsapp_canal | jsonify }},
+    "instagram": {{ site.instagram | jsonify }},
+    "linkedin": {{ site.linkedin | jsonify }},
+    "agenda_visita": {{ site.agenda_visita | jsonify }}
+  },
+  "calculadora": { "preco": 2.0, "energia": 0.85, "imposto": 0.10, "repasse": 0.15, "dias": 30,
+    "padrao": { "ac": { "recargas_dia": 3, "kwh": 18 }, "dc": { "recargas_dia": 6, "kwh": 25 } } },
+  "estacoes": [{% for st in site.data.estacoes %}
+    {
+      "id": {{ st.id | jsonify }},
+      "nome": {{ st.nome | jsonify }},
+      "cidade": {{ st.cidade | jsonify }},
+      "regiao": {{ st.regiao | jsonify }},
+      "parceiro": {{ st.parceiro | jsonify }},
+      "status": {{ st.status | jsonify }},
+      "endereco": {{ st.endereco | jsonify }},
+      "carregador": {{ st.carregador | jsonify }},
+      "nota": {{ st.nota | default: st.desde | default: "" | jsonify }}{% if st.endereco != "" %},
+      "google_maps": {{ st.endereco | url_encode | prepend: "https://www.google.com/maps/search/?api=1&query=" | jsonify }},
+      "waze": {{ st.endereco | url_encode | prepend: "https://waze.com/ul?navigate=yes&q=" | jsonify }}{% endif %}
+    }{% unless forloop.last %},{% endunless %}{% endfor %}
+  ]
+}
