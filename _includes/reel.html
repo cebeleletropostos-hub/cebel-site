@@ -1,0 +1,19 @@
+<section class="flush-top" id="video">
+  <div class="wrap">
+    <div class="reel-grid">
+      <div class="reel">
+        <video id="reel-video" src="{{ '/assets/video/itaguai.mp4' | relative_url }}" poster="{{ '/assets/video/itaguai-poster.jpg' | relative_url }}" autoplay muted loop playsinline preload="metadata" aria-label="Vídeo mostrando a estação CEBEL na Smart Fit Itaguaí e como carregar pelo app EzVolt"></video>
+        <button class="reel-sound" type="button" aria-pressed="false">Ativar som</button>
+      </div>
+      <div class="reel-copy">
+        <p class="eyebrow">Veja na prática</p>
+        <h2 class="h-lg">Itaguaí, <span class="swash">do jeito que é.</span></h2>
+        <p class="lead">Um tour pela nossa estação na Smart Fit Itaguaí: a vaga, o carregador e como liberar a recarga pelo aplicativo EzVolt, com créditos por Pix ou cartão.</p>
+        <div class="hero-actions">
+          <a class="btn azul" href="{{ '/estacoes/' | relative_url }}#itaguai">Como chegar {% include icons.html i="arrow" %}</a>
+          {% if include.parceiro %}<a class="btn linha" href="{{ '/parceiros/' | relative_url }}">Quero uma no meu negócio</a>{% else %}<a class="btn linha" href="{{ '/motoristas/' | relative_url }}">Passo a passo</a>{% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

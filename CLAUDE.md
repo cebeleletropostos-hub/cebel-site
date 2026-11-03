@@ -19,6 +19,7 @@ Endereço atual: https://cebeleletropostos-hub.github.io/cebel-site/
 - `_includes/station.html` (estação em operação: foto, endereço, botões Google Maps/Waze) e `station-mini.html` (a caminho).
   Fotos das estações vão em `assets/img/estacoes/` e o caminho entra no campo `foto` de `_data/estacoes.yml`.
 - `assets/js/site.js` — menu móvel, formulários de WhatsApp, calculadora e filtro de estações.
+- `assets/video/itaguai.mp4` — vídeo vertical da estação de Itaguaí (gravado por uma influenciadora; nome e cartão no app foram desfocados). Bloco em `_includes/reel.html`, usado na home e em /motoristas/.
 - `assets/img/og.png` — imagem de compartilhamento (gerada a partir de `tools/og.html`).
 
 ## Regras
@@ -26,6 +27,7 @@ Endereço atual: https://cebeleletropostos-hub.github.io/cebel-site/
 - Links internos sempre com `{{ '/caminho/' | relative_url }}`, por causa do `baseurl`.
 - Formulários: `<form class="wa" data-intro="...">`; todo campo com `data-label` entra na mensagem de WhatsApp. Não há backend.
 - Textos em português do Brasil. A CEBEL pode citar a Smart Fit como parceira (Itaguaí, Rio das Ostras; Saquarema em breve).
+- App de recarga: EzVolt, com créditos pré-pagos (a partir de R$ 20) por Pix ou cartão.
 - Calculadora (premissas em `assets/js/site.js` e no texto de `parceiros/`): R$ 2,00/kWh, energia R$ 0,85/kWh, 10% de impostos, repasse 15% da receita líquida.
 - Para conferir antes de publicar: `jekyll build` e abrir `_site/` num navegador headless.
 

@@ -93,6 +93,18 @@
     setInterval(tick, 900);
   }
 
+  // Vídeo: som ligado/desligado e pausa para quem prefere menos movimento
+  var reel = $("#reel-video"), snd = $(".reel-sound");
+  if (reel && snd) {
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches) { reel.removeAttribute("autoplay"); reel.pause(); reel.controls = true; }
+    snd.addEventListener("click", function () {
+      reel.muted = !reel.muted;
+      if (!reel.muted) { reel.currentTime = 0; reel.play(); }
+      snd.setAttribute("aria-pressed", reel.muted ? "false" : "true");
+      snd.textContent = reel.muted ? "Ativar som" : "Som ativado";
+    });
+  }
+
   // Filtro de estações
   var filters = $(".filters");
   if (filters) {
