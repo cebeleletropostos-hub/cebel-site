@@ -1,0 +1,31 @@
+<footer class="site-footer">
+  <div class="ruler" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="cols">
+      <div class="about">
+        <a class="logo" href="{{ '/' | relative_url }}"><span class="bolt" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M9.5 1 3 9h4l-1 6 6.5-8h-4z" fill="#2B1D00"/></svg></span>CEBEL</a>
+        <p>{{ site.sigla }}. Instalamos e operamos eletropostos no estado do Rio de Janeiro, sem custo para o local parceiro.</p>
+      </div>
+      <div>
+        <h3>Site</h3>
+        <ul>
+          <li><a href="{{ '/estacoes/' | relative_url }}">Estações</a></li>
+          <li><a href="{{ '/motoristas/' | relative_url }}">Como carregar</a></li>
+          <li><a href="{{ '/parceiros/' | relative_url }}">Seja parceiro</a></li>
+          <li><a href="{{ '/sobre/' | relative_url }}">Sobre a CEBEL</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Contato</h3>
+        <ul>
+          <li><a href="https://wa.me/{{ site.whatsapp }}" target="_blank" rel="noopener">WhatsApp {{ site.whatsapp_display }}</a></li>
+          <li><a href="{{ '/contato/' | relative_url }}">Fale conosco</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal">
+      <span>© {{ site.time | date: "%Y" }} {{ site.razao_social }}</span>
+      <span>Rio de Janeiro · Brasil</span>
+    </div>
+  </div>
+</footer>

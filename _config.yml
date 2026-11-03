@@ -1,0 +1,24 @@
+# Configuração do site da CEBEL (Jekyll / GitHub Pages)
+# Quando o domínio próprio estiver ativo: troque `url` pelo domínio e deixe `baseurl: ""`.
+title: CEBEL
+nome_completo: CEBEL Energia & Mobilidade Elétrica
+razao_social: CEBEL Eletropostos Ltda
+sigla: Companhia Brasileira de Energia Limpa
+description: Rede de recarga para carros elétricos no Rio de Janeiro. Instalamos e operamos eletropostos em academias, shoppings e comércios, sem custo para o parceiro.
+url: "https://cebeleletropostos-hub.github.io"
+baseurl: "/cebel-site"
+lang: pt-BR
+
+# Contato
+whatsapp: "5521996948090"
+whatsapp_display: "+55 21 99694-8090"
+endereco: "Av. Dep. Octávio Cabral, 840 – Jardim América, Itaguaí – RJ, 23810-301"
+
+# Modelo comercial (usado nas páginas e na calculadora)
+preco_kwh: "2,00"
+repasse_parceiro: 15
+
+exclude:
+  - CLAUDE.md
+  - README.md
+  - tools/

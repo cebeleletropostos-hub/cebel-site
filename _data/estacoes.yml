@@ -1,0 +1,58 @@
+# Lista de estações. Para adicionar uma estação, copie um bloco e ajuste.
+# status: operando | instalacao | em-breve
+# endereco: deixe vazio ("") se ainda não for público; o botão do mapa usa `busca_mapa`.
+
+- nome: Smart Fit Itaguaí
+  cidade: Itaguaí
+  regiao: Costa Verde
+  parceiro: Smart Fit
+  status: operando
+  endereco: "Av. Dep. Octávio Cabral, 840 – Jardim América, Itaguaí – RJ"
+  carregador: ""
+  busca_mapa: "CEBEL Av. Dep. Octávio Cabral, 840, Itaguaí"
+
+- nome: Smart Fit Rio das Ostras
+  cidade: Rio das Ostras
+  regiao: Região dos Lagos
+  parceiro: Smart Fit
+  status: operando
+  endereco: ""
+  carregador: ""
+  busca_mapa: "CEBEL Smart Fit Rio das Ostras"
+
+- nome: Irajá
+  cidade: Rio de Janeiro
+  regiao: Zona Norte
+  parceiro: ""
+  status: instalacao
+  endereco: ""
+  carregador: "DC 40 kW · recarga rápida"
+  busca_mapa: ""
+
+- nome: Nilópolis
+  cidade: Nilópolis
+  regiao: Baixada Fluminense
+  parceiro: ""
+  status: instalacao
+  endereco: ""
+  carregador: "DC 40 kW · recarga rápida"
+  busca_mapa: ""
+
+- nome: Araruama
+  cidade: Araruama
+  regiao: Região dos Lagos
+  parceiro: ""
+  status: instalacao
+  endereco: ""
+  carregador: "AC 7,4 kW · recarga lenta"
+  busca_mapa: ""
+
+- nome: Smart Fit Saquarema
+  cidade: Saquarema
+  regiao: Região dos Lagos
+  parceiro: Smart Fit
+  status: em-breve
+  endereco: ""
+  carregador: "DC 40 kW · 2 conectores"
+  busca_mapa: ""
+  nota: "Abre junto com a nova unidade Smart Fit"

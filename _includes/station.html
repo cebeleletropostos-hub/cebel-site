@@ -1,0 +1,11 @@
+{% assign st = include.st %}
+{% case st.status %}{% when "operando" %}{% assign label = "Em operação" %}{% when "instalacao" %}{% assign label = "Em instalação" %}{% else %}{% assign label = "Em breve" %}{% endcase %}
+<article class="station" data-status="{{ st.status }}">
+  <span class="pill {{ st.status }}">{{ label }}</span>
+  <h3>{{ st.nome }}</h3>
+  <p class="place">{{ st.cidade }} · {{ st.regiao }}</p>
+  {% if st.carregador != "" %}<p class="spec">{{ st.carregador }}</p>{% endif %}
+  {% if st.endereco != "" %}<p class="addr">{{ st.endereco }}</p>{% endif %}
+  {% if st.nota %}<p class="note">{{ st.nota }}</p>{% endif %}
+  {% if st.busca_mapa != "" %}<div class="actions"><a class="btn small dark" href="https://www.google.com/maps/search/?api=1&amp;query={{ st.busca_mapa | url_encode }}" target="_blank" rel="noopener">Abrir no mapa</a></div>{% endif %}
+</article>

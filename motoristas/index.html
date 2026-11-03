@@ -1,0 +1,82 @@
+---
+layout: default
+titulo: Como carregar
+descricao: Como carregar seu carro elétrico numa estação CEBEL. Preço, aplicativo, tipos de carregador e dúvidas frequentes.
+---
+<div class="band">
+  <div class="wrap page-hero">
+    <p class="eyebrow">Para motoristas</p>
+    <h1>Como carregar numa estação CEBEL</h1>
+    <p class="lead">Tudo pelo celular. Você estaciona, conecta, libera a recarga no aplicativo e paga só a energia que usou.</p>
+  </div>
+  <div class="ruler" aria-hidden="true"></div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Passo a passo</p>
+      <h2>Da vaga à bateria cheia</h2>
+    </div>
+    <ol class="steps">
+      <li><h3>Baixe o app</h3><p>Nossas estações funcionam pelo aplicativo EzVolt, disponível para Android e iPhone. Crie sua conta e cadastre a forma de pagamento.</p></li>
+      <li><h3>Estacione e conecte</h3><p>Pare na vaga sinalizada da CEBEL e encaixe o conector no seu carro.</p></li>
+      <li><h3>Libere a recarga</h3><p>No app, escolha a estação ou leia o QR code do carregador e inicie a recarga.</p></li>
+      <li><h3>Acompanhe e encerre</h3><p>Veja a energia entregue em tempo real. Ao terminar, encerre no app e o valor é cobrado na hora.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="tight-top">
+  <div class="wrap">
+    <div class="price">
+      <p class="tag">R$ {{ site.preco_kwh }}<small>por kWh</small></p>
+      <ul>
+        <li>Um carro médio recebe de 15 a 30 kWh numa parada: algo entre R$ 30 e R$ 60.</li>
+        <li>Sem taxa de ociosidade. Mas libere a vaga quando terminar, para o próximo motorista.</li>
+        <li>Mesmo preço em todas as estações da rede.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="tight-top">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Tipos de carregador</p>
+      <h2>Rápido ou lento?</h2>
+    </div>
+    <div class="fit">
+      <div><span class="stay">DC · 40 kW</span><h3>Recarga rápida</h3><p>De 30 minutos a 1 hora para uma boa parte da bateria. Ideal para quem está de passagem.</p></div>
+      <div><span class="stay">AC · 7 kW</span><h3>Recarga lenta</h3><p>Algumas horas para encher. Ideal para quem fica bastante tempo, como no treino ou no trabalho.</p></div>
+      <div><span class="stay">Conectores</span><h3>Padrão brasileiro</h3><p>Tipo 2 na recarga lenta e CCS2 na rápida, os padrões da maioria dos carros vendidos no Brasil.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="tight-top">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Dúvidas frequentes</p>
+      <h2>Perguntas de motoristas</h2>
+    </div>
+    <div class="faq">
+      <details><summary>Preciso ser aluno da Smart Fit para carregar?</summary><p>Não. As estações são abertas a qualquer motorista, dentro do horário de funcionamento do estacionamento.</p></details>
+      <details><summary>Meu carro é compatível?</summary><p>Carros elétricos e híbridos plug-in vendidos no Brasil usam Tipo 2 (recarga lenta) e CCS2 (recarga rápida). Confira o tipo de cada estação na página de estações.</p></details>
+      <details><summary>O que faço se o carregador não funcionar?</summary><p>Fale com a gente pelo WhatsApp {{ site.whatsapp_display }}, informando a estação. Nossa equipe pode reiniciar o carregador à distância na maioria dos casos.</p></details>
+      <details><summary>Posso deixar o carro na vaga depois de carregar?</summary><p>Não cobramos taxa por tempo parado, mas pedimos que você libere a vaga ao terminar, para outros motoristas também poderem carregar.</p></details>
+    </div>
+  </div>
+</section>
+
+<div class="band">
+  <div class="wrap cta-band">
+    <div>
+      <h2>Encontre a estação mais perto</h2>
+      <p>Veja endereços e o tipo de carregador de cada local.</p>
+    </div>
+    <div class="actions">
+      <a class="btn primary" href="{{ '/estacoes/' | relative_url }}">Ver estações</a>
+    </div>
+  </div>
+</div>
