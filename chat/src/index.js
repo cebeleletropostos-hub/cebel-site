@@ -50,7 +50,9 @@ export default {
 };
 
 const json = (o, status = 200) => new Response(JSON.stringify(o), { status, headers: { "content-type": "application/json" } });
-const senhaOk = (url, env) => env.ADMIN_SENHA && url.searchParams.get("senha") === env.ADMIN_SENHA;
+// Senha tolerante a espaço sobrando e maiúscula/minúscula (o teclado do celular costuma mudar isso).
+const normSenha = (x) => String(x || "").trim().toLowerCase();
+const senhaOk = (url, env) => !!env.ADMIN_SENHA && normSenha(url.searchParams.get("senha")) === normSenha(env.ADMIN_SENHA);
 const conversa = (env, chave) => env.CONVERSA.get(env.CONVERSA.idFromName(chave));
 const GRAPH = (env) => env.GRAPH_VERSION || "v23.0";
 
